@@ -1,329 +1,87 @@
-```C++
-以下是我写的通讯录管理系统的代码
-#define _CRT_SECURE_NO_WARNINGS 1
-#include<iostream>
-#include<string>
-using namespace std;
-#define MAX 1000
-//设计联系人结构体
-struct Person
-{
-	string m_Name;
-	int m_Sex;
-	int m_Age;
-	string m_Phone;
-	string m_Addr;
-};
+#                                                                    训练营结营作业
 
-//设计通讯录结构体
-struct Addressbooks
-{
-	//通讯录中保存的联系人数组
-	struct Person personArray[MAX];
-	
-	//通讯录中当前记录联系人个数
-	int m_Size;
-};
+                                                            
+## 一、CPU部署大模型&应用开发相关知识
+9月30号我跟着学长学习了CPU部署大模型&应用开发相关知识.
+首先认识了什么是大模型，以及已经演化了四代的语言模型，分别是
+- [1] *统计语言模型*
+- [2] *神经语言模型*
+- [3] *预训练语言模型*
+- [4] *大语言模型*
+还有开源、闭源大模型，Prompt工程，Embedding辅助给LLM外接大脑参数高效微调等等等等…………（此处省略无数个理论知识）一系列知识.
 
-void addPerson(Addressbooks * abs)
-{
-	if (abs->m_Size == MAX)
-	{
-		cout << "通讯录已满，无法添加！" << endl;
-		return;
-	}
-	else
-	{
-		//1.姓名
-		string name;
-		cout << "请输入姓名：  " << endl;
-		cin >> name;
-		abs->personArray[abs->m_Size].m_Name = name;
-		//2.性别
-		int sex = 0;
-		cout << "请输入性别：  " << endl;
-		cout << "1---->男" << endl;
-		cout << "2---->女" << endl;
-		
-		while (true)
-		{
-			cin >> sex;
-			if (sex == 1 || sex == 2)
-			{
-				abs->personArray[abs->m_Size].m_Sex = sex;
-				break;
-			}
-			cout << "输入有误，请重新输入" << endl;
-		}
-		//3.年龄
-		cout << "请输入年龄" << endl;
-		int age = 0;
-		while (true)
-		{
-			cin >> age;
-			if (age>0 && age<=150)
-			{
-				abs->personArray[abs->m_Size].m_Age = age;
-				break;
-			}
-			cout << "输入有误，请重新输入" << endl;
-		}
-		//4.电话
-		cout << "请输入电话：  " << endl;
-		string phone;
-		cin >> phone;
-		abs->personArray[abs->m_Size].m_Phone = phone;
-		//5.住址
-		cout << "请输入家庭住址：  " << endl;
-		string address;
-		cin >> address;
-		abs->personArray[abs->m_Size].m_Addr = address;
+不过上面说的都没用，👇才是重点
 
-		//更新通讯录人数
-		abs->m_Size++;
+我学习了如何在CPU上部署大模型
+第一步：启动魔搭CPU环境（需提前注册好阿里云账户）
+第二步：启动CPU
+<img width="530" alt="image" src="https://github.com/user-attachments/assets/e67cab09-b093-4f45-8b12-e30e04e3826f">
 
-		cout << "添加成功" << endl;
-		system("pause");
-		system("cls");
+                
+启动后进行了一系列安装和配置操作，这主要用到了初赛baseline1里边的文件和代码，然后根据学长飞书里的内容一步步实践
+<img width="1016" alt="2ae916164f774506529351df337be70" src="https://github.com/user-attachments/assets/2ae83e22-d37c-425a-a561-d8714da4ced4">
 
-	}
-}
+<img width="1164" alt="9da13611c4a49e398a71e51c78e3d22" src="https://github.com/user-attachments/assets/51248d86-967c-4011-a80e-2e7203cf5c05">
+
+
+
+然后就进入到了大模型聊天应用界面，就可以和大模型对话了
+
+![8027377d384c39e340d4f8ce3b4d369](https://github.com/user-attachments/assets/e65cbe6c-59d0-4fe1-a2d3-23f78f459eb8)
+
+⚠️⚠️⚠️对话结束后还要记得退出界面并关闭实例
+
+在了解 CPU 部署大模型的过程中，我惊叹于科技的强大力量。它能够在有限的硬件资源下，实现高效的计算和复杂的任务处理。这次学习使我收获颇丰，当然这也离不开学长的付出🙏🙏🙏 
+
+## 二、从零创建Agent
+- 运用工具
+ 智谱清言
+1.注册账号并实名认证
+2.创建智能体
+![da13a71f454e4c1cfef8c6856afcb79](https://github.com/user-attachments/assets/54befb17-3282-4f40-a6f0-19858bc94a5f)
+
+
+
+**3.我的智能体描述**（以下是我的智能体配置，智能体的二维码和链接放在后文）
+
+### *配置信息*
+
+<img width="1275" alt="3cf2f0ae47b16572841930470ccfed4" src="https://github.com/user-attachments/assets/0bc08817-5c75-40a9-8ea8-1f9d13392669">
+
+## *插件*
+
+ <img width="638" alt="205750e71c20d8c7a882de3b52c22f2" src="https://github.com/user-attachments/assets/86f8412a-4c1e-4ca4-98ac-ac3cb79d016b">
+
+ 
+ <img width="633" alt="0667330b432568b2946e9a2c077ff9d" src="https://github.com/user-attachments/assets/7e311c72-4424-427c-97a4-a5b48f9a3630">
+
+
+
+
+## *知识库配置*
+
+
+<img width="641" alt="70894e7235cb186502d4af78edd8c01" src="https://github.com/user-attachments/assets/30396b9d-dc13-4e20-baa9-b269c0fbe1a7">
+
+
+
+
+## *智能体链接*
+
+
+https://chatglm.cn/share/FNR7V
+
+
+
+# **三、总结**
+
+在此次的训练营学习中我收获了很多，虽然我不是在第一时间就加入咱们社团的，好几节直播授课没能赶上，但咱们社团非常贴心的在B站准备了直播回放，我也认真的一节一节观看了，有时候某个地方卡了就反复的看视频，也有不少问题需要上网去搜寻答案，当然这些都是很花费时间的，累是必然的，但疲惫之余我也获得了一种之前未曾体会过的成就感，第一次的部署大模型，第一次的搭建好自己的博客，这些都在提醒着我自己的努力没有白费，我喜欢这份充实感，也感谢学长们能这样不求回报的帮助我们。希望以后能加入社团，参加更多这样的活动，期待着以后的大学生活。
+
+ 李天乐书于2024.10.1夜                                                                                           
 
 
 
 
 
-void showPerson(Addressbooks* abs)
-{
-	if (abs->m_Size == 0)
-	{
-		cout << "当前记录为空" << endl;
-	}
-	else
-	{
-		for (int i = 0;i< abs->m_Size;i++)
-		{
-			cout << "姓名：  " << abs->personArray[i].m_Name <<"\t";
-			cout << "性别：  " << (abs->personArray[i].m_Sex == 1 ?"男":"女" )<< "\t";
-			cout << "年龄：  " << abs->personArray[i].m_Age << "\t";
-			cout << "电话：  " << abs->personArray[i].m_Phone << "\t";
-			cout << "住址：  " << abs->personArray[i].m_Addr << endl;
-		}
-	}
-	system("pause");
-	system("cls");
-
-}
 
 
-//检测联系人是否存在，存在则返回联系人所在数组中的具体位置，不存在则返回-1
-int isExist(Addressbooks* abs, string name) //参数二为对比姓名
-{
-	
-	for (int i = 0;i < abs->m_Size;i++)
-
-	{
-		if (abs->personArray[i].m_Name == name)
-		{
-			return i;  //找到了，返回这个人在数组下的编号
-		}
-	}
-	return -1;  //如果遍历结束都没找到，返回-1
-}
-
-
-void deletePerson(Addressbooks* abs)
-{
-	cout << "请输入您要删除的联系人" << endl;
-	string name;
-	cin >> name;
-
-	int ret = isExist(abs, name);
-
-	if (ret != -1)
-	{
-		for (int i = ret; i < abs->m_Size;i++)
-		{
-			//数据前移
-			abs->personArray[i] = abs->personArray[i + 1];
-		}
-		abs->m_Size--;
-		cout << "删除成功" << endl;
-	}
-	else
-	{
-		cout << "查无此人" << endl;
-	}
-	system("pause");
-	system("cls");
-}
-
-
-void findPerson(Addressbooks* abs)
-{
-	cout << "请输入您要查找的联系人" << endl;
-	string name;
-	cin >> name;
-
-	//判断指定的联系人是否在通讯录中
-	int ret = isExist(abs, name);
-	if (ret != -1)//找到联系人
-	{
-		cout << "姓名：  " << abs->personArray[ret].m_Name << "\t";
-		cout << "性别：  " << abs->personArray[ret].m_Sex  << "\t";
-		cout << "年龄：  " << abs->personArray[ret].m_Age << "\t";
-		cout << "电话：  " << abs->personArray[ret].m_Phone << "\t";
-		cout << "住址：  " << abs->personArray[ret].m_Addr << endl;
-	}
-	else//未找到
-	{
-		cout << "查无此人" << endl;
-	}
-	system("pause");
-	system("cls");
-}
-
-void modifyPerson(Addressbooks* abs)
-{
-	cout << "请输入你要修改的联系人" << endl;
-	string name;
-	cin >> name;
-	int ret = isExist(abs, name);
-	if (ret != -1)
-	{
-		string name;
-		cout << "请输入姓名：  " << endl;
-		cin >> name;
-		abs->personArray[ret].m_Name = name;
-
-
-		cout << "请输入性别" << endl;
-		cout << "1---男" << endl;
-		cout << "2---女" << endl;
-		int sex = 0;
-		cin >> sex;
-		while (true)
-		{
-			if (sex == 1 || sex == 2)
-			{
-				abs->personArray[ret].m_Sex = sex;
-				break;
-			}
-			cout << "输入有误，请重新输入" << endl;
-
-		}
-		cout << "请输入年龄：  " << endl;
-		int age = 0;
-		while (true)
-		{
-			cin >> age;
-			if (age > 0 && age <= 150)
-			{
-				abs->personArray[abs->m_Size].m_Age = age;
-				break;
-			}
-			cout << "输入有误，请重新输入" << endl;
-		}
-		cout << "请输入电话：  " << endl;
-		string phone;
-		cin >> phone;
-		abs->personArray[abs->m_Size].m_Phone = phone;
-
-
-		cout << "请输入家庭住址：  " << endl;
-		string address;
-		cin >> address;
-		abs->personArray[abs->m_Size].m_Addr = address;
-
-	}
-	else
-	{
-		cout << "查无此人" << endl;
-	}
-
-	system("pause");
-	system("cls");
-	
-}
-
-
-void cleanPerson(Addressbooks* abs)
-{
-	abs->m_Size = 0;
-	cout << "通讯录已清空" << endl;
-	system("pause");
-	system("cls");
-}
-void showMenu()
-{
-	cout << "**********************" << endl;
-	cout << "*****1.添加联系人*****" << endl;
-	cout << "*****2.显示联系人*****" << endl;
-	cout << "*****3.删除联系人*****" << endl;
-	cout << "*****4.查找联系人*****" << endl;
-	cout << "*****5.修改联系人*****" << endl;
-	cout << "*****6.清空联系人*****" << endl;
-	cout << "*****0.退出通讯录*****" << endl;
-	cout << "**********************" << endl;
-}
-
-
-int main()
-{
-	Addressbooks abs;
-	abs.m_Size = 0;
-	int select = 0;
-	
-	while (true)
-	{
-		showMenu();//菜单调用
-		cin >> select;
-		
-		switch (select)
-		{
-		case 1://添加联系人
-			addPerson(&abs);
-			break;
-		case 2://显示联系人
-			showPerson(&abs);
-			break;
-		case 3://删除联系人
-		/*{
-			cout << "请输入要删除的联系人姓名：  " << endl;
-			string name;
-			cin >> name;
-			
-
-			if (isExist(&abs, name) == -1)
-			{
-				cout << "查无此人" << endl;
-			}
-			else
-			{
-				cout << "找到此人" << endl;
-			}
-		}*/
-			deletePerson(&abs);
-			break;
-		case 4://查找联系人
-			findPerson(&abs);
-			break;
-		case 5://修改联系人
-			modifyPerson(&abs);
-			break;
-		case 6://清空联系人
-			cleanPerson(&abs);
-			break;
-		case 0://退出通讯录
-			cout << "欢迎下次使用" << endl;
-			break;
-		default:
-			break;
-		}
-		system("cls");
-		
-	}
-      
-	
-	return 0;
-}
