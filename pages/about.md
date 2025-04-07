@@ -2,7 +2,7 @@
 layout: page
 title: About
 description: 打码改变世界
-keywords: Zhuang Ma, 马壮
+keywords: 李天乐
 comments: true
 menu: 关于
 permalink: /about/
@@ -18,7 +18,7 @@ permalink: /about/
 
 <ul>
 {% for website in site.data.social %}
-<li>{{website.sitename }}：<a href="{{ website.url }}" target="_blank">@{{ swkajnBruceee }}</a></li>
+<li>{{website.sitename }}：<a href="{{ website.url }}" target="_blank">@swkajnBruceee</a></li>
 {% endfor %}
 {% if site.url contains 'mazhuang.org' %}
 <li>
