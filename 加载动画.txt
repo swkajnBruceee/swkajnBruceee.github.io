@@ -1,0 +1,30 @@
+很多同学表示添加了加载动画以后加载半天，只能看动画却进不了站~~我的加载动画还被Heo说成是无限施法2333~~。这点主要是因为加载动画的关闭与否是与网站加载状态的load的返回值决定的，而网站加载完成与否这个概念是很暧昧的，如果加装了pwa，清空缓存后再次加载的内容可能比想象的要多。以下提供两种方案，一个超时自动结束，一个手动点击结束。两者兼容，你可以同时使用达到多重保险。
+
+- 超时自动结束
+- 手动点击结束
+
+可以给加载动画设置一个settimeout()的函数来达到**伪·加载完毕**的效果，即超时了自动关闭加载动画，即使页面还在加载。
+得益于loading-js使用的是原生js，所以可以给script添加async属性实现异步加载，以免阻塞后续HTML渲染。
+仅仅需要给控制加载动画开关的`loading-js.pug`添加两行代码即可。
+
+```
+DIFF
+-   script.
++   script(async).
+      var preloader = {
+        endLoading: () => {
+          document.body.style.overflow = 'auto';
+          document.getElementById('loading-box').classList.add("loaded")
+        },
+        initLoading: () => {
+          document.body.style.overflow = '';
+          document.getElementById('loading-box').classList.remove("loaded")
+
+        }
+      }
+      window.addEventListener('load',()=> {preloader.endLoading()})
++     setTimeout(function(){preloader.endLoading();}, 5000);
+```
+
+其中5000的单位是ms，代表你设置的最大容忍时间。可以自行修改。
+这样一来，如果网站在五秒内加载完成，则优先执行**window.addEventListener(‘load’,()=> {preloader.endLoading()})**,如果超过5秒，则执行 **setTimeout(function(){preloader.endLoading();}, 5000);**,两者互不干扰。可喜可贺，可喜可贺。

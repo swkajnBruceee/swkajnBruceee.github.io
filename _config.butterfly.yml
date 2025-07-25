@@ -1,0 +1,332 @@
+# --------------------------------------
+# Hexo Butterfly Theme Configuration
+# 推荐的主题配置方式：在根目录创建 _config.butterfly.yml
+# 这个文件会覆盖 themes/Butterfly/_config.yml 中的配置
+# --------------------------------------
+
+# 语言设置
+language: zh-CN
+
+# 导航栏设置
+nav:
+  logo:
+  display_title: true
+  fixed: true
+
+# 菜单设置
+menu:
+  文章: /archives/ || fas fa-book
+  友链: /link/ || fas fa-link
+  我的: /categories/ || fas fa-folder
+  关于: /about/ || fas fa-user
+
+# 代码块设置
+code_blocks:
+  theme: light
+  macStyle: false
+  height_limit: false
+  word_wrap: false
+  copy: true
+  language: true
+  shrink: false
+  fullpage: false
+
+# 社交链接
+social:
+  fab fa-github: https://github.com/swkajnBruceee || Github || '#24292e'
+  fas fa-envelope: mailto:your-email@example.com || Email || '#4a7dbe'
+  fab fa-twitter: https://twitter.com/ || Twitter || '#00acee'
+  fab fa-telegram: https://t.me/ || Telegram || '#0088cc'
+
+# 头像设置
+avatar:
+  img: /img/butterfly-icon.png
+  effect: false
+
+# 网站图标
+favicon: /img/favicon.png
+
+# 顶部图片设置
+disable_top_img: false
+default_top_img: https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80
+index_img: https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80
+archive_img: https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80
+tag_img: https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80
+category_img: https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80
+
+# 背景设置
+background:
+
+# 封面设置
+cover:
+  index_enable: true
+  aside_enable: true
+  archives_enable: true
+  default_cover:
+
+# 文章元信息显示
+post_meta:
+  page:
+    date_type: created
+    date_format: date
+    categories: true
+    tags: false
+    label: true
+  post:
+    position: left
+    date_type: both
+    date_format: date
+    categories: true
+    tags: true
+    label: true
+
+# 首页副标题
+subtitle:
+  enable: true
+  effect: true
+  startDelay: 300
+  typeSpeed: 150
+  backSpeed: 50
+  loop: true
+  loopCount: Infinity
+  showCursor: true
+  sub:
+    - "With each passing breeze, we exchange gentle greetings"
+    - "每一阵微风，都是温柔的问候"
+    - "Code is poetry, technology is art"
+    - "用代码书写诗意，用技术创造艺术"
+
+# 页脚设置
+footer:
+  owner:
+    enable: true
+    since: 2024
+  custom_text:
+  copyright: true
+
+# 预加载动画设置（巫师加载动画）
+preloader:
+  enable: true
+  load_color: '#2d3748'
+  load_style: wizard
+  source: 1
+
+# 搜索功能
+search:
+  use: local_search
+  
+local_search:
+  enable: true
+  preload: true
+  top_n_per_article: 3
+  unescape: false
+  load_data_file: /searchdb.json
+  CDN:
+
+# 数学公式支持
+math:
+  mathjax:
+    enable: true
+    per_page: false
+  katex:
+    enable: false
+    per_page: false
+
+# 图片懒加载
+lazyload:
+  enable: true
+  field: site
+  placeholder: data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkxvYWRpbmcuLi48L3RleHQ+PC9zdmc+
+  blur: true
+
+# 评论系统 (Gitalk)
+comments:
+  use: # gitalk (需要配置GitHub应用)
+  text: true
+  lazyload: false
+  count: false
+  card_post_count: false
+
+# 分享功能
+share:
+  enable: true
+  sites: facebook,twitter,wechat,weibo,qq
+
+# 网站统计
+busuanzi:
+  site_uv: true
+  site_pv: true
+  page_pv: true
+
+# 阅读模式
+readmode: true
+
+# 夜间模式
+darkmode:
+  enable: true
+  button: true
+  autoChangeMode: false
+
+# 右下角按钮
+rightside:
+  enable: true
+  hide_rightside: false
+  show_percent: true
+  readmode: true
+
+# 文章版权
+post_copyright:
+  enable: true
+  decode: false
+  author_href:
+  license: CC BY-NC-SA 4.0
+  license_url: https://creativecommons.org/licenses/by-nc-sa/4.0/
+
+# TOC 目录
+toc:
+  post: true
+  page: false
+  number: true
+  expand: false
+  style_simple: false
+  scroll_percent: true
+
+# 相关文章推荐
+related_post:
+  enable: true
+  limit: 6
+  date_type: created
+
+# 文章过期提醒
+noticeOutdate:
+  enable: true
+  style: flat
+  limit_day: 500
+  position: top
+  message_prev: 本文最后更新于
+  message_next: 天前，内容可能已经过时。
+
+# 字数统计
+wordcount:
+  enable: true
+  post_wordcount: true
+  min2read: true
+  total_wordcount: true
+
+# 图片放大功能
+medium_zoom: true
+fancybox: false
+
+# 页面美化
+beautify:
+  enable: true
+  field: post
+  title-prefix-icon: '\f0c1'
+  title-prefix-icon-color: '#F47466'
+
+# 页面加载进度条（与preloader冲突，暂时禁用）
+pace:
+  enable: false
+  color: blue
+  theme: minimal
+
+# 背景特效（桌面端启用，移动端禁用以优化性能）
+canvas_fluttering_ribbon:
+  enable: true
+  mobile: false
+
+# 鼠标点击效果
+fireworks:
+  enable: false
+  zIndex: 9999
+  mobile: false
+
+# 页面标题动态效果
+title:
+  enable: true
+  blur: 哎呀！页面崩溃了！
+  focus: ヾ(≧∇≦*)ゝ嗨！欢迎回来！
+
+# 运行时间
+runtimeshow:
+  enable: true
+  publish_date: 6/25/2025 00:00:00
+
+# 侧边栏设置
+aside:
+  enable: true
+  hide: false
+  button: true
+  mobile: true
+  position: right
+  display:
+    archive: true
+    tag: true
+    category: true
+  card_author:
+    enable: false  # 禁用作者卡片
+  card_custom_profile:
+    enable: true
+    badge_text: '🎓 大学生知识博客'
+    name: 'BruceLee'
+    description: '生活明朗，万物可爱'
+    avatar: '/img/photo.jpg'
+    avatar_badge: '🐶'
+    hover_text: '这里分享计算机科学、算法学习、编程技巧和学术研究心得。涵盖数据结构、Web开发、机器学习等领域的学习笔记和实践经验。希望能与同样热爱学习的朋友们一起进步，共同探索技术的无限可能。'
+    github: 'https://github.com/swkajnBruceee'
+    discord: '#'
+  card_announcement:
+    enable: true
+    content: This is my Blog
+  card_recent_post:
+    enable: true
+    limit: 5
+    sort: date
+  card_categories:
+    enable: true
+    limit: 8
+    expand: none
+  card_tags:
+    enable: true
+    limit: 40
+    color: false
+    orderby: random
+    order: 1
+  card_archives:
+    enable: true
+    type: monthly
+    format: MMMM YYYY
+    order: -1
+    limit: 8
+  card_webinfo:
+    enable: true
+    post_count: true
+    last_push_date: true
+
+# 字体设置
+font:
+  enable: true
+  font_family: '"Noto Sans SC", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Lato, Roboto, "PingFang SC", "Microsoft JhengHei", "Microsoft YaHei", sans-serif'
+  code_font_family: '"JetBrains Mono", Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace'
+
+# 自定义CSS和JS
+inject:
+  head:
+    - <link rel="stylesheet" href="/css/custom.css">
+    - <link rel="preconnect" href="https://fonts.googleapis.com">
+    - <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    - <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  bottom:
+    - <script src="/js/loading-fix.js"></script>
+    - <script src="/js/darkmode-fix.js"></script>
+    - <script src="/js/nav-search.js"></script>
+    - <script src="/js/search-enhance.js"></script>
+    - <script src="/js/ai-summary.js"></script>
+
+# 网站验证
+site_verification:
+
+# Open Graph meta
+Open_Graph_meta:
+  enable: true
+  option:

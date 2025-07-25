@@ -1,0 +1,78 @@
+我的博客地址：https://sutang-vain.github.io
+ 
+部署成功！
+从输出结果可以看到，你的 Hexo 博客已经成功部署到 GitHub：
+To github.com:SuTang-vain/SuTang-vain.github.io.git
+ * [new branch]      HEAD -> main
+branch 'master' set up to track 'git@github.com:SuTang-vain/SuTang-vain.github.io.git/main'.
+INFO  Deploy done: git
+这意味着：
+1. 所有静态文件已成功推送到 GitHub 仓库
+2. 仓库分支配置正确（`main` 分支）
+3. 后续更新只需再次执行部署命令即可
+
+
+验证博客访问
+
+1. 访问博客地址：
+   打开浏览器，输入你的 GitHub Pages 地址：
+
+   https://sutang-vain.github.io
+
+   （首次部署可能需要 1-5 分钟生效，若未显示可稍后刷新）
+
+2. 检查 GitHub 仓库：
+   登录 GitHub 查看 `SuTang-vain.github.io` 仓库，确认代码已更新，且 `main` 分支下有部署的静态文件（如 `index.html`、`css/`、`js/` 等）。
+
+
+ 后续操作建议
+
+ 1. 自定义博客内容
+
+创建新文章：
+bash
+hexo new "文章标题"  
+# 在 source/_posts 目录生成 Markdown 文件
+
+  编辑后重新部署即可发布。
+
+修改博客配置：
+  编辑 `_config.yml` 可修改博客标题、描述、作者等信息：
+  ```yaml
+  title: 你的博客标题
+  subtitle: 副标题
+  description: 博客描述
+  author: 你的名字
+  language: zh-CN  # 设置为中文
+  timezone: Asia/Shanghai  # 设置时区
+  ```
+
+ 2. 优化博客主题
+
+如果你使用的是 NexT 主题（日志中显示 `NexT version 8.23.1`），可以：
+- 编辑主题配置文件 `themes/next/_config.yml` 调整样式
+- 开启评论功能（如 Gitalk、Utterances）
+- 配置社交链接、阅读统计等功能
+
+ 3. 绑定自定义域名（可选）
+
+如果需要使用自己的域名（如 `sutang.com`）：
+1. 在域名服务商处添加 DNS 解析（CNAME 指向 `sutang-vain.github.io`）
+2. 在 Hexo 项目 `source` 目录创建 `CNAME` 文件，内容为你的域名
+3. 重新部署：`hexo clean && hexo g && hexo d`
+4. 在 GitHub 仓库 Settings → Pages 中启用 HTTPS
+
+ 常见维护命令
+
+```bash
+# 清理缓存并重新生成
+hexo clean && hexo generate
+
+# 本地预览（访问 http://localhost:4000）
+hexo server
+
+# 发布更新
+hexo clean && hexo generate && hexo deploy
+```
+
+恭喜你成功搭建并部署了 Hexo 博客！如果需要进一步定制或遇到问题，随时可以继续提问。
