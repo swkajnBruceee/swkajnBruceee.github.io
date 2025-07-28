@@ -2918,4 +2918,640 @@ img[data-lazy].loaded {
 /* 搜索按钮在有搜索框时的样式调整 */
 #search-button {
   margin-left: 10px;
+}/* ======
+====================================================================
+   Waline 评论系统美化样式
+   ========================================================================== */
+
+/* 评论区容器 - 高级磨砂卡片效果 */
+.waline-container {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  margin: 2rem 0;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.waline-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #667eea, #764ba2, #667eea);
+  background-size: 200% 100%;
+  animation: gradientMove 3s ease-in-out infinite;
+}
+
+/* 评论区标题 */
+.waline-container .wl-count {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid rgba(102, 126, 234, 0.1);
+  position: relative;
+}
+
+.waline-container .wl-count::before {
+  content: '💬';
+  margin-right: 8px;
+  font-size: 1.1rem;
+}
+
+/* 编辑器容器 */
+.waline-container .wl-editor {
+  background: rgba(255, 255, 255, 0.8);
+  border: 2px solid rgba(102, 126, 234, 0.2);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.waline-container .wl-editor::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.05), transparent);
+  transition: left 0.6s ease;
+}
+
+.waline-container .wl-editor:focus-within {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  transform: translateY(-2px);
+}
+
+.waline-container .wl-editor:focus-within::before {
+  left: 100%;
+}
+
+/* 文本输入框 */
+.waline-container .wl-editor textarea {
+  background: transparent;
+  border: none;
+  outline: none;
+  resize: vertical;
+  min-height: 120px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #2d3748;
+  font-family: var(--font-family);
+  width: 100%;
+  padding: 0;
+}
+
+.waline-container .wl-editor textarea::placeholder {
+  color: #a0aec0;
+  font-style: italic;
+}
+
+/* 编辑器工具栏 */
+.waline-container .wl-panel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.waline-container .wl-panel .wl-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 表情按钮 */
+.waline-container .wl-emoji {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: rgba(102, 126, 234, 0.1);
+  border-radius: 8px;
+  color: #667eea;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.waline-container .wl-emoji:hover {
+  background: rgba(102, 126, 234, 0.15);
+  transform: scale(1.05);
+}
+
+/* 提交按钮 */
+.waline-container .wl-btn {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 24px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.waline-container .wl-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
+}
+
+.waline-container .wl-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+}
+
+.waline-container .wl-btn:hover::before {
+  left: 100%;
+}
+
+.waline-container .wl-btn:active {
+  transform: translateY(0);
+}
+
+/* 用户信息输入框 */
+.waline-container .wl-header {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.waline-container .wl-header input {
+  background: rgba(255, 255, 255, 0.8);
+  border: 2px solid rgba(102, 126, 234, 0.2);
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 0.9rem;
+  color: #2d3748;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+.waline-container .wl-header input:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+.waline-container .wl-header input::placeholder {
+  color: #a0aec0;
+}
+
+/* 评论列表 */
+.waline-container .wl-cards {
+  margin-top: 2rem;
+}
+
+/* 单个评论卡片 */
+.waline-container .wl-card {
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(102, 126, 234, 0.1);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+  transition: all 0.3s ease;
+  position: relative;
+  backdrop-filter: blur(10px);
+}
+
+.waline-container .wl-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  border-color: rgba(102, 126, 234, 0.2);
+}
+
+/* 评论头部信息 */
+.waline-container .wl-card .wl-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.waline-container .wl-card .wl-nick {
+  font-weight: 600;
+  color: #667eea;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.waline-container .wl-card .wl-nick:hover {
+  color: #764ba2;
+}
+
+.waline-container .wl-card .wl-badge {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 500;
+  margin-left: 8px;
+}
+
+.waline-container .wl-card .wl-time {
+  color: #a0aec0;
+  font-size: 0.8rem;
+}
+
+/* 评论内容 */
+.waline-container .wl-card .wl-content {
+  color: #4a5568;
+  line-height: 1.6;
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+}
+
+.waline-container .wl-card .wl-content p {
+  margin: 0 0 8px 0;
+}
+
+.waline-container .wl-card .wl-content code {
+  background: rgba(102, 126, 234, 0.1);
+  color: #667eea;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+/* 评论操作按钮 */
+.waline-container .wl-card .wl-meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.waline-container .wl-card .wl-reply,
+.waline-container .wl-card .wl-like {
+  background: none;
+  border: none;
+  color: #a0aec0;
+  cursor: pointer;
+  font-size: 0.8rem;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.waline-container .wl-card .wl-reply:hover,
+.waline-container .wl-card .wl-like:hover {
+  background: rgba(102, 126, 234, 0.1);
+  color: #667eea;
+}
+
+/* 子评论样式 */
+.waline-container .wl-card .wl-quote {
+  background: rgba(102, 126, 234, 0.05);
+  border-left: 3px solid #667eea;
+  border-radius: 0 8px 8px 0;
+  padding: 12px 16px;
+  margin: 12px 0;
+  font-size: 0.9rem;
+  color: #718096;
+}
+
+/* 表情包样式 */
+.waline-container .wl-emoji-container {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(102, 126, 234, 0.2);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  z-index: 1000;
+  max-width: 300px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.waline-container .wl-emoji-container img {
+  width: 24px;
+  height: 24px;
+  margin: 4px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: transform 0.2s ease;
+}
+
+.waline-container .wl-emoji-container img:hover {
+  transform: scale(1.2);
+}
+
+/* 分页样式 */
+.waline-container .wl-operation {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  gap: 8px;
+}
+
+.waline-container .wl-operation button {
+  background: rgba(102, 126, 234, 0.1);
+  border: 1px solid rgba(102, 126, 234, 0.2);
+  color: #667eea;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.waline-container .wl-operation button:hover {
+  background: rgba(102, 126, 234, 0.15);
+  transform: translateY(-1px);
+}
+
+.waline-container .wl-operation button.current {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border-color: transparent;
+}
+
+/* 夜间模式适配 */
+[data-theme="dark"] .waline-container {
+  background: rgba(26, 32, 44, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .waline-container .wl-count {
+  color: #e2e8f0;
+  border-bottom-color: rgba(144, 205, 244, 0.2);
+}
+
+[data-theme="dark"] .waline-container .wl-editor {
+  background: rgba(45, 55, 72, 0.8);
+  border-color: rgba(144, 205, 244, 0.3);
+}
+
+[data-theme="dark"] .waline-container .wl-editor:focus-within {
+  border-color: #90cdf4;
+  box-shadow: 0 0 0 3px rgba(144, 205, 244, 0.1);
+}
+
+[data-theme="dark"] .waline-container .wl-editor textarea {
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .waline-container .wl-editor textarea::placeholder {
+  color: #718096;
+}
+
+[data-theme="dark"] .waline-container .wl-header input {
+  background: rgba(45, 55, 72, 0.8);
+  border-color: rgba(144, 205, 244, 0.3);
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .waline-container .wl-header input:focus {
+  border-color: #90cdf4;
+  box-shadow: 0 0 0 3px rgba(144, 205, 244, 0.1);
+}
+
+[data-theme="dark"] .waline-container .wl-header input::placeholder {
+  color: #718096;
+}
+
+[data-theme="dark"] .waline-container .wl-card {
+  background: rgba(45, 55, 72, 0.6);
+  border-color: rgba(144, 205, 244, 0.1);
+}
+
+[data-theme="dark"] .waline-container .wl-card:hover {
+  border-color: rgba(144, 205, 244, 0.2);
+}
+
+[data-theme="dark"] .waline-container .wl-card .wl-nick {
+  color: #90cdf4;
+}
+
+[data-theme="dark"] .waline-container .wl-card .wl-nick:hover {
+  color: #bee3f8;
+}
+
+[data-theme="dark"] .waline-container .wl-card .wl-time {
+  color: #718096;
+}
+
+[data-theme="dark"] .waline-container .wl-card .wl-content {
+  color: #e2e8f0;
+}
+
+[data-theme="dark"] .waline-container .wl-card .wl-content code {
+  background: rgba(144, 205, 244, 0.1);
+  color: #90cdf4;
+}
+
+[data-theme="dark"] .waline-container .wl-card .wl-quote {
+  background: rgba(144, 205, 244, 0.05);
+  border-left-color: #90cdf4;
+  color: #a0aec0;
+}
+
+[data-theme="dark"] .waline-container .wl-emoji {
+  background: rgba(144, 205, 244, 0.1);
+  color: #90cdf4;
+}
+
+[data-theme="dark"] .waline-container .wl-emoji:hover {
+  background: rgba(144, 205, 244, 0.15);
+}
+
+[data-theme="dark"] .waline-container .wl-card .wl-reply,
+[data-theme="dark"] .waline-container .wl-card .wl-like {
+  color: #a0aec0;
+}
+
+[data-theme="dark"] .waline-container .wl-card .wl-reply:hover,
+[data-theme="dark"] .waline-container .wl-card .wl-like:hover {
+  background: rgba(144, 205, 244, 0.1);
+  color: #90cdf4;
+}
+
+[data-theme="dark"] .waline-container .wl-emoji-container {
+  background: rgba(26, 32, 44, 0.98);
+  border-color: rgba(144, 205, 244, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .waline-container .wl-operation button {
+  background: rgba(144, 205, 244, 0.1);
+  border-color: rgba(144, 205, 244, 0.2);
+  color: #90cdf4;
+}
+
+[data-theme="dark"] .waline-container .wl-operation button:hover {
+  background: rgba(144, 205, 244, 0.15);
+}
+
+/* 加载动画 */
+.waline-container .wl-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  color: #a0aec0;
+}
+
+.waline-container .wl-loading::after {
+  content: '';
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(102, 126, 234, 0.2);
+  border-top: 2px solid #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-left: 8px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .waline-container {
+    margin: 1.5rem 0;
+    padding: 1.5rem;
+    border-radius: 12px;
+  }
+  
+  .waline-container .wl-header {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  
+  .waline-container .wl-editor {
+    padding: 12px;
+  }
+  
+  .waline-container .wl-editor textarea {
+    min-height: 100px;
+    font-size: 0.9rem;
+  }
+  
+  .waline-container .wl-card {
+    padding: 16px;
+  }
+  
+  .waline-container .wl-card .wl-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .waline-container .wl-card .wl-meta {
+    gap: 12px;
+  }
+  
+  .waline-container .wl-operation {
+    flex-wrap: wrap;
+  }
+}
+
+/* 特殊效果 */
+.waline-container .wl-card .wl-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid rgba(102, 126, 234, 0.2);
+  transition: all 0.3s ease;
+}
+
+.waline-container .wl-card:hover .wl-avatar {
+  border-color: #667eea;
+  transform: scale(1.05);
+}
+
+/* 评论统计信息 */
+.waline-container .wl-info {
+  text-align: center;
+  padding: 1rem;
+  color: #a0aec0;
+  font-size: 0.9rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  margin-top: 1rem;
+}
+
+[data-theme="dark"] .waline-container .wl-info {
+  color: #718096;
+  border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+/* 评论区入场动画 */
+.waline-container {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 评论卡片入场动画 */
+.waline-container .wl-card {
+  animation: slideInLeft 0.4s ease-out;
+  animation-fill-mode: both;
+}
+
+.waline-container .wl-card:nth-child(1) { animation-delay: 0.1s; }
+.waline-container .wl-card:nth-child(2) { animation-delay: 0.2s; }
+.waline-container .wl-card:nth-child(3) { animation-delay: 0.3s; }
+.waline-container .wl-card:nth-child(4) { animation-delay: 0.4s; }
+.waline-container .wl-card:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }

@@ -100,11 +100,11 @@ theme: Butterfly
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
-# deploy:
-#   type: git
-#   repo: https://github.com/swkajnBruceee/swkajnBruceee.github.io.git
-#   branch: main         
-#   message: "Site updated"
+deploy:
+  type: git
+  repo: https://github.com/swkajnBruceee/swkajnBruceee.github.io.git
+  branch: main         
+  message: "Site updated"
 
 # Search
 search:

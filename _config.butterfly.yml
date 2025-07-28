@@ -139,13 +139,37 @@ lazyload:
   placeholder: data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkxvYWRpbmcuLi48L3RleHQ+PC9zdmc+
   blur: true
 
-# 评论系统 (Gitalk)
+# 评论系统 (Waline)
 comments:
-  use: # gitalk (需要配置GitHub应用)
+  use: waline
   text: true
-  lazyload: false
-  count: false
-  card_post_count: false
+  lazyload: true
+  count: true
+  card_post_count: true
+
+# Waline 评论配置
+waline:
+  serverURL: https://waline.vercel.app # 临时使用官方演示服务器，建议部署自己的
+  lang: zh-CN
+  locale:
+    placeholder: '请留下你的足迹 ~~'  # 评论框占位提示文字
+    sofa: '快来成为第一个评论的人吧 ~'  # 暂无评论时的提示
+  emoji:
+    - https://unpkg.com/@waline/emojis@1.1.0/weibo
+    - https://unpkg.com/@waline/emojis@1.1.0/alus
+    - https://unpkg.com/@waline/emojis@1.1.0/bilibili
+  meta: ['nick', 'mail', 'link']  # 评论者信息字段
+  requiredMeta: ['nick']  # 必填字段
+  login: 'enable'  # 登录模式：enable-启用，disable-禁用，force-强制
+  avatar: 'monsterid'  # 头像类型
+  avatarCDN: 'https://sdn.geekzu.org/avatar/'  # 头像CDN
+  avatarForce: false
+  highlight: true  # 代码高亮
+  mathTagSupport: true  # 数学公式支持
+  pageSize: 10  # 评论列表分页，每页条数
+  wordLimit: 0  # 评论字数限制，0为无限制
+  pageview: true  # 文章访问量统计
+  comment: true  # 文章评论数统计
 
 # 分享功能
 share:
