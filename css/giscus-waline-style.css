@@ -1,0 +1,798 @@
+/* ==========================================================================
+   Giscus 评论区 Waline 风格完全重写
+   ========================================================================== */
+
+/* 重置所有 Giscus 默认样式 */
+.giscus * {
+  box-sizing: border-box !important;
+}
+
+/* 评论区整体容器 - 完全仿 Waline */
+.giscus {
+  margin-top: 2rem !important;
+  padding: 0 !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  background: #ffffff !important;
+  border: 1px solid #e1e8ed !important;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08) !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+}
+
+/* 隐藏原始的 Giscus 框架边框 */
+.giscus .giscus-frame {
+  border: none !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+
+/* 评论区标题栏 - 仿 Waline 样式 */
+.giscus .gsc-header {
+  background: #fafbfc !important;
+  border-bottom: 1px solid #e1e8ed !important;
+  padding: 16px 20px !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
+}
+
+.giscus .gsc-header .gsc-left-header {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.giscus .gsc-header .gsc-left-header .gsc-comments-count {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  color: #24292e !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+.giscus .gsc-header .gsc-left-header .gsc-comments-count::before {
+  content: '💬' !important;
+  font-size: 16px !important;
+}
+
+/* 隐藏或美化排序按钮 */
+.giscus .gsc-header .gsc-right-header {
+  display: flex !important;
+  gap: 8px !important;
+}
+
+.giscus .gsc-header .gsc-right-header button {
+  background: #ffffff !important;
+  border: 1px solid #d1d9e0 !important;
+  border-radius: 6px !important;
+  padding: 4px 8px !important;
+  font-size: 12px !important;
+  color: #656d76 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+}
+
+.giscus .gsc-header .gsc-right-header button:hover {
+  background: #f6f8fa !important;
+  border-color: #0969da !important;
+  color: #0969da !important;
+}
+
+/* 评论输入区域 - 完全仿 Waline */
+.giscus .gsc-comment-box {
+  padding: 20px !important;
+  background: #ffffff !important;
+  border-bottom: 1px solid #e1e8ed !important;
+  border-radius: 0 !important;
+}
+
+/* 评论输入框 - Waline 样式 */
+.giscus .gsc-comment-box-textarea,
+.giscus .gsc-comment-box textarea {
+  width: 100% !important;
+  min-height: 80px !important;
+  max-height: 200px !important;
+  padding: 12px 16px !important;
+  border: 1px solid #ddd !important;
+  border-radius: 8px !important;
+  background: #ffffff !important;
+  color: #24292e !important;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  resize: vertical !important;
+  transition: all 0.3s ease !important;
+  font-family: inherit !important;
+  outline: none !important;
+  box-sizing: border-box !important;
+}
+
+.giscus .gsc-comment-box-textarea:focus,
+.giscus .gsc-comment-box textarea:focus {
+  border-color: #0969da !important;
+  box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.1) !important;
+}
+
+.giscus .gsc-comment-box-textarea::placeholder,
+.giscus .gsc-comment-box textarea::placeholder {
+  color: #656d76 !important;
+  font-size: 14px !important;
+}
+
+/* 评论框底部工具栏 - Waline 风格 */
+.giscus .gsc-comment-box-bottom {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  margin-top: 12px !important;
+  padding: 0 !important;
+  border: none !important;
+}
+
+/* 左侧工具按钮组 */
+.giscus .gsc-comment-box-buttons {
+  display: flex !important;
+  gap: 8px !important;
+  align-items: center !important;
+}
+
+/* 工具按钮 - Waline 圆形按钮风格 */
+.giscus .gsc-comment-box-buttons button {
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 50% !important;
+  border: 1px solid #d1d9e0 !important;
+  background: #ffffff !important;
+  color: #656d76 !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 14px !important;
+  position: relative !important;
+  padding: 0 !important;
+}
+
+.giscus .gsc-comment-box-buttons button:hover {
+  background: #f6f8fa !important;
+  border-color: #0969da !important;
+  color: #0969da !important;
+  transform: scale(1.05) !important;
+}
+
+/* 表情按钮图标 */
+.giscus .gsc-emoji-button::before {
+  content: '😊' !important;
+  font-size: 16px !important;
+}
+
+/* 上传按钮图标 */
+.giscus .gsc-upload-button::before {
+  content: '📎' !important;
+  font-size: 14px !important;
+}
+
+/* 字数统计 */
+.giscus .gsc-comment-box-char-count {
+  font-size: 12px !important;
+  color: #656d76 !important;
+  margin-right: 12px !important;
+}
+
+/* 发布按钮 - Waline 风格 */
+.giscus .gsc-comment-box-submit {
+  background: #0969da !important;
+  border: 1px solid #0969da !important;
+  border-radius: 6px !important;
+  padding: 8px 16px !important;
+  color: #ffffff !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  height: auto !important;
+  width: auto !important;
+  min-width: 60px !important;
+}
+
+.giscus .gsc-comment-box-submit:hover {
+  background: #0860ca !important;
+  border-color: #0860ca !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 3px 8px rgba(9, 105, 218, 0.3) !important;
+}
+
+.giscus .gsc-comment-box-submit:active {
+  transform: translateY(0) !important;
+  box-shadow: 0 1px 3px rgba(9, 105, 218, 0.3) !important;
+}
+
+/* 评论列表区域 */
+.giscus .gsc-comments {
+  padding: 0 !important;
+  background: #ffffff !important;
+  border-radius: 0 !important;
+}
+
+/* 单个评论项 - Waline 风格 */
+.giscus .gsc-comment {
+  background: #ffffff !important;
+  border: none !important;
+  border-bottom: 1px solid #e1e8ed !important;
+  border-radius: 0 !important;
+  padding: 16px 20px !important;
+  margin: 0 !important;
+  transition: background-color 0.2s ease !important;
+  position: relative !important;
+}
+
+.giscus .gsc-comment:hover {
+  background: #f6f8fa !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.giscus .gsc-comment:last-child {
+  border-bottom: none !important;
+}
+
+/* 评论头部信息 */
+.giscus .gsc-comment-header {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  margin-bottom: 8px !important;
+}
+
+/* 用户头像 - Waline 圆形头像 */
+.giscus .gsc-comment-author-avatar {
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 50% !important;
+  border: 1px solid #e1e8ed !important;
+  transition: all 0.2s ease !important;
+}
+
+.giscus .gsc-comment:hover .gsc-comment-author-avatar {
+  border-color: #0969da !important;
+  transform: scale(1.05) !important;
+}
+
+/* 用户名 */
+.giscus .gsc-comment-author {
+  font-weight: 600 !important;
+  color: #24292e !important;
+  text-decoration: none !important;
+  font-size: 14px !important;
+  transition: color 0.2s ease !important;
+}
+
+.giscus .gsc-comment-author:hover {
+  color: #0969da !important;
+}
+
+/* 时间戳 */
+.giscus .gsc-comment-created-at {
+  color: #656d76 !important;
+  font-size: 12px !important;
+  margin-left: auto !important;
+}
+
+/* 评论内容 */
+.giscus .gsc-comment-content {
+  color: #24292e !important;
+  line-height: 1.6 !important;
+  font-size: 14px !important;
+  margin: 8px 0 12px 0 !important;
+  word-wrap: break-word !important;
+}
+
+.giscus .gsc-comment-content p {
+  margin: 0 0 8px 0 !important;
+}
+
+.giscus .gsc-comment-content p:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* 评论操作按钮 */
+.giscus .gsc-comment-footer {
+  display: flex !important;
+  align-items: center !important;
+  gap: 16px !important;
+  padding: 8px 0 0 0 !important;
+  border: none !important;
+  margin-top: 8px !important;
+}
+
+.giscus .gsc-comment-footer button {
+  background: transparent !important;
+  border: none !important;
+  color: #656d76 !important;
+  font-size: 12px !important;
+  cursor: pointer !important;
+  padding: 4px 8px !important;
+  border-radius: 4px !important;
+  transition: all 0.2s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+}
+
+.giscus .gsc-comment-footer button:hover {
+  background: #f6f8fa !important;
+  color: #0969da !important;
+}
+
+/* 表情反应区域 - Waline 风格 */
+.giscus .gsc-reactions {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 6px !important;
+  margin-top: 8px !important;
+  padding-top: 8px !important;
+  border-top: 1px solid #e1e8ed !important;
+}
+
+/* 表情反应按钮 - Waline 胶囊形状 */
+.giscus .gsc-reactions button {
+  background: #f6f8fa !important;
+  border: 1px solid #d1d9e0 !important;
+  border-radius: 16px !important;
+  padding: 4px 8px !important;
+  font-size: 12px !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  color: #24292e !important;
+  font-weight: 500 !important;
+  min-height: 24px !important;
+}
+
+.giscus .gsc-reactions button:hover {
+  background: #ffffff !important;
+  border-color: #0969da !important;
+  transform: scale(1.05) !important;
+  box-shadow: 0 1px 3px rgba(9, 105, 218, 0.1) !important;
+}
+
+.giscus .gsc-reactions button[data-reaction-active="true"] {
+  background: #dbeafe !important;
+  border-color: #0969da !important;
+  color: #0969da !important;
+}
+
+/* 表情符号 */
+.giscus .gsc-reaction-emoji {
+  font-size: 14px !important;
+  margin-right: 2px !important;
+}
+
+/* 表情计数 */
+.giscus .gsc-reaction-count {
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  min-width: 12px !important;
+  text-align: center !important;
+}
+
+/* 回复评论缩进 - Waline 风格 */
+.giscus .gsc-comment-replies {
+  margin-left: 44px !important;
+  margin-top: 12px !important;
+  padding-left: 16px !important;
+  border-left: 2px solid #e1e8ed !important;
+  position: relative !important;
+}
+
+.giscus .gsc-comment-replies::before {
+  content: '' !important;
+  position: absolute !important;
+  left: -1px !important;
+  top: 0 !important;
+  width: 2px !important;
+  height: 20px !important;
+  background: #0969da !important;
+}
+
+/* 表情选择器 - Waline 风格 */
+.giscus .gsc-emoji-picker {
+  background: #ffffff !important;
+  border: 1px solid #d1d9e0 !important;
+  border-radius: 8px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
+  padding: 12px !important;
+  max-height: 240px !important;
+  overflow-y: auto !important;
+  z-index: 1000 !important;
+}
+
+.giscus .gsc-emoji-picker .gsc-emoji {
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 4px !important;
+  margin: 2px !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 16px !important;
+}
+
+.giscus .gsc-emoji-picker .gsc-emoji:hover {
+  background: #f6f8fa !important;
+  transform: scale(1.2) !important;
+}
+
+/* 加载状态 */
+.giscus .gsc-loading {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 40px !important;
+  color: #656d76 !important;
+  font-size: 14px !important;
+}
+
+.giscus .gsc-loading::after {
+  content: '' !important;
+  width: 16px !important;
+  height: 16px !important;
+  border: 2px solid #e1e8ed !important;
+  border-top: 2px solid #0969da !important;
+  border-radius: 50% !important;
+  animation: spin 1s linear infinite !important;
+  margin-left: 8px !important;
+}
+
+/* 空状态提示 */
+.giscus .gsc-comments-empty {
+  text-align: center !important;
+  padding: 40px 20px !important;
+  color: #656d76 !important;
+  font-size: 14px !important;
+}
+
+.giscus .gsc-comments-empty::before {
+  content: '💭' !important;
+  font-size: 32px !important;
+  display: block !important;
+  margin-bottom: 12px !important;
+  opacity: 0.6 !important;
+}
+
+/* 代码块 - Waline 风格 */
+.giscus .gsc-comment-content code {
+  background: #f6f8fa !important;
+  color: #d73a49 !important;
+  padding: 2px 4px !important;
+  border-radius: 3px !important;
+  font-size: 85% !important;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace !important;
+}
+
+.giscus .gsc-comment-content pre {
+  background: #f6f8fa !important;
+  color: #24292e !important;
+  padding: 12px !important;
+  border-radius: 6px !important;
+  overflow-x: auto !important;
+  margin: 8px 0 !important;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace !important;
+  font-size: 12px !important;
+  line-height: 1.45 !important;
+  border: 1px solid #e1e8ed !important;
+}
+
+.giscus .gsc-comment-content pre code {
+  background: transparent !important;
+  color: inherit !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  font-size: inherit !important;
+}
+
+/* 引用块 - Waline 风格 */
+.giscus .gsc-comment-content blockquote {
+  border-left: 4px solid #d1d9e0 !important;
+  background: #f6f8fa !important;
+  padding: 8px 12px !important;
+  margin: 8px 0 !important;
+  border-radius: 0 4px 4px 0 !important;
+  color: #656d76 !important;
+  font-style: normal !important;
+}
+
+/* 链接 - Waline 风格 */
+.giscus .gsc-comment-content a {
+  color: #0969da !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease !important;
+}
+
+.giscus .gsc-comment-content a:hover {
+  color: #0860ca !important;
+  text-decoration: underline !important;
+}
+
+/* 图片 - Waline 风格 */
+.giscus .gsc-comment-content img {
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 6px !important;
+  margin: 8px 0 !important;
+  border: 1px solid #e1e8ed !important;
+  transition: all 0.2s ease !important;
+  cursor: pointer !important;
+}
+
+.giscus .gsc-comment-content img:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  border-color: #d1d9e0 !important;
+}
+
+/* 夜间模式适配 */
+[data-theme="dark"] .giscus {
+  background: #0d1117 !important;
+  border-color: #30363d !important;
+}
+
+[data-theme="dark"] .giscus .gsc-header {
+  background: #161b22 !important;
+  border-bottom-color: #30363d !important;
+}
+
+[data-theme="dark"] .giscus .gsc-header .gsc-left-header .gsc-comments-count {
+  color: #f0f6fc !important;
+}
+
+[data-theme="dark"] .giscus .gsc-header .gsc-right-header button {
+  background: #21262d !important;
+  border-color: #30363d !important;
+  color: #8b949e !important;
+}
+
+[data-theme="dark"] .giscus .gsc-header .gsc-right-header button:hover {
+  background: #30363d !important;
+  border-color: #1f6feb !important;
+  color: #58a6ff !important;
+}
+
+[data-theme="dark"] .giscus .gsc-comment-box {
+  background: #0d1117 !important;
+  border-bottom-color: #30363d !important;
+}
+
+[data-theme="dark"] .giscus .gsc-comment-box-textarea,
+[data-theme="dark"] .giscus .gsc-comment-box textarea {
+  background: #0d1117 !important;
+  border-color: #30363d !important;
+  color: #f0f6fc !important;
+}
+
+[data-theme="dark"] .giscus .gsc-comment-box-textarea:focus,
+[data-theme="dark"] .giscus .gsc-comment-box textarea:focus {
+  border-color: #1f6feb !important;
+  box-shadow: 0 0 0 3px rgba(31, 111, 235, 0.1) !important;
+}
+
+[data-theme="dark"] .giscus .gsc-comment-box-textarea::placeholder,
+[data-theme="dark"] .giscus .gsc-comment-box textarea::placeholder {
+  color: #8b949e !important;
+}
+
+[data-theme="dark"] .giscus .gsc-comment-box-buttons button {
+  background: #21262d !important;
+  border-color: #30363d !important;
+  color: #8b949e !important;
+}
+
+[data-theme="dark"] .giscus .gsc-comment-box-buttons button:hover {
+  background: #30363d !important;
+  border-color: #1f6feb !important;
+  color: #58a6ff !important;
+}
+
+[data-theme="dark"] .giscus .gsc-comment-box-submit {
+  background: #1f6feb !important;
+  border-color: #1f6feb !important;
+}
+
+[data-theme="dark"] .giscus .gsc-comment-box-submit:hover {
+  background: #1a5cd8 !important;
+  border-color: #1a5cd8 !important;
+}
+
+[data-theme="dark"] .giscus .gsc-comments {
+  background: #0d1117 !important;
+}
+
+[data-theme="dark"] .giscus .gsc-comment {
+  background: #0d1117 !important;
+  border-bottom-color: #30363d !important;
+}
+
+[data-theme="dark"] .giscus .gsc-comment:hover {
+  background: #161b22 !important;
+}
+
+[data-theme="dark"] .giscus .gsc-comment-author-avatar {
+  border-color: #30363d !important;
+}
+
+[data-theme="dark"] .giscus .gsc-comment:hover .gsc-comment-author-avatar {
+  border-color: #1f6feb !important;
+}
+
+[data-theme="dark"] .giscus .gsc-comment-author {
+  color: #f0f6fc !important;
+}
+
+[data-theme="dark"] .giscus .gsc-comment-author:hover {
+  color: #58a6ff !important;
+}
+
+[data-theme="dark"] .giscus .gsc-comment-created-at {
+  color: #8b949e !important;
+}
+
+[data-theme="dark"] .giscus .gsc-comment-content {
+  color: #f0f6fc !important;
+}
+
+[data-theme="dark"] .giscus .gsc-comment-footer button {
+  color: #8b949e !important;
+}
+
+[data-theme="dark"] .giscus .gsc-comment-footer button:hover {
+  background: #21262d !important;
+  color: #58a6ff !important;
+}
+
+[data-theme="dark"] .giscus .gsc-reactions {
+  border-top-color: #30363d !important;
+}
+
+[data-theme="dark"] .giscus .gsc-reactions button {
+  background: #21262d !important;
+  border-color: #30363d !important;
+  color: #f0f6fc !important;
+}
+
+[data-theme="dark"] .giscus .gsc-reactions button:hover {
+  background: #30363d !important;
+  border-color: #1f6feb !important;
+}
+
+[data-theme="dark"] .giscus .gsc-reactions button[data-reaction-active="true"] {
+  background: rgba(31, 111, 235, 0.15) !important;
+  border-color: #1f6feb !important;
+  color: #58a6ff !important;
+}
+
+[data-theme="dark"] .giscus .gsc-comment-replies {
+  border-left-color: #30363d !important;
+}
+
+[data-theme="dark"] .giscus .gsc-comment-replies::before {
+  background: #1f6feb !important;
+}
+
+[data-theme="dark"] .giscus .gsc-emoji-picker {
+  background: #161b22 !important;
+  border-color: #30363d !important;
+}
+
+[data-theme="dark"] .giscus .gsc-emoji-picker .gsc-emoji:hover {
+  background: #21262d !important;
+}
+
+[data-theme="dark"] .giscus .gsc-loading {
+  color: #8b949e !important;
+}
+
+[data-theme="dark"] .giscus .gsc-loading::after {
+  border-color: #30363d !important;
+  border-top-color: #1f6feb !important;
+}
+
+[data-theme="dark"] .giscus .gsc-comments-empty {
+  color: #8b949e !important;
+}
+
+[data-theme="dark"] .giscus .gsc-comment-content code {
+  background: #161b22 !important;
+  color: #ff7b72 !important;
+}
+
+[data-theme="dark"] .giscus .gsc-comment-content pre {
+  background: #161b22 !important;
+  color: #f0f6fc !important;
+  border-color: #30363d !important;
+}
+
+[data-theme="dark"] .giscus .gsc-comment-content blockquote {
+  border-left-color: #30363d !important;
+  background: #161b22 !important;
+  color: #8b949e !important;
+}
+
+[data-theme="dark"] .giscus .gsc-comment-content a {
+  color: #58a6ff !important;
+}
+
+[data-theme="dark"] .giscus .gsc-comment-content a:hover {
+  color: #79c0ff !important;
+}
+
+[data-theme="dark"] .giscus .gsc-comment-content img {
+  border-color: #30363d !important;
+}
+
+[data-theme="dark"] .giscus .gsc-comment-content img:hover {
+  border-color: #484f58 !important;
+}
+
+/* 动画效果 */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .giscus .gsc-header {
+    padding: 12px 16px !important;
+  }
+  
+  .giscus .gsc-header .gsc-left-header .gsc-comments-count {
+    font-size: 14px !important;
+  }
+  
+  .giscus .gsc-comment-box {
+    padding: 16px !important;
+  }
+  
+  .giscus .gsc-comment {
+    padding: 12px 16px !important;
+  }
+  
+  .giscus .gsc-comment-replies {
+    margin-left: 32px !important;
+    padding-left: 12px !important;
+  }
+  
+  .giscus .gsc-comment-box-textarea,
+  .giscus .gsc-comment-box textarea {
+    min-height: 60px !important;
+    padding: 10px 12px !important;
+  }
+  
+  .giscus .gsc-comment-box-buttons button {
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 12px !important;
+  }
+  
+  .giscus .gsc-reactions button {
+    padding: 3px 6px !important;
+    font-size: 11px !important;
+    min-height: 20px !important;
+  }
+  
+  .giscus .gsc-emoji-picker {
+    max-height: 200px !important;
+    padding: 8px !important;
+  }
+  
+  .giscus .gsc-emoji-picker .gsc-emoji {
+    width: 24px !important;
+    height: 24px !important;
+    font-size: 14px !important;
+  }
+}
