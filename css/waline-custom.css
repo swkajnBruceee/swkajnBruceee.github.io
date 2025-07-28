@@ -1,0 +1,334 @@
+/* Waline 评论系统自定义样式 */
+
+/* 评论容器 */
+.waline-container {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  border: 1px solid var(--border-color);
+}
+
+.waline-container:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+  transform: translateY(-1px);
+}
+
+/* 编辑器样式 */
+.wl-editor {
+  border-radius: 8px !important;
+  border: 1px solid var(--border-color) !important;
+  background: var(--bg-color) !important;
+  transition: all 0.3s ease !important;
+  font-family: var(--font-family) !important;
+}
+
+.wl-editor:focus {
+  border-color: #667eea !important;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
+}
+
+/* 编辑器工具栏 */
+.wl-panel {
+  border-top: 1px solid var(--border-color) !important;
+  background: var(--card-bg) !important;
+  border-radius: 0 0 8px 8px !important;
+}
+
+/* 提交按钮 */
+.wl-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  border: none !important;
+  border-radius: 6px !important;
+  color: white !important;
+  font-weight: 500 !important;
+  padding: 8px 16px !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+}
+
+.wl-btn:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4) !important;
+}
+
+.wl-btn:active {
+  transform: translateY(0) !important;
+}
+
+/* 取消按钮 */
+.wl-btn.wl-cancel {
+  background: #6c757d !important;
+}
+
+.wl-btn.wl-cancel:hover {
+  background: #5a6268 !important;
+  box-shadow: 0 4px 12px rgba(108, 117, 125, 0.4) !important;
+}
+
+/* 评论卡片 */
+.wl-card {
+  border-radius: 8px !important;
+  border: 1px solid var(--border-color) !important;
+  margin-bottom: 1rem !important;
+  background: var(--card-bg) !important;
+  transition: all 0.3s ease !important;
+  overflow: hidden !important;
+}
+
+.wl-card:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+  border-color: #667eea !important;
+}
+
+/* 评论头部 */
+.wl-head {
+  padding: 1rem !important;
+  border-bottom: 1px solid var(--border-color) !important;
+  background: var(--bg-color) !important;
+}
+
+/* 评论内容 */
+.wl-content {
+  padding: 1rem !important;
+  line-height: 1.6 !important;
+  color: var(--font-color) !important;
+}
+
+/* 评论元信息 */
+.wl-meta {
+  padding: 0.5rem 1rem !important;
+  background: var(--bg-color) !important;
+  border-top: 1px solid var(--border-color) !important;
+  font-size: 0.875rem !important;
+  color: var(--font-color-secondary) !important;
+}
+
+/* 用户头像 */
+.wl-avatar {
+  border-radius: 50% !important;
+  transition: all 0.3s ease !important;
+  border: 2px solid var(--border-color) !important;
+}
+
+.wl-avatar:hover {
+  transform: scale(1.1) !important;
+  border-color: #667eea !important;
+}
+
+/* 用户昵称 */
+.wl-nick {
+  font-weight: 600 !important;
+  color: var(--font-color) !important;
+  text-decoration: none !important;
+}
+
+.wl-nick:hover {
+  color: #667eea !important;
+}
+
+/* 表情包 */
+.wl-emoji {
+  border-radius: 4px !important;
+  transition: transform 0.2s ease !important;
+  cursor: pointer !important;
+}
+
+.wl-emoji:hover {
+  transform: scale(1.2) !important;
+}
+
+/* 表情包面板 */
+.wl-tabs {
+  border-bottom: 1px solid var(--border-color) !important;
+  background: var(--card-bg) !important;
+}
+
+.wl-tab {
+  color: var(--font-color-secondary) !important;
+  border-bottom: 2px solid transparent !important;
+  transition: all 0.3s ease !important;
+}
+
+.wl-tab.wl-active {
+  color: #667eea !important;
+  border-bottom-color: #667eea !important;
+}
+
+/* 回复按钮 */
+.wl-reply {
+  color: #667eea !important;
+  text-decoration: none !important;
+  font-size: 0.875rem !important;
+  transition: all 0.3s ease !important;
+}
+
+.wl-reply:hover {
+  color: #764ba2 !important;
+  text-decoration: underline !important;
+}
+
+/* 点赞按钮 */
+.wl-like {
+  color: var(--font-color-secondary) !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+}
+
+.wl-like:hover {
+  color: #e74c3c !important;
+  transform: scale(1.1) !important;
+}
+
+.wl-like.wl-liked {
+  color: #e74c3c !important;
+}
+
+/* 分页 */
+.wl-page {
+  text-align: center !important;
+  margin-top: 2rem !important;
+}
+
+.wl-page .wl-btn {
+  margin: 0 0.25rem !important;
+  background: var(--card-bg) !important;
+  color: var(--font-color) !important;
+  border: 1px solid var(--border-color) !important;
+}
+
+.wl-page .wl-btn:hover {
+  background: #667eea !important;
+  color: white !important;
+  border-color: #667eea !important;
+}
+
+.wl-page .wl-btn.wl-current {
+  background: #667eea !important;
+  color: white !important;
+  border-color: #667eea !important;
+}
+
+/* 加载动画 */
+.wl-loading {
+  text-align: center !important;
+  padding: 2rem !important;
+  color: var(--font-color-secondary) !important;
+}
+
+/* 评论数量 */
+.wl-count {
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+  color: var(--font-color) !important;
+  margin-bottom: 1rem !important;
+}
+
+/* 排序选项 */
+.wl-sort {
+  margin-bottom: 1rem !important;
+}
+
+.wl-sort .wl-btn {
+  background: var(--card-bg) !important;
+  color: var(--font-color-secondary) !important;
+  border: 1px solid var(--border-color) !important;
+  margin-right: 0.5rem !important;
+  font-size: 0.875rem !important;
+}
+
+.wl-sort .wl-btn.wl-active {
+  background: #667eea !important;
+  color: white !important;
+  border-color: #667eea !important;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .waline-container {
+    margin: 1rem 0;
+    padding: 1rem;
+    border-radius: 8px;
+  }
+  
+  .wl-card {
+    margin-bottom: 0.75rem !important;
+  }
+  
+  .wl-head,
+  .wl-content,
+  .wl-meta {
+    padding: 0.75rem !important;
+  }
+  
+  .wl-avatar {
+    width: 32px !important;
+    height: 32px !important;
+  }
+}
+
+/* 暗色主题适配 */
+[data-theme="dark"] .waline-container {
+  background: var(--card-bg-dark, #1a1a1a);
+  border-color: var(--border-color-dark, #333);
+}
+
+[data-theme="dark"] .wl-editor {
+  background: var(--bg-color-dark, #2d2d2d) !important;
+  border-color: var(--border-color-dark, #333) !important;
+  color: var(--font-color-dark, #e0e0e0) !important;
+}
+
+[data-theme="dark"] .wl-card {
+  background: var(--card-bg-dark, #1a1a1a) !important;
+  border-color: var(--border-color-dark, #333) !important;
+}
+
+[data-theme="dark"] .wl-head,
+[data-theme="dark"] .wl-meta {
+  background: var(--bg-color-dark, #2d2d2d) !important;
+  border-color: var(--border-color-dark, #333) !important;
+}
+
+/* 自定义滚动条 */
+.wl-editor::-webkit-scrollbar {
+  width: 6px;
+}
+
+.wl-editor::-webkit-scrollbar-track {
+  background: var(--bg-color);
+  border-radius: 3px;
+}
+
+.wl-editor::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
+}
+
+.wl-editor::-webkit-scrollbar-thumb:hover {
+  background: #667eea;
+}
+
+/* 评论输入提示 */
+.wl-editor::placeholder {
+  color: var(--font-color-secondary) !important;
+  opacity: 0.7 !important;
+}
+
+/* 评论时间 */
+.wl-time {
+  color: var(--font-color-secondary) !important;
+  font-size: 0.8rem !important;
+}
+
+/* 管理员标识 */
+.wl-admin {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  color: white !important;
+  padding: 2px 6px !important;
+  border-radius: 4px !important;
+  font-size: 0.75rem !important;
+  margin-left: 0.5rem !important;
+}
