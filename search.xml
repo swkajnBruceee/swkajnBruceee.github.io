@@ -49,6 +49,37 @@
       </tags>
   </entry>
   <entry>
+    <title>Question of N Queen</title>
+    <url>/2025/06/26/Question-of-N-Queen/</url>
+    <content><![CDATA[<h1 id="N皇后问题"><a href="#N皇后问题" class="headerlink" title="N皇后问题"></a>N皇后问题</h1><blockquote>
+<p>N皇后问题是指在N*N的棋盘上要摆N个皇后，要求任何两个皇后不同行、不同列，也不在同一条斜线上。给定一个整数n，返回n皇后的摆法有多少种。</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">num</span><span class="params">(<span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n &lt; <span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// record[i]=j 表示i行的皇后放在了第j列(这样可以省去了用二维数组来表示)</span></span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">record</span><span class="params">(n)</span></span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">process</span>(<span class="number">0</span>, record, n);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 目前来到了第i行(总共有n行)</span></span><br><span class="line"><span class="comment">// record[0...i-1]表示之前的行放了皇后(潜台词：前i-1行任何两个皇后都不共行、列、斜线)</span></span><br><span class="line"><span class="comment">// 返回值代表百万所有的皇后，合法的摆法共有多少种</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">process</span><span class="params">(<span class="type">int</span> i, vector&lt;<span class="type">int</span>&gt; record, <span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(i == n) <span class="keyword">return</span> <span class="number">1</span>;  <span class="comment">// 来到终止行</span></span><br><span class="line">    <span class="type">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; n; j++) <span class="comment">// 当前行在i行，但要尝试i行所有的列 -&gt; j</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 当前i行的皇后，放在j列，会不会和之前(0...i-1)的皇后共行共列共斜线</span></span><br><span class="line">        <span class="comment">// 如果是，认为无效；如果不是，认为有效</span></span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">isValid</span>(record, i, j))</span><br><span class="line">        &#123;</span><br><span class="line">            record[i] = j;</span><br><span class="line">            res += <span class="built_in">process</span>(i + <span class="number">1</span>, record, n);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">isValid</span><span class="params">(vector&lt;<span class="type">int</span>&gt; record, <span class="type">int</span> i, <span class="type">int</span> j)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> k = <span class="number">0</span>; k &lt; i; k++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>( j == record[k] || <span class="built_in">abs</span>(record[k]-j) == i-k) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="comment">//    ^ 共列 ^                 ^ 共斜线 ^</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>algorithm</tag>
+        <tag>backtracking</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2025/06/25/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>如何高效写博客</title>
     <url>/2025/07/24/%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%86%99%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<p>写博客是分享知识和记录思考的好方式，但如何高效地写出高质量的博客文章呢？</p>
@@ -111,36 +142,5 @@
         <tag>博客写作</tag>
         <tag>效率提升</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Question of N Queen</title>
-    <url>/2025/06/26/Question-of-N-Queen/</url>
-    <content><![CDATA[<h1 id="N皇后问题"><a href="#N皇后问题" class="headerlink" title="N皇后问题"></a>N皇后问题</h1><blockquote>
-<p>N皇后问题是指在N*N的棋盘上要摆N个皇后，要求任何两个皇后不同行、不同列，也不在同一条斜线上。给定一个整数n，返回n皇后的摆法有多少种。</p>
-</blockquote>
-<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">num</span><span class="params">(<span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n &lt; <span class="number">1</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// record[i]=j 表示i行的皇后放在了第j列(这样可以省去了用二维数组来表示)</span></span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">record</span><span class="params">(n)</span></span>;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">process</span>(<span class="number">0</span>, record, n);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 目前来到了第i行(总共有n行)</span></span><br><span class="line"><span class="comment">// record[0...i-1]表示之前的行放了皇后(潜台词：前i-1行任何两个皇后都不共行、列、斜线)</span></span><br><span class="line"><span class="comment">// 返回值代表百万所有的皇后，合法的摆法共有多少种</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">process</span><span class="params">(<span class="type">int</span> i, vector&lt;<span class="type">int</span>&gt; record, <span class="type">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(i == n) <span class="keyword">return</span> <span class="number">1</span>;  <span class="comment">// 来到终止行</span></span><br><span class="line">    <span class="type">int</span> res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; n; j++) <span class="comment">// 当前行在i行，但要尝试i行所有的列 -&gt; j</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 当前i行的皇后，放在j列，会不会和之前(0...i-1)的皇后共行共列共斜线</span></span><br><span class="line">        <span class="comment">// 如果是，认为无效；如果不是，认为有效</span></span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">isValid</span>(record, i, j))</span><br><span class="line">        &#123;</span><br><span class="line">            record[i] = j;</span><br><span class="line">            res += <span class="built_in">process</span>(i + <span class="number">1</span>, record, n);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">isValid</span><span class="params">(vector&lt;<span class="type">int</span>&gt; record, <span class="type">int</span> i, <span class="type">int</span> j)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> k = <span class="number">0</span>; k &lt; i; k++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>( j == record[k] || <span class="built_in">abs</span>(record[k]-j) == i-k) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="comment">//    ^ 共列 ^                 ^ 共斜线 ^</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>algorithm</tag>
-        <tag>backtracking</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2025/06/25/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
   </entry>
 </search>
