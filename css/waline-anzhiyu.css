@@ -1,0 +1,1001 @@
+/* Waline 评论系统 - 安知鱼主题样式 */
+/* 基于安知鱼主题 Twikoo 样式完全适配 */
+
+/* 重要：强制覆盖主题默认样式 */
+#waline-wrap,
+#waline-wrap #waline,
+#waline {
+  all: unset !important;
+  display: block !important;
+  font-family: var(--global-font) !important;
+  color: var(--anzhiyu-fontcolor) !important;
+  background: transparent !important;
+}
+
+/* 重置所有 Waline 内部元素 */
+#waline-wrap *,
+#waline-wrap #waline *,
+#waline * {
+  font-family: inherit !important;
+  color: inherit !important;
+}
+
+/* OwO 表情系统 */
+.OwO .OwO-body {
+  min-width: 31.25rem;
+  border: var(--style-border-always) !important;
+  border-radius: 8px !important;
+  overflow: hidden;
+  background-color: var(--anzhiyu-maskbg) !important;
+  backdrop-filter: saturate(180%) blur(10px);
+  cursor: auto;
+  top: 2.1em !important;
+  transform: translateZ(0);
+  animation: 0.3s ease 0.1s 1 normal both running donate_effcet;
+}
+
+.OwO .OwO-body .OwO-items-show {
+  margin: 12px 8px;
+}
+
+.OwO .OwO-body .OwO-items .OwO-item:hover {
+  box-shadow: var(--anzhiyu-shadow-lightblack) !important;
+  border-radius: 8px;
+}
+
+/* 评论区表情放大动画 */
+@keyframes owoIn {
+  0% {
+    transform: translate(0, -95%);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0, -112%);
+    opacity: 1;
+  }
+}
+
+/* 表情放大显示 */
+#owo-big {
+  position: fixed;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  border: 1px #aaa solid;
+  border-radius: 10px;
+  z-index: 9999;
+  display: none;
+  transform: translate(0, -112%);
+  overflow: hidden;
+  animation: owoIn 0.3s cubic-bezier(0.42, 0, 0.3, 1.11);
+}
+
+#owo-big img {
+  width: 100%;
+}
+
+[data-theme="dark"] #owo-big {
+  background-color: #4a4a4a;
+}
+
+@keyframes donate_effcet {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    filter: none;
+    transform: translateY(0);
+  }
+}
+
+@keyframes commonTipsIn {
+  0% {
+    top: -50px;
+    opacity: 0;
+  }
+  100% {
+    top: -60px;
+    opacity: 1;
+  }
+}
+
+@keyframes commonTriangleIn {
+  0% {
+    transform: translate(-50%, -36px);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, -46px);
+    opacity: 1;
+  }
+}
+
+/* 评论区容器 - 无边框融合设计 */
+#waline-wrap,
+#waline-wrap #waline,
+#waline {
+  background: var(--anzhiyu-card-bg) !important;
+  border-radius: 12px !important;
+  padding: 20px !important;
+  margin: 20px 0 !important;
+  box-shadow: var(--anzhiyu-shadow-border) !important;
+  border: none !important;
+  transition: all 0.3s ease !important;
+}
+
+#waline-wrap:hover,
+#waline-wrap #waline:hover,
+#waline:hover {
+  box-shadow: var(--anzhiyu-shadow-border) !important;
+  transform: none !important;
+}
+
+/* SVG 图标颜色 */
+#waline-wrap svg,
+#waline-wrap #waline svg,
+#waline svg {
+  fill: var(--anzhiyu-fontcolor) !important;
+}
+
+/* 评论编辑器区域 - 无边框设计 */
+.wl-editor {
+  background-color: var(--anzhiyu-secondbg);
+  border: none !important;
+  border-radius: 15px;
+  padding: 16px 16px 40px 16px;
+  min-height: 130px;
+  resize: vertical;
+  transition: all 0.3s ease;
+  color: var(--anzhiyu-fontcolor);
+  font-size: inherit;
+  line-height: 1.5;
+  box-sizing: border-box;
+  width: 100%;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1) !important;
+}
+
+.wl-editor:focus {
+  border: none !important;
+  outline: none;
+  background-color: var(--anzhiyu-card-bg);
+  box-shadow: 0 0 0 2px rgba(var(--anzhiyu-main-rgb), 0.1), inset 0 1px 3px rgba(0,0,0,0.1) !important;
+}
+
+/* 编辑器工具栏 - 无边框设计 */
+.wl-panel {
+  background-color: var(--anzhiyu-card-bg);
+  border: none !important;
+  border-radius: 8px;
+  overflow: hidden;
+  backdrop-filter: saturate(180%) blur(10px);
+  animation: 0.3s ease 0.1s 1 normal both running donate_effcet;
+}
+
+.wl-panel .wl-tab {
+  margin: 12px 8px;
+}
+
+/* Element UI 输入框样式 - 无边框设计 */
+.el-input__inner {
+  background: var(--anzhiyu-secondbg) !important;
+  border: none !important;
+  color: var(--anzhiyu-fontcolor) !important;
+  padding-left: 8px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1) !important;
+}
+
+.el-input__inner:focus {
+  border: none !important;
+  outline: none !important;
+  background: var(--anzhiyu-card-bg) !important;
+  box-shadow: 0 0 0 2px rgba(var(--anzhiyu-main-rgb), 0.1), inset 0 1px 3px rgba(0,0,0,0.1) !important;
+}
+
+.el-input-group__append,
+.el-input-group__prepend {
+  background-color: var(--anzhiyu-card-bg);
+  color: var(--anzhiyu-fontcolor);
+  border: none !important;
+  font-weight: 700;
+  box-shadow: none !important;
+}
+
+.el-input-group--prepend .el-input__inner,
+.el-input-group__append {
+  border-radius: 12px;
+}
+
+.el-input--small .el-input__inner {
+  padding: 8px;
+  padding-left: 16px;
+}
+
+.el-input-group--prepend .el-input__inner,
+.el-input-group__append {
+  border-left-width: 0 !important;
+}
+
+/* 用户信息输入框 - 无边框设计 */
+.wl-input {
+  background: var(--anzhiyu-secondbg);
+  border: none !important;
+  border-radius: 12px;
+  color: var(--anzhiyu-fontcolor);
+  padding: 8px 16px;
+  transition: all 0.3s ease;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.wl-input:focus {
+  border: none !important;
+  outline: none;
+  background: var(--anzhiyu-card-bg);
+  box-shadow: 0 0 0 2px rgba(var(--anzhiyu-main-rgb), 0.1), inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Twikoo 元数据输入区域 */
+.tk-meta-input {
+  position: relative;
+  margin-top: 8px;
+  width: calc(100% - 6.875rem);
+}
+
+.tk-meta-input .el-input.el-input--small.el-input-group.el-input-group--prepend {
+  border-radius: 12px;
+  background: var(--anzhiyu-secondbg);
+  border: var(--style-border-always);
+}
+
+.tk-meta-input .el-input .el-input-group__prepend {
+  user-select: none;
+  border-radius: 12px 0 0 12px;
+}
+
+.tk-meta-input .el-input--small.el-input-group.el-input-group--prepend:focus-within {
+  border: var(--style-border-hover);
+}
+
+/* 输入框提示 */
+.wl-input[placeholder*="昵称"]:before {
+  content: "输入QQ号会自动获取昵称和头像🐧";
+}
+
+.wl-input[placeholder*="邮箱"]:before {
+  content: "收到回复将会发送到您的邮箱📧";
+}
+
+.wl-input[placeholder*="网址"]:before {
+  content: "可以通过昵称访问您的网站🔗";
+}
+
+.wl-input:focus::before {
+  display: block;
+  position: absolute;
+  top: -60px;
+  white-space: nowrap;
+  border-radius: 10px;
+  left: 50%;
+  transform: translate(-50%);
+  padding: 14px 18px;
+  background: #444;
+  color: #fff;
+  z-index: 100;
+  animation: commonTipsIn 0.3s;
+}
+
+.wl-input:focus::after {
+  display: block;
+  content: '';
+  position: absolute;
+  border: 12px solid transparent;
+  border-top-color: #444;
+  left: 50%;
+  transform: translate(-50%, -46px);
+  animation: commonTriangleIn 0.3s;
+}
+
+/* 按钮样式 - 橙色主题设计 */
+.wl-btn {
+  background-color: #ff7242;
+  border: none !important;
+  color: #ffffff;
+  border-radius: 12px;
+  box-shadow: none !important;
+  transition: 0.3s;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.wl-btn:hover {
+  background-color: #ff5722;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 114, 66, 0.4) !important;
+}
+
+.wl-btn:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+
+/* 夜间模式按钮样式 */
+[data-theme="dark"] .wl-btn {
+  background: #f2b94b !important;
+  box-shadow: 0 2px 8px rgba(242, 185, 75, 0.3) !important;
+  color: #1a1a1a !important;
+}
+
+[data-theme="dark"] .wl-btn:hover {
+  background: #e6a935 !important;
+  box-shadow: 0 4px 12px rgba(230, 169, 53, 0.4) !important;
+}
+
+[data-theme="dark"] .wl-btn:disabled {
+  background: #555 !important;
+  color: #999 !important;
+}
+
+/* 取消按钮 */
+.wl-btn.wl-cancel {
+  background: var(--anzhiyu-secondbg);
+  border-radius: 8px;
+  color: var(--anzhiyu-fontcolor);
+}
+
+.wl-btn.wl-cancel:hover {
+  background: var(--anzhiyu-lighttext);
+  color: var(--anzhiyu-white);
+}
+
+/* Element UI 按钮样式 */
+button.el-button.tk-cancel.el-button--default.el-button--small {
+  background: var(--anzhiyu-secondbg);
+  border-radius: 8px;
+  color: var(--anzhiyu-fontcolor);
+}
+
+button.el-button.tk-cancel.el-button--default.el-button--small:hover {
+  background: var(--anzhiyu-lighttext);
+  color: var(--anzhiyu-white);
+}
+
+.el-button.tk-preview {
+  display: none;
+}
+
+.el-button--primary.is-disabled,
+.el-button--primary.is-disabled:active,
+.el-button--primary.is-disabled:focus,
+.el-button--primary.is-disabled:hover {
+  opacity: 0.2;
+}
+
+.el-button--primary {
+  border-color: var(--anzhiyu-fontcolor);
+  color: var(--anzhiyu-card-bg);
+  border-radius: 12px;
+  box-shadow: var(--anzhiyu-shadow-black);
+  transition: 0.3s;
+  width: 6.25rem;
+  position: absolute;
+  top: -43px;
+  right: 0;
+  margin-left: 0.5rem !important;
+  height: 32px;
+}
+
+/* 文本域样式 */
+.tk-input .el-textarea__inner {
+  min-height: 130px !important;
+  border-radius: 15px;
+  display: block;
+  resize: vertical;
+  padding: 16px 16px 40px 16px;
+  line-height: 1.5;
+  box-sizing: border-box;
+  width: 100%;
+  font-size: inherit;
+  color: var(--anzhiyu-fontcolor);
+  background-color: var(--anzhiyu-secondbg);
+  border: var(--style-border-always);
+  transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+/* 提交按钮 */
+.wl-btn.wl-send {
+  border-color: var(--anzhiyu-fontcolor);
+  color: var(--anzhiyu-card-bg);
+  border-radius: 12px;
+  box-shadow: var(--anzhiyu-shadow-black);
+  transition: 0.3s;
+  width: 6.25rem;
+  height: 32px;
+  margin-left: 0.5rem;
+}
+
+/* 评论列表容器 */
+.wl-cards {
+  margin-top: 1rem;
+}
+
+/* 评论卡片 - 无边框融合设计 */
+.wl-card {
+  background: transparent;
+  border: none !important;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: none;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+/* 回复框 - 无边框设计 */
+.wl-reply {
+  background: var(--anzhiyu-secondbg);
+  border: none !important;
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 12px;
+  position: relative;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.wl-reply:hover {
+  background: var(--anzhiyu-secondbg);
+}
+
+/* 加载更多按钮 - 无边框设计 */
+.wl-load-more {
+  width: 100%;
+  padding: 12px;
+  background: var(--anzhiyu-card-bg);
+  border: none !important;
+  border-radius: 8px;
+  color: var(--anzhiyu-fontcolor);
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease;
+  margin-top: 16px;
+  box-shadow: var(--anzhiyu-shadow-border);
+}
+
+.wl-load-more:hover {
+  background: var(--anzhiyu-card-bg);
+  transform: none;
+  box-shadow: none;
+}
+
+.wl-card:hover {
+  background: transparent;
+  border-radius: 8px;
+  transform: none;
+  box-shadow: none;
+}
+
+/* 评论头部 - 无边框设计 */
+.wl-head {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  border-bottom: none !important;
+}
+
+/* 头像 */
+.wl-avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50px;
+  margin-right: 0.75rem;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.wl-avatar:hover {
+  transform: rotate(360deg);
+}
+
+.wl-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+  object-fit: cover;
+}
+
+/* 用户信息 */
+.wl-nick {
+  font-weight: 600;
+  color: var(--anzhiyu-fontcolor);
+  line-height: 1.5;
+  margin-right: 0.5rem;
+}
+
+.wl-nick:hover {
+  color: var(--anzhiyu-main);
+}
+
+/* 管理员标识 */
+.wl-tag {
+  background-color: var(--anzhiyu-main);
+  border: none;
+  border-radius: 4px;
+  color: var(--anzhiyu-white);
+  padding: 2px 6px;
+  font-size: 0.75rem;
+  margin-left: 0.25rem;
+}
+
+/* 评论内容 */
+.wl-content {
+  margin-top: 0.5rem;
+  color: var(--anzhiyu-fontcolor);
+  line-height: 1.6;
+  overflow: auto;
+  max-height: 500px;
+}
+
+.wl-content p {
+  margin: 0;
+}
+
+.wl-content a {
+  font-weight: 500;
+  border-bottom: solid 2px var(--anzhiyu-lighttext);
+  color: var(--anzhiyu-fontcolor);
+  padding: 0 0.2em;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.wl-content a:hover {
+  color: var(--anzhiyu-white);
+  background-color: var(--anzhiyu-theme);
+  border-radius: 4px;
+}
+
+.wl-content code {
+  padding: 2px 4px;
+  background: var(--anzhiyu-secondbg);
+  color: #f47466;
+  border-radius: 4px;
+}
+
+.wl-content pre {
+  background: #272822;
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+  border-radius: 0.3em;
+}
+
+.wl-content pre code {
+  background: none;
+  color: inherit;
+}
+
+/* 评论元数据 */
+.wl-meta {
+  display: flex;
+  align-items: center;
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--anzhiyu-secondtext);
+}
+
+.wl-time {
+  margin-right: 1rem;
+}
+
+.wl-extra {
+  background: var(--anzhiyu-card-bg);
+  border: var(--style-border-always);
+  padding: 4px 8px;
+  border-radius: 8px;
+  margin-right: 4px;
+  color: var(--anzhiyu-secondtext);
+  margin-top: 6px;
+  font-size: 0.8rem;
+}
+
+/* 操作按钮 - 无边框设计 */
+.wl-action {
+  display: flex;
+  align-items: center;
+  margin-top: 0.5rem;
+  border-top: none !important;
+  padding-top: 0.5rem;
+}
+
+.wl-action button {
+  background: none;
+  border: none;
+  color: var(--anzhiyu-main);
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  margin-right: 0.5rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.wl-action button:hover {
+  background-color: var(--anzhiyu-main);
+  color: var(--anzhiyu-white);
+}
+
+/* 子评论 */
+.wl-card .wl-card {
+  margin-left: 2.5rem;
+  margin-top: 1rem;
+  border: none;
+  border-top: var(--style-border-dashed);
+  border-radius: 12px;
+  padding: 1rem 0 0;
+  background: var(--anzhiyu-secondbg);
+  transition: all 0.3s ease;
+}
+
+.wl-card .wl-card:hover {
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+}
+
+.wl-card .wl-card .wl-content {
+  font-size: 0.9rem;
+}
+
+.wl-card .wl-card .wl-content span:first-child:not(.token) {
+  font-size: 0.75rem;
+  color: var(--anzhiyu-secondtext);
+}
+
+/* 子评论缩进和样式 - 无边框融合布局 */
+.wl-item .wl-item {
+  margin-left: 48px;
+  padding-left: 20px;
+  border: none !important;
+  border-left: none !important;
+  margin-top: 12px;
+  position: relative;
+}
+
+/* 子评论连接线 - 使用更柔和的视觉提示 */
+.wl-item .wl-item::before {
+  content: '';
+  position: absolute;
+  left: -24px;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent 0%, var(--anzhiyu-card-border) 20%, var(--anzhiyu-card-border) 80%, transparent 100%);
+  opacity: 0.3;
+}
+
+.wl-item .wl-item .wl-head {
+  margin-bottom: 6px;
+}
+
+.wl-item .wl-item .wl-content {
+  margin-top: 4px;
+}
+
+/* 子评论头像尺寸调整 */
+.wl-item .wl-item .wl-avatar {
+  width: 32px !important;
+  height: 32px !important;
+  margin-right: 8px !important;
+}
+
+/* 子评论用户信息区域紧凑化 */
+.wl-item .wl-item .wl-user {
+  gap: 6px !important;
+}
+
+/* 子评论昵称字体调整 */
+.wl-item .wl-item .wl-nick {
+  font-size: 13px !important;
+  line-height: 1.3 !important;
+}
+
+/* 子评论时间字体调整 */
+.wl-item .wl-item .wl-time {
+  font-size: 11px !important;
+  line-height: 1.2 !important;
+}
+
+/* 引用样式 - 无边框设计 */
+.wl-quote {
+  border-left: 4px solid var(--anzhiyu-main);
+  border-top: none !important;
+  border-right: none !important;
+  border-bottom: none !important;
+  padding-left: 1rem;
+  margin: 0.5rem 0;
+  background-color: var(--anzhiyu-secondbg);
+  border-radius: 0 8px 8px 0;
+}
+
+/* 表情选择器 - 无边框设计 */
+.wl-emoji {
+  border: none !important;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: var(--anzhiyu-maskbg);
+  backdrop-filter: saturate(180%) blur(10px);
+  animation: 0.3s ease 0.1s 1 normal both running donate_effcet;
+  box-shadow: var(--anzhiyu-shadow-border);
+}
+
+.wl-emoji .wl-tab {
+  margin: 12px 8px;
+}
+
+.wl-emoji .wl-item:hover {
+  box-shadow: var(--anzhiyu-shadow-lightblack);
+  border-radius: 8px;
+}
+
+/* 加载状态 */
+.wl-loading {
+  text-align: center;
+  padding: 2rem;
+  color: var(--anzhiyu-secondtext);
+}
+
+/* 展开按钮 - 无边框设计 */
+.wl-expand {
+  width: 100%;
+  cursor: pointer;
+  padding: 0.75em;
+  text-align: center;
+  transition: all 0.5s;
+  border: none !important;
+  box-shadow: var(--anzhiyu-shadow-border);
+  border-radius: 50px;
+  letter-spacing: 5px;
+  background-color: var(--anzhiyu-card-bg);
+  color: var(--anzhiyu-fontcolor);
+}
+
+.wl-expand:hover {
+  color: #fff;
+  background-color: var(--anzhiyu-main);
+  border: var(--style-border-none);
+}
+
+/* 分页 - 无边框设计 */
+.wl-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  gap: 0.5rem;
+}
+
+.wl-pagination button {
+  background: var(--anzhiyu-card-bg);
+  border: none !important;
+  color: var(--anzhiyu-fontcolor);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--anzhiyu-shadow-border);
+}
+
+.wl-pagination button:hover {
+  background: var(--anzhiyu-main);
+  color: var(--anzhiyu-white);
+  border-color: var(--anzhiyu-main);
+}
+
+.wl-pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.wl-pagination .current {
+  background: var(--anzhiyu-main);
+  color: var(--anzhiyu-white);
+  border-color: var(--anzhiyu-main);
+}
+
+/* 暗色主题适配 */
+[data-theme="dark"] .wl-emoji {
+  background-color: #4a4a4a;
+}
+
+/* tk-row 布局配置 */
+.tk-row .tk-avatar {
+  display: none;
+}
+
+.tk-row .tk-col {
+  flex-direction: column-reverse;
+}
+
+.tk-row.actions {
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-top: 0;
+  justify-content: space-around;
+}
+
+/* 管理员样式 */
+.tk-admin {
+  backdrop-filter: blur(5px);
+}
+
+/* Element UI 按钮通用样式 */
+.el-button {
+  background-color: var(--anzhiyu-fontcolor);
+}
+
+/* 隐藏特定操作按钮 */
+a.tk-submit-action-icon.__markdown {
+  display: none;
+}
+
+.wl-comment > div.tk-submit > div.tk-row.actions > a {
+  display: none;
+}
+
+/* 响应式设计 */
+@media screen and (max-width: 768px) {
+  .wl-card {
+    padding: 0.75rem;
+  }
+  
+  .wl-avatar {
+    width: 2rem;
+    height: 2rem;
+  }
+  
+  .wl-card .wl-card {
+    margin-left: 1.5rem;
+  }
+  
+  .wl-editor {
+    min-height: 100px;
+    padding: 12px;
+  }
+  
+  .wl-btn.wl-send {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 0.5rem;
+  }
+  
+  .wl-emoji {
+    min-width: 260px;
+  }
+  
+  .tk-meta-input {
+    width: 100%;
+  }
+}
+
+/* 评论提示 */
+.wl-tips {
+  background-color: rgba(103, 194, 58, 0.13);
+  border: var(--style-border-always);
+  border-color: var(--anzhiyu-green);
+  color: var(--anzhiyu-green);
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin-top: 0.5rem;
+  display: none;
+  width: 100%;
+}
+
+.wl-tips.show {
+  display: flex;
+}
+
+/* 管理员配置 */
+.wl-admin {
+  backdrop-filter: blur(5px);
+}
+
+/* 特殊动画效果 */
+.wl-card {
+  animation: animate-in-and-out 1s linear forwards;
+  animation-timeline: view();
+}
+
+.wl-card:has(.wl-emoji-open) {
+  z-index: 1;
+}
+
+/* 评论数统计 */
+.wl-count {
+  color: var(--anzhiyu-main);
+  font-weight: 600;
+}
+
+/* 回复层级限制 */
+.wl-replies {
+  max-height: 10rem;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.wl-replies.wl-expand {
+  max-height: none;
+}
+
+/* 输入框聚焦效果 */
+.wl-input:focus,
+.wl-editor:focus {
+  border-color: var(--anzhiyu-main);
+  box-shadow: 0 0 0 2px rgba(var(--anzhiyu-main-rgb), 0.2);
+}
+
+/* 评论头部信息对齐 */
+.wl-head .wl-nick {
+  line-height: 40px;
+}
+
+/* 额外样式优化 */
+.wl-content {
+  margin-top: 0;
+}
+
+.wl-extra-text {
+  font-size: 0.75rem;
+}
+
+/* 确保所有元素使用主题变量 - 高优先级覆盖 */
+#waline-wrap #waline *,
+#waline-wrap *,
+#waline * {
+  box-sizing: border-box !important;
+}
+
+/* 评论区整体布局优化 - 高优先级覆盖 */
+#waline-wrap #waline,
+#waline-wrap,
+#waline {
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  --waline-font-size: 1.1em !important;
+  --waline-theme-color: var(--anzhiyu-main) !important;
+  --waline-active-color: var(--anzhiyu-main) !important;
+}
+
+/* 评论表单区域 */
+.wl-comment {
+  margin-bottom: 2rem;
+}
+
+/* 评论列表区域 */
+.wl-list {
+  margin-top: 1rem;
+}
+
+/* 确保与安知鱼主题完美融合 */
+.wl-card {
+  border-top: var(--style-border);
+}
+
+/* 页面评论特殊样式 */
+#page .wl-card {
+  background: var(--anzhiyu-card-bg);
+  padding: 1rem;
+  border: var(--style-border);
+  box-shadow: var(--anzhiyu-shadow-border);
+}
+
+/* 确保输入框在页面中的样式 */
+#body-wrap.page .wl-input {
+  background: var(--anzhiyu-card-bg);
+  box-shadow: var(--anzhiyu-shadow-border);
+  color: var(--anzhiyu-fontcolor);
+}
+
+/* 管理员配置输入框 */
+#body-wrap.page .wl-admin .wl-input {
+  color: currentColor;
+}

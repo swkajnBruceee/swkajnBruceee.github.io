@@ -2,10 +2,19 @@
    自定义样式 - Bruce's Blog
    ========================================================================== */
 
-/* 全局字体优化 */
+/* 全局字体和颜色变量 */
 :root {
   --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Lato, Roboto, "PingFang SC", "Microsoft JhengHei", "Microsoft YaHei", sans-serif;
   --code-font-family: "JetBrains Mono", Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  
+  /* 主题颜色变量 - 用于Waline评论系统 */
+  --theme-color: #49b1f5;
+  --theme-color-rgb: 73, 177, 245;
+  --border-color: #eee;
+  --card-bg: #fff;
+  --bg-color: #f7f9fe;
+  --font-color: #4c4948;
+  --font-color-secondary: #666;
 }
 
 body {
@@ -31,6 +40,17 @@ pre,
 [data-theme="light"] #web_bg,
 html:not([data-theme="dark"]) #web_bg {
   background: linear-gradient(-45deg, #f8fafc, #f1f5f9, #e2e8f0, #cbd5e0) !important;
+}
+
+/* 暗色模式变量 */
+[data-theme="dark"] {
+  --theme-color: #5ca8ff;
+  --theme-color-rgb: 92, 168, 255;
+  --border-color: #2d2d2d;
+  --card-bg: #1d1e22;
+  --bg-color: #121212;
+  --font-color: #a9a9b3;
+  --font-color-secondary: #909399;
 }
 
 @keyframes gradientBG {

@@ -1,563 +1,140 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>页面未找到 | Bruce's Blog</title><meta name="author" content="BruceLee"><meta name="copyright" content="BruceLee"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="4                              4           &lt;h2 class&#x3D;&quot;error-title&quot;&gt;页面走丢了&lt;&#x2F;h2&gt; &lt;p class&#x3D;&quot;error-description&quot;&gt;   抱歉，您访问的页面不存在或已被移动。&lt;br&gt;   但别担心，让">
-<meta property="og:type" content="website">
-<meta property="og:title" content="页面未找到">
-<meta property="og:url" content="https://swkajnbruceee.github.io/404.html">
-<meta property="og:site_name" content="Bruce&#39;s Blog">
-<meta property="og:description" content="4                              4           &lt;h2 class&#x3D;&quot;error-title&quot;&gt;页面走丢了&lt;&#x2F;h2&gt; &lt;p class&#x3D;&quot;error-description&quot;&gt;   抱歉，您访问的页面不存在或已被移动。&lt;br&gt;   但别担心，让">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://swkajnbruceee.github.io/img/butterfly-icon.png">
-<meta property="article:published_time" content="2025-07-24T11:00:00.000Z">
-<meta property="article:modified_time" content="2025-07-24T02:38:44.454Z">
-<meta property="article:author" content="BruceLee">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://swkajnbruceee.github.io/img/butterfly-icon.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://swkajnbruceee.github.io/404.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
-    (() => {
-      
-    const saveToLocal = {
-      set: (key, value, ttl) => {
-        if (!ttl) return
-        const expiry = Date.now() + ttl * 86400000
-        localStorage.setItem(key, JSON.stringify({ value, expiry }))
-      },
-      get: key => {
-        const itemStr = localStorage.getItem(key)
-        if (!itemStr) return undefined
-        const { value, expiry } = JSON.parse(itemStr)
-        if (Date.now() > expiry) {
-          localStorage.removeItem(key)
-          return undefined
-        }
-        return value
-      }
-    }
-
-    window.btf = {
-      saveToLocal,
-      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
-        const script = document.createElement('script')
-        script.src = url
-        script.async = true
-        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
-        script.onload = script.onreadystatechange = () => {
-          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
-        }
-        script.onerror = reject
-        document.head.appendChild(script)
-      }),
-      getCSS: (url, id) => new Promise((resolve, reject) => {
-        const link = document.createElement('link')
-        link.rel = 'stylesheet'
-        link.href = url
-        if (id) link.id = id
-        link.onload = link.onreadystatechange = () => {
-          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
-        }
-        link.onerror = reject
-        document.head.appendChild(link)
-      }),
-      addGlobalFn: (key, fn, name = false, parent = window) => {
-        if (!false && key.startsWith('pjax')) return
-        const globalFn = parent.globalFn || {}
-        globalFn[key] = globalFn[key] || {}
-        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
-        parent.globalFn = globalFn
-      }
-    }
-  
-      
-      const activateDarkMode = () => {
-        document.documentElement.setAttribute('data-theme', 'dark')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
-        }
-      }
-      const activateLightMode = () => {
-        document.documentElement.setAttribute('data-theme', 'light')
-        if (document.querySelector('meta[name="theme-color"]') !== null) {
-          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
-        }
-      }
-
-      btf.activateDarkMode = activateDarkMode
-      btf.activateLightMode = activateLightMode
-
-      const theme = saveToLocal.get('theme')
-    
-          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
-        
-      
-      const asideStatus = saveToLocal.get('aside-status')
-      if (asideStatus !== undefined) {
-        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
-      }
-    
-      
-    const detectApple = () => {
-      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
-        document.documentElement.classList.add('apple')
-      }
-    }
-    detectApple()
-  
-    })()
-  </script><script>const GLOBAL_CONFIG = {
-  root: '/',
-  algolia: undefined,
-  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
-  translate: undefined,
-  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
-  copy: {
-    success: '复制成功',
-    error: '复制失败',
-    noSupport: '浏览器不支持'
-  },
-  relativeDate: {
-    homepage: false,
-    post: false
-  },
-  runtime: '',
-  dateSuffix: {
-    just: '刚刚',
-    min: '分钟前',
-    hour: '小时前',
-    day: '天前',
-    month: '个月前'
-  },
-  copyright: undefined,
-  lightbox: 'null',
-  Snackbar: undefined,
-  infinitegrid: {
-    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
-    buttonText: '加载更多'
-  },
-  isPhotoFigcaption: false,
-  islazyloadPlugin: true,
-  isAnchor: false,
-  percent: {
-    toc: true,
-    rightside: false,
-  },
-  autoDarkmode: false
-}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
-  title: '页面未找到',
-  isHighlightShrink: false,
-  isToc: false,
-  pageType: '404'
-}</script><link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/giscus-waline-style.css"><link rel="stylesheet" href="/css/waline-custom.css"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="wizard-scene"><div class="wizard-objects"><div class="wizard-square"></div><div class="wizard-circle"></div><div class="wizard-triangle"></div></div><div class="wizard"><div class="wizard-body"></div><div class="wizard-right-arm"><div class="wizard-right-hand"></div></div><div class="wizard-left-arm"><div class="wizard-left-hand"></div></div><div class="wizard-head"><div class="wizard-beard"></div><div class="wizard-face"><div class="wizard-adds"></div></div><div class="wizard-hat"><div class="wizard-hat-of-the-hat"></div><div class="wizard-four-point-star --first"></div><div class="wizard-four-point-star --second"></div><div class="wizard-four-point-star --third"></div></div></div></div></div></div><script async="async">(()=>{
-  const $loadingBox = document.getElementById('loading-box')
-  const $body = document.body
-  let loadingStartTime = Date.now()
-  let isLoaded = false
-  
-  const preloader = {
-    endLoading: () => {
-      const loadingTime = Date.now() - loadingStartTime
-      const minLoadingTime = 2000 // 最少显示2秒
-      
-      if (loadingTime < minLoadingTime) {
-        // 如果加载时间不足2秒，延迟关闭动画
-        setTimeout(() => {
-          $body.style.overflow = 'auto'
-          $loadingBox.classList.add('loaded')
-        }, minLoadingTime - loadingTime)
-      } else {
-        $body.style.overflow = 'auto'
-        $loadingBox.classList.add('loaded')
-      }
-    },
-    initLoading: () => {
-      $body.style.overflow = 'hidden'
-      $loadingBox.classList.remove('loaded')
-      loadingStartTime = Date.now()
-      isLoaded = false
-    }
-  }
-
-  preloader.initLoading()
-  
-  // 页面加载完成后关闭动画
-  window.addEventListener('load', () => {
-    if (!isLoaded) {
-      isLoaded = true
-      preloader.endLoading()
-    }
-  })
-  
-  // 超时保护，最多显示8秒
-  setTimeout(function(){
-    if (!isLoaded) {
-      isLoaded = true
-      preloader.endLoading()
-    }
-  }, 8000);
-
-  // 禁用PJAX时的加载动画，只在首次加载时显示
-  // if (false) {
-  //   btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
-  //   btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
-  // }
-})()</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src= "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkxvYWRpbmcuLi48L3RleHQ+PC9zdmc+" data-lazy-src="/img/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">13</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-book"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> 我的</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page fixed" id="page-header" style="background-image: url(https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=1920&amp;q=80);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Bruce's Blog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-book"></i><span> 文章</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder"></i><span> 我的</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-user"></i><span> 关于</span></a></div></div><div class="nav-right"><div class="nav-search-container"><input class="nav-search-input" id="nav-search-input" type="text" placeholder="搜索文章..."><div class="nav-search-results" id="nav-search-results"></div></div><div id="darkmode"><i class="fas fa-adjust fa-fw"></i></div><div id="toggle-menu"><i class="fas fa-bars fa-fw"></i></div></div></div></nav><div id="page-site-info"><h1 id="site-title">页面未找到</h1></div></header><main class="layout" id="content-inner"><div id="page"><div class="container" id="article-container"><div class="error-page">
-  <div class="error-content">
-    <div class="error-animation">
-      <div class="error-number">4</div>
-      <div class="error-zero">
-        <div class="error-zero-inner"></div>
-      </div>
-      <div class="error-number">4</div>
-    </div>
-    
-<pre><code>&lt;h2 class=&quot;error-title&quot;&gt;页面走丢了&lt;/h2&gt;
-&lt;p class=&quot;error-description&quot;&gt;
-  抱歉，您访问的页面不存在或已被移动。&lt;br&gt;
-  但别担心，让我们帮您找到正确的方向！
-&lt;/p&gt;
-
-&lt;div class=&quot;error-actions&quot;&gt;
-  &lt;a href=&quot;/&quot; class=&quot;btn-home&quot;&gt;
-    &lt;i class=&quot;fas fa-home&quot;&gt;&lt;/i&gt;
-    返回首页
-  &lt;/a&gt;
-  &lt;a href=&quot;/archives/&quot; class=&quot;btn-archives&quot;&gt;
-    &lt;i class=&quot;fas fa-archive&quot;&gt;&lt;/i&gt;
-    查看归档
-  &lt;/a&gt;
-  &lt;a href=&quot;javascript:history.back()&quot; class=&quot;btn-back&quot;&gt;
-    &lt;i class=&quot;fas fa-arrow-left&quot;&gt;&lt;/i&gt;
-    返回上页
-  &lt;/a&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;error-suggestions&quot;&gt;
-  &lt;h3&gt;您可能在寻找：&lt;/h3&gt;
-  &lt;ul&gt;
-    &lt;li&gt;&lt;a href=&quot;/categories/技术笔记/&quot;&gt;技术笔记&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;/tags/&quot;&gt;标签云&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;/about/&quot;&gt;关于我&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&quot;/link/&quot;&gt;友情链接&lt;/a&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/div&gt;
-</code></pre>
-  </div>
-  
-  <div class="error-decoration">
-    <div class="floating-shapes">
-      <div class="shape shape-1"></div>
-      <div class="shape shape-2"></div>
-      <div class="shape shape-3"></div>
-      <div class="shape shape-4"></div>
-      <div class="shape shape-5"></div>
-    </div>
-  </div>
-</div>
-
-<style>
-.error-page {
-  min-height: 100vh;
+#error-wrap {
   display: flex;
-  align-items: center;
   justify-content: center;
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  animation: gradientBG 15s ease infinite;
+  width: 100%;
+  margin-top: 1rem;
   position: relative;
-  overflow: hidden;
+maxWidth768()
 }
-
-@keyframes gradientBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+#error-wrap .error-content {
+  box-shadow: none !important;
+  border-radius: 12px;
+  background: var(--anzhiyu-card-bg) !important;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 1rem;
+  height: 22rem;
+  max-width: 800px;
+  border-radius: 5px;
+  background: var(--anzhiyu-card-bg);
+  box-shadow: var(--card-box-shadow);
+  transition: all 0.3s ease 0s;
+  border: var(--style-border-always);
+  position: relative;
+  width: 100%;
+maxWidth768()
 }
-
-.error-content {
+#error-wrap .error-content .error-img {
+  flex: 1 1 0%;
+  height: 90%;
+  width: 600px;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  background-color: #307af6;
+  background-position: center center;
+  background-size: cover;
+  height: 100%;
+maxWidth768()
+}
+#error-wrap .error-content .error-info {
+  flex: 1 1 0%;
+  padding: 0.5rem;
   text-align: center;
-  color: white;
-  z-index: 2;
-  position: relative;
-  max-width: 600px;
-  padding: 40px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px);
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+  font-size: 14px;
+  font-family: $font-family;
+maxWidth768()
 }
-
-.error-animation {
+#error-wrap .error-content .error-info .error_title {
+  font-size: 9em;
+  line-height: 1;
+maxWidth768()
+}
+#error-wrap .error-content .error-info .error_subtitle {
+  word-break: break-word;
+  font-size: 1.6em;
+  -webkit-line-clamp: 2;
+}
+#error-wrap .error-content .error-info a {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.3rem 1.5rem;
+  background: var(--btn-bg);
+  color: var(--btn-color);
+}
+#error-wrap .error-content .error-info a i {
+  padding-right: 0.3rem;
+}
+.button--animated {
+  border-radius: 8px !important;
+  transition: 0.3s;
+  position: relative;
+  z-index: 1;
+  transition: color 1s ease 0s;
+}
+#body-wrap .error-box {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 30px;
-  font-size: 8rem;
+  padding: 1rem;
+  padding-top: 0px;
+  position: relative;
+}
+#body-wrap .error-box .aside-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin: 1rem;
+  max-width: 100%;
+maxWidth768()
+}
+#body-wrap .error-box .aside-list .aside-list-group {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 800px;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+#body-wrap .error-box .aside-list .aside-list-item {
+  padding: 0.5rem 0;
+  width: 49%;
+}
+#body-wrap .error-box .aside-list .aside-list-item .thumbnail {
+  overflow: hidden;
+  width: 100%;
+  height: 200px;
+  background: var(--anzhiyu-card-bg);
+  display: flex;
+  border-radius: 12px;
+maxWidth768()
+}
+#body-wrap .error-box .aside-list .aside-list-item img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: 0.3s;
+  transition: filter 300ms ease-in 0.2s, transform 0.6s;
+}
+#body-wrap .error-box .aside-list .aside-list-item:hover img {
+  transform: scale(1.1);
+  filter: brightness(0.82);
+}
+#body-wrap .error-box .aside-list .aside-list-item .content .title {
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  line-height: 1.5;
+  justify-content: center;
+  align-items: flex-end;
+  align-content: center;
+  padding-top: 0.5rem;
+  font-size: 16px;
   font-weight: bold;
 }
-
-.error-number {
-  color: white;
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-  animation: pulse 2s ease-in-out infinite alternate;
+#body-wrap .error-box .aside-list .aside-list-item .content time {
+  display: none;
 }
-
-.error-zero {
-  width: 120px;
-  height: 120px;
-  border: 8px solid white;
-  border-radius: 50%;
-  margin: 0 20px;
-  position: relative;
-  animation: rotate 3s linear infinite;
-}
-
-.error-zero-inner {
-  width: 40px;
-  height: 40px;
-  background: white;
-  border-radius: 50%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  animation: bounce 1.5s ease-in-out infinite;
-}
-
-@keyframes pulse {
-  0% { transform: scale(1); }
-  100% { transform: scale(1.1); }
-}
-
-@keyframes rotate {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translate(-50%, -50%) scale(1); }
-  50% { transform: translate(-50%, -50%) scale(1.2); }
-}
-
-.error-title {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  color: white;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-}
-
-.error-description {
-  font-size: 1.2rem;
-  margin-bottom: 40px;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.error-actions {
-  display: flex;
-  gap: 15px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: 40px;
-}
-
-.error-actions a {
-  padding: 12px 24px;
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-  text-decoration: none;
-  border-radius: 25px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-}
-
-.error-actions a:hover {
-  background: rgba(255, 255, 255, 0.3);
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-}
-
-.error-actions i {
-  margin-right: 8px;
-}
-
-.error-suggestions {
-  text-align: left;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 20px;
-  border-radius: 15px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.error-suggestions h3 {
-  color: white;
-  margin-bottom: 15px;
-  text-align: center;
-}
-
-.error-suggestions ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 10px;
-}
-
-.error-suggestions li a {
-  color: rgba(255, 255, 255, 0.8);
-  text-decoration: none;
-  padding: 8px 12px;
-  border-radius: 8px;
-  display: block;
-  transition: all 0.3s ease;
-}
-
-.error-suggestions li a:hover {
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-}
-
-.error-decoration {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
-.floating-shapes {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.shape {
-  position: absolute;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
-  animation: float 6s ease-in-out infinite;
-}
-
-.shape-1 {
-  width: 80px;
-  height: 80px;
-  top: 20%;
-  left: 10%;
-  animation-delay: 0s;
-}
-
-.shape-2 {
-  width: 60px;
-  height: 60px;
-  top: 60%;
-  right: 15%;
-  animation-delay: 1s;
-}
-
-.shape-3 {
-  width: 100px;
-  height: 100px;
-  bottom: 20%;
-  left: 20%;
-  animation-delay: 2s;
-}
-
-.shape-4 {
-  width: 40px;
-  height: 40px;
-  top: 30%;
-  right: 30%;
-  animation-delay: 3s;
-}
-
-.shape-5 {
-  width: 70px;
-  height: 70px;
-  bottom: 40%;
-  right: 10%;
-  animation-delay: 4s;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  33% { transform: translateY(-20px) rotate(120deg); }
-  66% { transform: translateY(20px) rotate(240deg); }
-}
-
-@media (max-width: 768px) {
-  .error-animation {
-    font-size: 4rem;
-  }
-  
-  .error-zero {
-    width: 80px;
-    height: 80px;
-    margin: 0 10px;
-  }
-  
-  .error-zero-inner {
-    width: 25px;
-    height: 25px;
-  }
-  
-  .error-title {
-    font-size: 2rem;
-  }
-  
-  .error-description {
-    font-size: 1rem;
-  }
-  
-  .error-actions {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .error-suggestions ul {
-    grid-template-columns: 1fr;
-  }
-}
-</style></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-custom-profile"><div class="custom-profile-card"><div class="profile-badge"><i class="fas fa-home"></i><span>🎓 大学生知识博客</span></div><div class="profile-avatar-container"><div class="profile-avatar"><img src= "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkxvYWRpbmcuLi48L3RleHQ+PC9zdmc+" data-lazy-src="/img/photo.jpg" alt="avatar"/><div class="avatar-badge">🐶</div></div></div><div class="profile-info"><div class="profile-name">BruceLee</div><div class="profile-description">生活明朗，万物可爱</div></div><div class="profile-hover-content"><div class="hover-text">这里分享计算机科学、算法学习、编程技巧和学术研究心得。涵盖数据结构、Web开发、机器学习等领域的学习笔记和实践经验。希望能与同样热爱学习的朋友们一起进步，共同探索技术的无限可能。</div></div><div class="profile-social"><a class="social-btn" href="https://github.com/swkajnBruceee" target="_blank" rel="noopener"><i class="fab fa-github"></i></a><a class="social-btn" href="#" target="_blank" rel="noopener"><i class="fab fa-discord"></i></a></div></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/07/24/%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%86%99%E5%8D%9A%E5%AE%A2/" title="如何高效写博客"><img src= "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkxvYWRpbmcuLi48L3RleHQ+PC9zdmc+" data-lazy-src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="如何高效写博客"/></a><div class="content"><a class="title" href="/2025/07/24/%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E5%86%99%E5%8D%9A%E5%AE%A2/" title="如何高效写博客">如何高效写博客</a><time datetime="2025-07-24T10:15:00.000Z" title="发表于 2025-07-24 18:15:00">2025-07-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/07/15/%E5%8D%9A%E5%AE%A2UI%E4%BC%98%E5%8C%96%E4%B9%8B%E6%97%85/" title="博客UI优化之旅：打造个性化Hexo博客"><img src= "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkxvYWRpbmcuLi48L3RleHQ+PC9zdmc+" data-lazy-src="https://images.unsplash.com/photo-1507721999472-8ed4421c4af2?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1920&amp;q=80" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="博客UI优化之旅：打造个性化Hexo博客"/></a><div class="content"><a class="title" href="/2025/07/15/%E5%8D%9A%E5%AE%A2UI%E4%BC%98%E5%8C%96%E4%B9%8B%E6%97%85/" title="博客UI优化之旅：打造个性化Hexo博客">博客UI优化之旅：打造个性化Hexo博客</a><time datetime="2025-07-15T06:30:00.000Z" title="发表于 2025-07-15 14:30:00">2025-07-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/26/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E8%B8%A9%E5%9D%91%E8%AE%B0/" title="Hexo博客搭建踩坑记"><img src= "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkxvYWRpbmcuLi48L3RleHQ+PC9zdmc+" data-lazy-src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1920&amp;q=80" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo博客搭建踩坑记"/></a><div class="content"><a class="title" href="/2025/06/26/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E8%B8%A9%E5%9D%91%E8%AE%B0/" title="Hexo博客搭建踩坑记">Hexo博客搭建踩坑记</a><time datetime="2025-06-26T05:42:00.000Z" title="发表于 2025-06-26 13:42:00">2025-06-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/06/26/Question-of-N-Queen/" title="Question of N Queen">Question of N Queen</a><time datetime="2025-06-26T03:59:32.000Z" title="发表于 2025-06-26 11:59:32">2025-06-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/06/25/hello-world/" title="Hello World">Hello World</a><time datetime="2025-06-25T05:53:40.483Z" title="发表于 2025-06-25 13:53:40">2025-06-25</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
-            <i class="fas fa-folder-open"></i>
-            <span>分类</span>
-            
-          </div>
-          <ul class="card-category-list" id="aside-cat-list">
-            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/"><span class="card-category-list-name">技术分享</span><span class="card-category-list-count">2</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/"><span class="card-category-list-name">技术笔记</span><span class="card-category-list-count">2</span></a></li>
-          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/Hexo/" style="font-size: 1.5em; color: #99a9bf">Hexo</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" style="font-size: 1.1em; color: #999">博客搭建</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E7%BE%8E%E5%8C%96/" style="font-size: 1.1em; color: #999">博客美化</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/" style="font-size: 1.1em; color: #999">前端开发</a> <a href="/tags/GitHub-Pages/" style="font-size: 1.1em; color: #999">GitHub Pages</a> <a href="/tags/UI%E4%BC%98%E5%8C%96/" style="font-size: 1.1em; color: #999">UI优化</a> <a href="/tags/algorithm/" style="font-size: 1.1em; color: #999">algorithm</a> <a href="/tags/%E5%8D%9A%E5%AE%A2%E5%86%99%E4%BD%9C/" style="font-size: 1.1em; color: #999">博客写作</a> <a href="/tags/Giscus/" style="font-size: 1.1em; color: #999">Giscus</a> <a href="/tags/%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/" style="font-size: 1.1em; color: #999">评论系统</a> <a href="/tags/backtracking/" style="font-size: 1.1em; color: #999">backtracking</a> <a href="/tags/%E6%95%88%E7%8E%87%E6%8F%90%E5%8D%87/" style="font-size: 1.1em; color: #999">效率提升</a> <a href="/tags/Waline/" style="font-size: 1.1em; color: #999">Waline</a></div></div><div class="card-widget card-archives">
-    <div class="item-headline">
-      <i class="fas fa-archive"></i>
-      <span>归档</span>
-      
-    </div>
-  
-    <ul class="card-archive-list">
-      
-        <li class="card-archive-list-item">
-          <a class="card-archive-list-link" href="/archives/2025/07/">
-            <span class="card-archive-list-date">
-              七月 2025
-            </span>
-            <span class="card-archive-list-count">2</span>
-          </a>
-        </li>
-      
-        <li class="card-archive-list-item">
-          <a class="card-archive-list-link" href="/archives/2025/06/">
-            <span class="card-archive-list-date">
-              六月 2025
-            </span>
-            <span class="card-archive-list-count">3</span>
-          </a>
-        </li>
-      
-        <li class="card-archive-list-item">
-          <a class="card-archive-list-link" href="/archives/2023/07/">
-            <span class="card-archive-list-date">
-              七月 2023
-            </span>
-            <span class="card-archive-list-count">1</span>
-          </a>
-        </li>
-      
-    </ul>
-  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">6</div></div><div class="webinfo-item"><div class="item-name">本站总字数 :</div><div class="item-count">9.3k</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-08-03T08:16:16.360Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;2024 - 2025 By BruceLee</span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"></div><script src="/js/loading-fix.js"></script><script src="/js/darkmode-fix.js"></script><script src="/js/nav-search.js"></script><script src="/js/search-enhance.js"></script><script src="/js/ai-summary.js"></script><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
