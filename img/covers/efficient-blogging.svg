@@ -1,0 +1,36 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradient3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fa709a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#fee140;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#gradient3)"/>
+  
+  <!-- Writing/Pen icon -->
+  <g transform="translate(100, 150)">
+    <circle cx="60" cy="60" r="50" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+    <!-- Pen icon -->
+    <path d="M40 80 L50 70 L70 50 L80 60 L60 80 L40 80 Z" fill="white" opacity="0.9"/>
+    <path d="M70 50 L75 45 L85 55 L80 60 Z" fill="rgba(255,255,255,0.7)"/>
+    <line x1="40" y1="80" x2="45" y2="85" stroke="white" stroke-width="2" opacity="0.6"/>
+    <circle cx="72" cy="52" r="2" fill="#fa709a"/>
+  </g>
+  
+  <!-- Title -->
+  <text x="250" y="220" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="48" font-weight="bold" fill="white">
+    高效写博客
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="250" y="280" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="24" fill="rgba(255,255,255,0.8)">
+    提升写作效率的技巧与工具
+  </text>
+  
+  <!-- Decorative elements -->
+  <polygon points="980,120 1020,80 1060,120 1020,160" fill="rgba(255,255,255,0.1)"/>
+  <circle cx="1080" cy="500" r="65" fill="rgba(255,255,255,0.08)"/>
+  <rect x="130" y="480" width="60" height="60" rx="12" fill="rgba(255,255,255,0.12)" transform="rotate(15 160 510)"/>
+</svg>

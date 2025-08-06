@@ -196,7 +196,7 @@
 
 /* 暗黑模式适配 */
 [data-theme="dark"] .card-custom-profile {
-  background: var(--card-bg);
+  background: linear-gradient(135deg, #ffbb50 0%, #ffbb50 50%, #ffbb50 100%) !important;
 }
 
 [data-theme="dark"] .profile-hover-content {

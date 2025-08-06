@@ -1375,3 +1375,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   };
 
+  // 初始化TOC激活功能
+  scrollFnToDo();
+
