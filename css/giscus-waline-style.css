@@ -12,7 +12,7 @@
   margin-top: 2rem !important;
   padding: 0 !important;
   border-radius: 8px !important;
-  overflow: hidden !important;
+  overflow: visible !important;
   background: #ffffff !important;
   border: 1px solid #e1e8ed !important;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08) !important;
@@ -406,7 +406,7 @@
   border-radius: 8px !important;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12) !important;
   padding: 12px !important;
-  max-height: 240px !important;
+  max-height: 350px !important;
   overflow-y: auto !important;
   z-index: 1000 !important;
 }

@@ -9,9 +9,6 @@
   box-shadow: 0 8px 16px -4px rgba(0,0,0,0.05);
   transition: all 0.3s ease;
   border: 1px solid rgba(0,0,0,0.03);
-  /* 修复评论定位问题 */
-  position: relative !important;
-  z-index: 1 !important;
   /* 确保评论区域可见 */
   display: block !important;
   width: 100% !important;
@@ -534,7 +531,7 @@ a[class*="wl-nick"],
   border: 1px solid rgba(0,0,0,0.03) !important;
   border-radius: 8px !important;
   box-shadow: 0 6px 16px rgba(0,0,0,0.1) !important;
-  max-height: 220px !important;
+  max-height: 320px !important;
   overflow-y: auto !important;
   padding: 0.6rem !important;
   box-sizing: border-box !important;

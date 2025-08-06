@@ -1,0 +1,215 @@
+.card-custom-profile {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background: var(--card-bg);
+  box-shadow: var(--card-box-shadow);
+  transition: all 0.3s;
+}
+
+.custom-profile-card {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-badge {
+  background: var(--anzhiyu-main);
+  color: #fff;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.profile-avatar-container {
+  position: relative;
+  margin-bottom: 0.8rem;
+}
+
+.profile-avatar {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.profile-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar-badge {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: var(--anzhiyu-main);
+  color: #fff;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+.profile-info {
+  text-align: center;
+  margin-bottom: 0.8rem;
+}
+
+.profile-name {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+  color: var(--font-color);
+}
+
+.profile-description {
+  font-size: 0.9rem;
+  color: var(--font-color);
+  opacity: 0.8;
+}
+
+/* 白天模式下字体为白色 */
+[data-theme="light"] .profile-name,
+:root .profile-name {
+  color: #fff !important;
+}
+
+[data-theme="light"] .profile-description,
+:root .profile-description {
+  color: #fff !important;
+  opacity: 0.9;
+}
+
+.profile-hover-content {
+  background: transparent;
+  padding: 0.8rem;
+  border-radius: 0;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+  color: var(--font-color);
+  line-height: 1.5;
+  text-align: center;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.card-custom-profile:hover .profile-hover-content {
+  max-height: 200px;
+  opacity: 1;
+  margin-top: 0.8rem;
+}
+
+.card-custom-profile:hover .profile-avatar {
+  transform: scale(1.05);
+}
+
+.profile-social {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.social-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--anzhiyu-card-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--font-color);
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.social-btn:hover {
+  background: var(--anzhiyu-main);
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+/* 白天模式下社交按钮样式 */
+[data-theme="light"] .social-btn,
+:root .social-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+[data-theme="light"] .social-btn:hover,
+:root .social-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  color: #fff;
+  transform: translateY(-3px) scale(1.1);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* 白天模式 - 蓝色背景 */
+/* 使用主题标签的蓝色 #425aef */
+[data-theme="light"] .card-custom-profile,
+:root .card-custom-profile {
+  background: linear-gradient(135deg, #425aef 0%, #1856fb 100%) !important;
+}
+
+/* 选项2: 中等蓝色渐变 (注释掉，需要时取消注释)
+[data-theme="light"] .card-custom-profile,
+:root .card-custom-profile {
+  background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%) !important;
+}
+*/
+
+/* 选项3: 天空蓝渐变 (注释掉，需要时取消注释)
+[data-theme="light"] .card-custom-profile,
+:root .card-custom-profile {
+  background: linear-gradient(135deg, #42a5f5 0%, #2196f3 100%) !important;
+}
+*/
+
+/* 选项4: 青蓝色渐变 (注释掉，需要时取消注释)
+[data-theme="light"] .card-custom-profile,
+:root .card-custom-profile {
+  background: linear-gradient(135deg, #00bcd4 0%, #0097a7 100%) !important;
+}
+*/
+
+[data-theme="light"] .profile-hover-content,
+:root .profile-hover-content {
+  background: transparent;
+  color: #fff !important;
+  backdrop-filter: none;
+}
+
+/* 暗黑模式适配 */
+[data-theme="dark"] .card-custom-profile {
+  background: var(--card-bg);
+}
+
+[data-theme="dark"] .profile-hover-content {
+  background: var(--anzhiyu-card-bg);
+  color: var(--font-color);
+}
+
+[data-theme="dark"] .social-btn {
+  background: var(--anzhiyu-card-bg);
+  color: var(--font-color);
+}
+
+[data-theme="dark"] .social-btn:hover {
+  background: var(--anzhiyu-main);
+  color: #fff;
+}

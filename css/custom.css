@@ -3054,7 +3054,7 @@ img[data-lazy].loaded {
   margin: 2rem 0;
   padding: 2rem;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   transition: all 0.3s ease;
 }
 
@@ -3097,7 +3097,7 @@ img[data-lazy].loaded {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   backdrop-filter: blur(10px);
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .waline-container .wl-editor::before {
@@ -3379,7 +3379,7 @@ img[data-lazy].loaded {
   padding: 16px;
   z-index: 1000;
   max-width: 300px;
-  max-height: 200px;
+  max-height: 300px;
   overflow-y: auto;
 }
 
@@ -3708,7 +3708,7 @@ img[data-lazy].loaded {
   margin-top: 2rem;
   padding: 0;
   border-radius: 16px;
-  overflow: hidden;
+  overflow: visible;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(20px);
   border: 1px solid rgba(0, 0, 0, 0.08);
@@ -4346,7 +4346,7 @@ img[data-lazy].loaded {
   border-radius: 12px !important;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15) !important;
   padding: 16px !important;
-  max-height: 300px !important;
+  max-height: 400px !important;
   overflow-y: auto !important;
   z-index: 1000 !important;
 }
@@ -4752,7 +4752,7 @@ img[data-lazy].loaded {
   }
 
   .giscus .gsc-emoji-picker {
-    max-height: 250px !important;
+    max-height: 320px !important;
     padding: 12px !important;
   }
 

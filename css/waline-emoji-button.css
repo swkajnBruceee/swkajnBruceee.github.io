@@ -1,0 +1,306 @@
+/**
+ * Waline表情按钮样式
+ * 专门为安知鱼主题优化的表情按钮样式
+ */
+
+/* 表情按钮容器 */
+.wl-emoji {
+  position: relative !important;
+  display: inline-block !important;
+  margin-right: 8px !important;
+  order: -1 !important;
+}
+
+/* 表情按钮样式 */
+.wl-emoji-btn {
+  background: var(--anzhiyu-card-bg, #fff) !important;
+  border: 1px solid var(--anzhiyu-card-border, #e3e8f7) !important;
+  border-radius: 6px !important;
+  padding: 6px 10px !important;
+  font-size: 1.2em !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  color: var(--anzhiyu-fontcolor, #363636) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 36px !important;
+  height: 36px !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05) !important;
+}
+
+.wl-emoji-btn:hover {
+  background: var(--anzhiyu-main, #49b1f5) !important;
+  color: var(--anzhiyu-white, #fff) !important;
+  border-color: var(--anzhiyu-main, #49b1f5) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 8px rgba(73, 177, 245, 0.3) !important;
+}
+
+.wl-emoji-btn:active {
+  transform: translateY(0) !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+}
+
+/* 表情面板样式 */
+.wl-emoji-panel {
+  position: absolute !important;
+  bottom: calc(100% + 8px) !important;
+  left: 0 !important;
+  background: var(--anzhiyu-card-bg, #fff) !important;
+  border: 1px solid var(--anzhiyu-card-border, #e3e8f7) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1) !important;
+  padding: 16px !important;
+  display: none !important;
+  z-index: 1000 !important;
+  min-width: 320px !important;
+  max-width: 400px !important;
+  max-height: 240px !important;
+  overflow-y: auto !important;
+  backdrop-filter: blur(20px) !important;
+  animation: emoji-panel-in 0.3s ease-out !important;
+}
+
+.wl-emoji-panel::-webkit-scrollbar {
+  width: 6px !important;
+}
+
+.wl-emoji-panel::-webkit-scrollbar-thumb {
+  background: var(--anzhiyu-main, #49b1f5) !important;
+  border-radius: 3px !important;
+}
+
+.wl-emoji-panel::-webkit-scrollbar-track {
+  background: var(--anzhiyu-secondbg, #f7f9fe) !important;
+  border-radius: 3px !important;
+}
+
+/* 表情网格 */
+.wl-emoji-panel > div {
+  display: grid !important;
+  grid-template-columns: repeat(8, 1fr) !important;
+  gap: 6px !important;
+}
+
+/* 表情项目 */
+.emoji-item {
+  font-size: 1.4em !important;
+  padding: 8px !important;
+  cursor: pointer !important;
+  border-radius: 8px !important;
+  text-align: center !important;
+  transition: all 0.2s ease !important;
+  user-select: none !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 40px !important;
+  background: transparent !important;
+  border: 1px solid transparent !important;
+}
+
+.emoji-item:hover {
+  background: var(--anzhiyu-main, #49b1f5) !important;
+  color: var(--anzhiyu-white, #fff) !important;
+  border-color: var(--anzhiyu-main, #49b1f5) !important;
+  transform: scale(1.1) !important;
+  box-shadow: 0 2px 8px rgba(73, 177, 245, 0.3) !important;
+}
+
+.emoji-item:active {
+  transform: scale(0.95) !important;
+}
+
+/* 面板动画 */
+@keyframes emoji-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+  .wl-emoji-panel {
+    min-width: 280px !important;
+    max-width: 90vw !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+  }
+  
+  .wl-emoji-panel > div {
+    grid-template-columns: repeat(6, 1fr) !important;
+    gap: 4px !important;
+  }
+  
+  .emoji-item {
+    font-size: 1.2em !important;
+    padding: 6px !important;
+    min-height: 36px !important;
+  }
+  
+  .wl-emoji-btn {
+    min-width: 32px !important;
+    height: 32px !important;
+    padding: 4px 8px !important;
+    font-size: 1.1em !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .wl-emoji-panel {
+    min-width: 260px !important;
+  }
+  
+  .wl-emoji-panel > div {
+    grid-template-columns: repeat(5, 1fr) !important;
+  }
+  
+  .emoji-item {
+    font-size: 1.1em !important;
+    padding: 4px !important;
+    min-height: 32px !important;
+  }
+}
+
+/* 暗色主题适配 */
+[data-theme="dark"] .wl-emoji-btn {
+  background: var(--anzhiyu-card-bg-dark, #1a1a1a) !important;
+  border-color: var(--anzhiyu-card-border-dark, #333) !important;
+  color: var(--anzhiyu-fontcolor-dark, #e0e0e0) !important;
+}
+
+[data-theme="dark"] .wl-emoji-btn:hover {
+  background: var(--anzhiyu-main, #49b1f5) !important;
+  color: var(--anzhiyu-white, #fff) !important;
+}
+
+[data-theme="dark"] .wl-emoji-panel {
+  background: var(--anzhiyu-card-bg-dark, #1a1a1a) !important;
+  border-color: var(--anzhiyu-card-border-dark, #333) !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3) !important;
+}
+
+[data-theme="dark"] .emoji-item:hover {
+  background: var(--anzhiyu-main, #49b1f5) !important;
+  color: var(--anzhiyu-white, #fff) !important;
+}
+
+[data-theme="dark"] .wl-emoji-panel::-webkit-scrollbar-track {
+  background: var(--anzhiyu-secondbg-dark, #222) !important;
+}
+
+/* 确保表情按钮在操作栏中的正确位置 */
+.wl-action {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  flex-wrap: wrap !important;
+}
+
+.wl-action .wl-emoji {
+  order: -1 !important;
+  flex-shrink: 0 !important;
+}
+
+/* 修复可能的布局冲突 */
+.wl-action > * {
+  margin: 0 !important;
+}
+
+.wl-action .wl-emoji + * {
+  margin-left: 0 !important;
+}
+
+/* 表情按钮加载状态 */
+.wl-emoji-btn.loading {
+  opacity: 0.6 !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+}
+
+.wl-emoji-btn.loading::after {
+  content: '' !important;
+  width: 12px !important;
+  height: 12px !important;
+  border: 2px solid currentColor !important;
+  border-top-color: transparent !important;
+  border-radius: 50% !important;
+  animation: spin 1s linear infinite !important;
+  position: absolute !important;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* 表情面板标题（如果需要） */
+.wl-emoji-panel-header {
+  padding: 0 0 12px 0 !important;
+  border-bottom: 1px solid var(--anzhiyu-card-border, #e3e8f7) !important;
+  margin-bottom: 12px !important;
+  font-size: 0.9em !important;
+  color: var(--anzhiyu-secondtext, #999) !important;
+  text-align: center !important;
+}
+
+[data-theme="dark"] .wl-emoji-panel-header {
+  border-bottom-color: var(--anzhiyu-card-border-dark, #333) !important;
+  color: var(--anzhiyu-secondtext-dark, #999) !important;
+}
+
+/* 表情面板底部提示 */
+.wl-emoji-panel-footer {
+  padding: 12px 0 0 0 !important;
+  border-top: 1px solid var(--anzhiyu-card-border, #e3e8f7) !important;
+  margin-top: 12px !important;
+  font-size: 0.8em !important;
+  color: var(--anzhiyu-secondtext, #999) !important;
+  text-align: center !important;
+}
+
+[data-theme="dark"] .wl-emoji-panel-footer {
+  border-top-color: var(--anzhiyu-card-border-dark, #333) !important;
+  color: var(--anzhiyu-secondtext-dark, #999) !important;
+}
+
+/* 确保表情按钮在所有情况下都可见 */
+.wl-emoji {
+  visibility: visible !important;
+  opacity: 1 !important;
+  display: inline-block !important;
+}
+
+/* 修复可能的z-index问题 */
+.wl-emoji-panel {
+  z-index: 9999 !important;
+}
+
+/* 表情按钮聚焦状态 */
+.wl-emoji-btn:focus {
+  outline: 2px solid var(--anzhiyu-main, #49b1f5) !important;
+  outline-offset: 2px !important;
+}
+
+/* 无障碍支持 */
+.wl-emoji-btn[aria-expanded="true"] {
+  background: var(--anzhiyu-main, #49b1f5) !important;
+  color: var(--anzhiyu-white, #fff) !important;
+}
+
+/* 表情项目的无障碍支持 */
+.emoji-item[role="button"] {
+  outline: none !important;
+}
+
+.emoji-item[role="button"]:focus {
+  outline: 2px solid var(--anzhiyu-main, #49b1f5) !important;
+  outline-offset: 2px !important;
+}

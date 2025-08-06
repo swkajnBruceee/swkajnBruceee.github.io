@@ -168,9 +168,11 @@ var musicVolume = 0.8;
 var changeMusicListFlag = false;
 // 默认播放音乐列表
 var defaultPlayMusicList = [];
-var themeColorMeta, pageHeaderEl, navMusicEl, consoleEl;
+var themeColorMeta, pageHeaderEl, navMusicEl;
+let consoleEl;
 
 document.addEventListener("DOMContentLoaded", function () {
+  consoleEl = document.getElementById("console");
   let headerContentWidth, $nav, $rightMenu;
   let mobileSidebarOpen = false;
 
@@ -784,6 +786,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
     anzhiyu.addEventListenerPjax(window, "scroll", tocScrollFn, { passive: true });
   };
+
+  const autoChangeMode = () => {
+    const now = new Date();
+    const hour = now.getHours();
+    const isNight = hour >= 19 || hour < 7;
+    const userTheme = localStorage.getItem("theme");
+
+    if (userTheme) {
+      document.documentElement.setAttribute("data-theme", userTheme);
+      return;
+    }
+
+    if (isNight) {
+      document.documentElement.setAttribute("data-theme", "dark");
+    } else {
+      document.documentElement.setAttribute("data-theme", "light");
+    }
+  };
+  autoChangeMode();
 
   const handleThemeChange = mode => {
     const globalFn = window.globalFn || {};
