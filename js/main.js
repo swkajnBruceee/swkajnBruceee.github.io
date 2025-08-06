@@ -232,13 +232,13 @@ document.addEventListener("DOMContentLoaded", function () {
     $scrollDownEle && anzhiyu.addEventListenerPjax($scrollDownEle, "click", handleScrollToDest);
   };
 
-  /**
-   * 代码
-   * 只适用于Hexo默认的代码渲染
-   */
-  const addHighlightTool = function () {
+// 将 addHighlightTool 函数移到全局作用域
+window.addHighlightTool = function () {
     const highLight = GLOBAL_CONFIG.highlight;
-    if (!highLight) return;
+    if (!highLight) {
+      console.log('No highlight config found');
+      return;
+    }
 
     const { highlightCopy, highlightLang, highlightHeightLimit, plugin } = highLight;
     const isHighlightShrink = GLOBAL_CONFIG_SITE.isHighlightShrink;
@@ -248,13 +248,20 @@ document.addEventListener("DOMContentLoaded", function () {
         ? document.querySelectorAll("figure.highlight")
         : document.querySelectorAll('pre[class*="language-"]');
 
-    if (!((isShowTool || highlightHeightLimit) && $figureHighlight.length)) return;
+    console.log('Highlight config:', { highlightCopy, highlightLang, isHighlightShrink, plugin });
+    console.log('isShowTool:', isShowTool);
+    console.log('Found code blocks:', $figureHighlight.length);
+
+    if (!((isShowTool || highlightHeightLimit) && $figureHighlight.length)) {
+      console.log('Exiting addHighlightTool: conditions not met');
+      return;
+    }
 
     const isPrismjs = plugin === "prismjs";
     const highlightShrinkClass = isHighlightShrink === true ? "closed" : "";
     const highlightShrinkEle =
       isHighlightShrink !== undefined
-        ? '<i class="anzhiyufont anzhiyu-icon-angle-down expand ${highlightShrinkClass}"></i>'
+        ? `<i class="anzhiyufont anzhiyu-icon-angle-down expand ${highlightShrinkClass}"></i>`
         : "";
     const highlightCopyEle = highlightCopy
       ? '<div class="copy-notice"></div><i class="anzhiyufont anzhiyu-icon-paste copy-button"></i>'
@@ -362,7 +369,9 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
   };
-});
+  
+  // 初始化代码块工具
+  window.addHighlightTool();
 
   /**
    * PhotoFigcaption
@@ -1377,4 +1386,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // 初始化TOC激活功能
   scrollFnToDo();
+
+  // 定义刷新函数，用于pjax导航后重新初始化
+  window.refreshFn = function() {
+    console.log('refreshFn called');
+    // 重新初始化代码块工具
+    window.addHighlightTool();
+    // 重新初始化TOC激活功能
+    scrollFnToDo();
+  };
+});
 

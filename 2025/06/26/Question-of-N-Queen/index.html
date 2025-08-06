@@ -58,7 +58,7 @@
   pageFillDescription: 'N皇后问题皇后问题皇后问题是指在的棋盘上要摆个皇后要求任何两个皇后不同行不同列也不在同一条斜线上给定一个整数返回皇后的摆法有多少种表示行的皇后放在了第列这样可以省去了用二维数组来表示目前来到了第行总共有行表示之前的行放了皇后潜台词前行任何两个皇后都不共行列斜线返回值代表百万所有的皇后合法的摆法共有多少种来到终止行当前行在行但要尝试行所有的列当前行的皇后放在列会不会和之前的皇后共行共列共斜线如果是认为无效如果不是认为有效共列共斜线',
   isPost: true,
   isHome: false,
-  isHighlightShrink: false,
+  isHighlightShrink: true,
   isToc: true,
   postUpdate: '2025-08-06 22:47:15',
   postMainColor: '',
@@ -312,10 +312,10 @@ queueMicrotask(() => {
   const loadWaline = async () => {
     if (initFn) initWaline(initFn)
     else {
-      await getCSS('https://cdn.cbd.int/@waline/client@3.1.3/dist/waline.css')
-      if (true) await getCSS('https://cdn.cbd.int/@waline/client@3.1.3/dist/waline-meta.css')
+      await getCSS('https://unpkg.com/@waline/client@v2/dist/waline.css')
+      if (true) await getCSS('https://unpkg.com/@waline/client@v2/dist/waline-meta.css')
       try {
-        const { init } = await import('https://cdn.cbd.int/@waline/client@3.1.3/dist/waline.js')
+        const { init } = await import('https://unpkg.com/@waline/client@v2/dist/waline.mjs')
         initFn = init || (typeof Waline !== 'undefined' && Waline.init)
         initWaline(initFn)
         window.walineFn = initFn
