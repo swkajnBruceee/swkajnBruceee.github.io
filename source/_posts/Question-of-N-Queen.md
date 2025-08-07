@@ -1,9 +1,12 @@
 ---
 title: Question of N Queen
 date: 2025-06-26 11:59:32
+location: 北京
 tags: 
   - algorithm
   - backtracking
+cover: /img/covers/n-queen-problem.svg
+ai: false
 ---
 
 # N皇后问题

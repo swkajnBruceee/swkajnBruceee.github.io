@@ -1,0 +1,15 @@
+{
+  "name": "waline-vercel",
+  "version": "1.0.0",
+  "description": "Waline comment system for Vercel",
+  "main": "api/index.js",
+  "scripts": {
+    "build": "echo 'Build complete'"
+  },
+  "dependencies": {
+    "@waline/vercel": "1.17.0"
+  },
+  "engines": {
+    "node": "22.x"
+  }
+}

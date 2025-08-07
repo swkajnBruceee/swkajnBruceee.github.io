@@ -2,6 +2,7 @@
 title: {{ title }}
 date: {{ date }}
 updated: {{ date }}
+location: 北京
 tags:
 categories:
 description: 

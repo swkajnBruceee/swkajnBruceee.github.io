@@ -33,7 +33,11 @@
       console.log('🌙 夜间模式按钮被点击');
       
       // 方法1：使用主题的darkmode函数
-      if (typeof btf !== 'undefined' && typeof btf.darkmode === 'function') {
+      if (typeof anzhiyu !== 'undefined' && typeof anzhiyu.darkmode === 'function') {
+        console.log('使用anzhiyu.darkmode函数');
+        anzhiyu.darkmode();
+        return;
+      } else if (typeof btf !== 'undefined' && typeof btf.darkmode === 'function') {
         console.log('使用btf.darkmode函数');
         btf.darkmode();
         return;
@@ -49,7 +53,9 @@
       
       // 保存到本地存储
       try {
-        if (typeof btf !== 'undefined' && btf.saveToLocal) {
+        if (typeof anzhiyu !== 'undefined' && anzhiyu.saveToLocal) {
+          anzhiyu.saveToLocal.set('theme', newTheme, 2);
+        } else if (typeof btf !== 'undefined' && btf.saveToLocal) {
           btf.saveToLocal.set('theme', newTheme, 2);
         } else {
           localStorage.setItem('theme', newTheme);
@@ -68,7 +74,10 @@
       console.log(`✅ 主题已切换为: ${newTheme}`);
       
       // 显示切换提示（如果有Snackbar）
-      if (typeof btf !== 'undefined' && btf.snackbarShow) {
+      if (typeof anzhiyu !== 'undefined' && anzhiyu.snackbarShow) {
+        const message = newTheme === 'dark' ? '已切换到夜间模式' : '已切换到日间模式';
+        anzhiyu.snackbarShow(message);
+      } else if (typeof btf !== 'undefined' && btf.snackbarShow) {
         const message = newTheme === 'dark' ? '已切换到夜间模式' : '已切换到日间模式';
         btf.snackbarShow(message);
       }

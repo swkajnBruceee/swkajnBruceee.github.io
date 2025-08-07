@@ -1,17 +1,19 @@
 ---
 title: Hexo博客搭建踩坑记
 date: 2025-06-26 13:42:00
+location: 北京
 tags: 
   - Hexo
   - GitHub Pages
   - 博客搭建
 categories: 技术笔记
-cover: https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80
+cover: /img/covers/hexo-setup-guide.svg
+ai: false
 ---
 
 # 🚀 Hexo博客搭建踩坑记
 
-## 🧩 问题一：YAML 配置的"变形记"
+# 🧩 问题一：YAML 配置的"变形记"
 **问题**  
 配置 `_config.yml` 时，发现实际语法与文档不一致，特别是缩进规则。
 
@@ -21,7 +23,7 @@ cover: https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&
    - 键值对格式 `key: value`
 
 
-## 🦋 问题二：Butterfly 主题的"华丽转身"
+# 🦋 问题二：Butterfly 主题的"华丽转身"
 **问题**  
 主题仓库结构变更，导致配置失效。
 
@@ -35,7 +37,7 @@ cover: https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&
        Home: / || fas fa-home
    ```
 
-## 🔌 问题三：4000 端口的"神秘占用"
+# 🔌 问题三：4000 端口的"神秘占用"
 **问题**  
 启动时报错：
 ```bash
@@ -57,7 +59,7 @@ FATAL Port 4000 has been used.
      port: 4001
    ```
 
-## 💡 实用技巧
+# 💡 实用技巧
 1. **分支管理**：
     >由于我之前已经搭建过一个博客，而且部署在master分支里，恰巧GitHub在调用.io域名时，自动调用master分支的内容，而我新搭建的博客是在main分支，所以我需要更改github的配置要求，才能让我的新博客正常显示
     >1. 登录GitHub仓库，点击"Settings"。

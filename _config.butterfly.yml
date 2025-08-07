@@ -1,26 +1,13 @@
-# --------------------------------------
-# Hexo Butterfly Theme Configuration
-# 推荐的主题配置方式：在根目录创建 _config.butterfly.yml
-# 这个文件会覆盖 themes/Butterfly/_config.yml 中的配置
-# --------------------------------------
-
-# 语言设置
 language: zh-CN
-
-# 导航栏设置
 nav:
-  logo:
+  logo: null
   display_title: true
   fixed: true
-
-# 菜单设置
 menu:
   文章: /archives/ || fas fa-book
   友链: /link/ || fas fa-link
   我的: /categories/ || fas fa-folder
   关于: /about/ || fas fa-user
-
-# 代码块设置
 code_blocks:
   theme: light
   macStyle: false
@@ -30,41 +17,32 @@ code_blocks:
   language: true
   shrink: false
   fullpage: false
-
-# 社交链接
 social:
   fab fa-github: https://github.com/swkajnBruceee || Github || '#24292e'
   fas fa-envelope: mailto:your-email@example.com || Email || '#4a7dbe'
   fab fa-twitter: https://twitter.com/ || Twitter || '#00acee'
   fab fa-telegram: https://t.me/ || Telegram || '#0088cc'
-
-# 头像设置
 avatar:
   img: /img/butterfly-icon.png
   effect: false
-
-# 网站图标
 favicon: /img/favicon.png
-
-# 顶部图片设置
 disable_top_img: false
-default_top_img: https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80
-index_img: https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80
-archive_img: https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80
-tag_img: https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80
-category_img: https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80
-
-# 背景设置
-background:
-
-# 封面设置
+default_top_img: >-
+  https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80
+index_img: >-
+  https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80
+archive_img: >-
+  https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80
+tag_img: >-
+  https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80
+category_img: >-
+  https://images.unsplash.com/photo-1516339901601-2e1b62dc0c45?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80
+background: null
 cover:
   index_enable: true
   aside_enable: true
   archives_enable: true
-  default_cover:
-
-# 文章元信息显示
+  default_cover: null
 post_meta:
   page:
     date_type: created
@@ -79,8 +57,6 @@ post_meta:
     categories: true
     tags: true
     label: true
-
-# 首页副标题
 subtitle:
   enable: true
   effect: true
@@ -91,39 +67,30 @@ subtitle:
   loopCount: Infinity
   showCursor: true
   sub:
-    - "With each passing breeze, we exchange gentle greetings"
-    - "每一阵微风，都是温柔的问候"
-    - "Code is poetry, technology is art"
-    - "用代码书写诗意，用技术创造艺术"
-
-# 页脚设置
+    - With each passing breeze, we exchange gentle greetings
+    - 每一阵微风，都是温柔的问候
+    - Code is poetry, technology is art
+    - 用代码书写诗意，用技术创造艺术
 footer:
   owner:
     enable: true
     since: 2024
-  custom_text:
+  custom_text: null
   copyright: true
-
-# 预加载动画设置（巫师加载动画）
 preloader:
   enable: true
   load_color: '#2d3748'
   load_style: wizard
   source: 1
-
-# 搜索功能
 search:
   use: local_search
-  
 local_search:
   enable: true
   preload: true
   top_n_per_article: 3
   unescape: false
   load_data_file: /searchdb.json
-  CDN:
-
-# 数学公式支持
+  CDN: null
 math:
   mathjax:
     enable: true
@@ -131,82 +98,86 @@ math:
   katex:
     enable: false
     per_page: false
-
-# 图片懒加载
 lazyload:
   enable: true
   field: site
-  placeholder: data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkxvYWRpbmcuLi48L3RleHQ+PC9zdmc+
+  placeholder: >-
+    data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjBmMGYwIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkxvYWRpbmcuLi48L3RleHQ+PC9zdmc+
   blur: true
-
-# 评论系统 (Waline)
 comments:
   use: waline
   text: true
-  lazyload: true
+  lazyload: false
   count: true
   card_post_count: true
-
-# Waline 评论配置
 waline:
-  serverURL: https://waline.vercel.app # 临时使用官方演示服务器，建议部署自己的
+  serverURL: https://myblogwalinecomments.vercel.app/
   lang: zh-CN
-  locale:
-    placeholder: '请留下你的足迹 ~~'  # 评论框占位提示文字
-    sofa: '快来成为第一个评论的人吧 ~'  # 暂无评论时的提示
-  emoji:
-    - https://unpkg.com/@waline/emojis@1.1.0/weibo
-    - https://unpkg.com/@waline/emojis@1.1.0/alus
-    - https://unpkg.com/@waline/emojis@1.1.0/bilibili
-  meta: ['nick', 'mail', 'link']  # 评论者信息字段
-  requiredMeta: ['nick']  # 必填字段
-  login: 'enable'  # 登录模式：enable-启用，disable-禁用，force-强制
-  avatar: 'monsterid'  # 头像类型
-  avatarCDN: 'https://sdn.geekzu.org/avatar/'  # 头像CDN
-  avatarForce: false
-  highlight: true  # 代码高亮
-  mathTagSupport: true  # 数学公式支持
-  pageSize: 10  # 评论列表分页，每页条数
-  wordLimit: 0  # 评论字数限制，0为无限制
-  pageview: true  # 文章访问量统计
-  comment: true  # 文章评论数统计
-
-# 分享功能
+  visitor: true
+  pageview: false
+  option:
+    emoji:
+      - https://unpkg.com/@waline/emojis@1.2.0/weibo
+      - https://unpkg.com/@waline/emojis@1.2.0/alus
+      - https://unpkg.com/@waline/emojis@1.2.0/bilibili
+      - https://unpkg.com/@waline/emojis@1.2.0/tieba
+    meta:
+      - nick
+      - mail
+      - link
+    requiredMeta:
+      - nick
+    wordLimit: 0
+    pageSize: 10
+    avatar: wavatar
+    avatarCDN: https://gravatar.loli.net/avatar/
+    avatarForce: true
+    highlight: true
+    mathTagSupport: false
+    copyRight: true
+    search: true
+    reaction: true
+    recaptchaV3Key: ''
+giscus:
+  repo: swkajnBruceee/swkajnBruceee.github.io
+  repo_id: R_kgDOM4d3kA
+  category_id: DIC_kwDOM4d3kM4Ci4EW
+  light_theme: light
+  dark_theme: preferred_color_scheme
+  js: https://giscus.app/client.js
+  option:
+    data-mapping: pathname
+    data-strict: 0
+    data-reactions-enabled: 1
+    data-emit-metadata: 1
+    data-input-position: bottom
+    data-lang: zh-CN
+    data-category: General
+    data-loading: lazy
+    data-theme: preferred_color_scheme
 share:
   enable: true
   sites: facebook,twitter,wechat,weibo,qq
-
-# 网站统计
 busuanzi:
   site_uv: true
   site_pv: true
   page_pv: true
-
-# 阅读模式
 readmode: true
-
-# 夜间模式
 darkmode:
   enable: true
   button: true
   autoChangeMode: false
-
-# 右下角按钮
 rightside:
   enable: true
   hide_rightside: false
   show_percent: true
   readmode: true
-
-# 文章版权
 post_copyright:
   enable: true
   decode: false
-  author_href:
+  author_href: null
   license: CC BY-NC-SA 4.0
   license_url: https://creativecommons.org/licenses/by-nc-sa/4.0/
-
-# TOC 目录
 toc:
   post: true
   page: false
@@ -214,14 +185,10 @@ toc:
   expand: false
   style_simple: false
   scroll_percent: true
-
-# 相关文章推荐
 related_post:
   enable: true
   limit: 6
   date_type: created
-
-# 文章过期提醒
 noticeOutdate:
   enable: true
   style: flat
@@ -229,54 +196,36 @@ noticeOutdate:
   position: top
   message_prev: 本文最后更新于
   message_next: 天前，内容可能已经过时。
-
-# 字数统计
 wordcount:
   enable: true
   post_wordcount: true
   min2read: true
   total_wordcount: true
-
-# 图片放大功能
 medium_zoom: true
 fancybox: false
-
-# 页面美化
 beautify:
   enable: true
   field: post
-  title-prefix-icon: '\f0c1'
+  title-prefix-icon: \f0c1
   title-prefix-icon-color: '#F47466'
-
-# 页面加载进度条（与preloader冲突，暂时禁用）
 pace:
   enable: false
   color: blue
   theme: minimal
-
-# 背景特效（桌面端启用，移动端禁用以优化性能）
 canvas_fluttering_ribbon:
   enable: true
   mobile: false
-
-# 鼠标点击效果
 fireworks:
   enable: false
   zIndex: 9999
   mobile: false
-
-# 页面标题动态效果
 title:
   enable: true
   blur: 哎呀！页面崩溃了！
   focus: ヾ(≧∇≦*)ゝ嗨！欢迎回来！
-
-# 运行时间
 runtimeshow:
   enable: true
   publish_date: 6/25/2025 00:00:00
-
-# 侧边栏设置
 aside:
   enable: true
   hide: false
@@ -288,16 +237,17 @@ aside:
     tag: true
     category: true
   card_author:
-    enable: false  # 禁用作者卡片
+    enable: false
   card_custom_profile:
     enable: true
-    badge_text: '🎓 大学生知识博客'
-    name: 'BruceLee'
-    description: '生活明朗，万物可爱'
-    avatar: '/img/photo.jpg'
-    avatar_badge: '🐶'
-    hover_text: '这里分享计算机科学、算法学习、编程技巧和学术研究心得。涵盖数据结构、Web开发、机器学习等领域的学习笔记和实践经验。希望能与同样热爱学习的朋友们一起进步，共同探索技术的无限可能。'
-    github: 'https://github.com/swkajnBruceee'
+    badge_text: 🎓 大学生知识博客
+    name: BruceLee
+    description: 生活明朗，万物可爱
+    avatar: /img/photo.jpg
+    avatar_badge: 🐶
+    hover_text: >-
+      这里分享计算机科学、算法学习、编程技巧和学术研究心得。涵盖数据结构、Web开发、机器学习等领域的学习笔记和实践经验。希望能与同样热爱学习的朋友们一起进步，共同探索技术的无限可能。
+    github: https://github.com/swkajnBruceee
     discord: '#'
   card_announcement:
     enable: true
@@ -326,31 +276,35 @@ aside:
     enable: true
     post_count: true
     last_push_date: true
-
-# 字体设置
 font:
   enable: true
-  font_family: '"Noto Sans SC", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Lato, Roboto, "PingFang SC", "Microsoft JhengHei", "Microsoft YaHei", sans-serif'
+  font_family: >-
+    "Noto Sans SC", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica
+    Neue", Lato, Roboto, "PingFang SC", "Microsoft JhengHei", "Microsoft YaHei",
+    sans-serif
   code_font_family: '"JetBrains Mono", Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace'
-
-# 自定义CSS和JS
 inject:
   head:
     - <link rel="stylesheet" href="/css/custom.css">
+    - <link rel="stylesheet" href="/css/waline-custom.css">
+    - <link rel="stylesheet" href="/css/waline-alignment-fix.css">
+    - <link rel="stylesheet" href="/css/owo-enhanced.css">
+    - <link rel="stylesheet" href="/css/waline-emoji-button.css">
     - <link rel="preconnect" href="https://fonts.googleapis.com">
     - <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    - <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    - >-
+      <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@300;400;500;700&display=swap"
+      rel="stylesheet">
   bottom:
     - <script src="/js/loading-fix.js"></script>
     - <script src="/js/darkmode-fix.js"></script>
     - <script src="/js/nav-search.js"></script>
     - <script src="/js/search-enhance.js"></script>
     - <script src="/js/ai-summary.js"></script>
-
-# 网站验证
-site_verification:
-
-# Open Graph meta
+    - <script src="/js/waline-alignment-fix.js"></script>
+    - <script src="/js/waline-emoji-simple.js"></script>
+site_verification: null
 Open_Graph_meta:
   enable: true
-  option:
+  option: null
