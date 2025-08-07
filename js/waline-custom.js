@@ -89,14 +89,14 @@ function addEditorInfoTip(editor) {
   // 创建提示气泡元素
   var infoTip = document.createElement('div');
   infoTip.className = 'wl-editor-info';
-  infoTip.textContent = '输入评论内容...';
+  infoTip.textContent = '支持Markdown格式~';
   editorWrapper.style.position = 'relative';
   editorWrapper.appendChild(infoTip);
   
   // 编辑器获得焦点时显示气泡
   editor.addEventListener('focus', function() {
     infoTip.classList.add('active');
-    infoTip.textContent = '支持Markdown格式~';
+    infoTip.textContent = '昵称输入QQ号自动获取头像~';
   });
   
   // 编辑器失去焦点时隐藏气泡
@@ -109,7 +109,7 @@ function addEditorInfoTip(editor) {
     if (editor.value.length > 0) {
       infoTip.textContent = '写得不错，继续加油！';
     } else {
-      infoTip.textContent = '支持Markdown格式~';
+      infoTip.textContent = '昵称输入QQ号自动获取头像~';
     }
   });
 }
