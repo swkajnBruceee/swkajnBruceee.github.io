@@ -117,6 +117,7 @@ waline:
   pageview: false
   option:
     emoji:
+      - https://cdn.jsdelivr.net/npm/sticker-heo@2022.7.5/Sticker-100/
       - https://unpkg.com/@waline/emojis@1.2.0/weibo
       - https://unpkg.com/@waline/emojis@1.2.0/alus
       - https://unpkg.com/@waline/emojis@1.2.0/bilibili

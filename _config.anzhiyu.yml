@@ -1,24 +1,18 @@
 menu:
-  # 文章:
-  #   隧道: /archives/ || anzhiyu-icon-box-archive
-  #   分类: /categories/ || anzhiyu-icon-shapes
-  #   标签: /tags/ || anzhiyu-icon-tags
+  文章:
+    隧道: /archives/ || anzhiyu-icon-box-archive
+    分类: /categories/ || anzhiyu-icon-shapes
+    标签: /tags/ || anzhiyu-icon-tags
 
-  # 友链:
-  #   友人帐: /link/ || anzhiyu-icon-link
-  #   朋友圈: /fcircle/ || anzhiyu-icon-artstation
-  #   留言板: /comments/ || anzhiyu-icon-envelope
+  大学:
+    学习笔记: /categories/技术笔记/ || anzhiyu-icon-book
+    算法题解: /tags/algorithm/ || anzhiyu-icon-code
+    技术分享: /categories/技术分享/ || anzhiyu-icon-share
 
-  # 我的:
-  #   音乐馆: /music/ || anzhiyu-icon-music
-  #   追番页: /bangumis/ || anzhiyu-icon-bilibili
-  #   相册集: /album/ || anzhiyu-icon-images
-  #   小空调: /air-conditioner/ || anzhiyu-icon-fan
-
-  # 关于:
-  #   关于本人: /about/ || anzhiyu-icon-paper-plane
-  #   闲言碎语: /essay/ || anzhiyu-icon-lightbulb
-  #   随便逛逛: javascript:toRandomPost() || anzhiyu-icon-shoe-prints1
+  生活:
+    关于本人: /about/ || anzhiyu-icon-paper-plane
+    友人帐: /link/ || anzhiyu-icon-link
+    随便逛逛: javascript:toRandomPost() || anzhiyu-icon-shoe-prints1
 
 # nav相关配置
 nav:
@@ -367,6 +361,7 @@ waline:
       mail: 邮箱
       link: 网址
     emoji:
+      - https://cdn.jsdelivr.net/npm/sticker-heo@2022.7.5/Sticker-100/
       - https://unpkg.com/@waline/emojis@1.2.0/weibo
       - https://unpkg.com/@waline/emojis@1.2.0/alus  
       - https://unpkg.com/@waline/emojis@1.2.0/bilibili
@@ -1279,6 +1274,7 @@ inject:
     # 自定义css
     - <link rel="stylesheet" href="/css/waline-anzhiyu.css" media="defer" onload="this.media='all'">
     - <link rel="stylesheet" href="/css/card_custom_profile.css" media="defer" onload="this.media='all'">
+    - <link rel="stylesheet" href="/css/owo-enhanced.css" media="defer" onload="this.media='all'">
 
   bottom:
     # 自定义js
