@@ -1,0 +1,139 @@
+/* OwO 表情系统增强样式 */
+/* 专门为 Sticker-Heo 表情包优化 */
+
+/* OwO 表情项基础样式 */
+.OwO .OwO-body .OwO-items .OwO-item {
+  width: 2.5rem !important;
+  height: 2.5rem !important;
+  margin: 0.25rem !important;
+  padding: 0.2rem !important;
+  border-radius: 8px !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: transparent !important;
+}
+
+/* OwO 表情项中的图片 */
+.OwO .OwO-body .OwO-items .OwO-item img {
+  width: 2rem !important;
+  height: 2rem !important;
+  object-fit: contain !important;
+  border-radius: 4px !important;
+  transition: transform 0.2s ease !important;
+}
+
+/* OwO 表情项悬停效果 */
+.OwO .OwO-body .OwO-items .OwO-item:hover {
+  background-color: rgba(73, 177, 245, 0.1) !important;
+  transform: scale(1.05) !important;
+}
+
+.OwO .OwO-body .OwO-items .OwO-item:hover img {
+  transform: scale(1.1) !important;
+}
+
+/* OwO 表情项激活效果 */
+.OwO .OwO-body .OwO-items .OwO-item:active {
+  transform: scale(0.95) !important;
+  background-color: rgba(73, 177, 245, 0.2) !important;
+}
+
+/* OwO 表情容器网格布局优化 */
+.OwO .OwO-body .OwO-items {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fill, minmax(2.5rem, 1fr)) !important;
+  gap: 0.25rem !important;
+  padding: 0.5rem !important;
+  max-height: 200px !important;
+  overflow-y: auto !important;
+}
+
+/* 滚动条样式 */
+.OwO .OwO-body .OwO-items::-webkit-scrollbar {
+  width: 6px !important;
+}
+
+.OwO .OwO-body .OwO-items::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1) !important;
+  border-radius: 3px !important;
+}
+
+.OwO .OwO-body .OwO-items::-webkit-scrollbar-thumb {
+  background: rgba(73, 177, 245, 0.6) !important;
+  border-radius: 3px !important;
+}
+
+.OwO .OwO-body .OwO-items::-webkit-scrollbar-thumb:hover {
+  background: rgba(73, 177, 245, 0.8) !important;
+}
+
+/* 深色主题适配 */
+[data-theme="dark"] .OwO .OwO-body .OwO-items .OwO-item:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-theme="dark"] .OwO .OwO-body .OwO-items .OwO-item:active {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+[data-theme="dark"] .OwO .OwO-body .OwO-items::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-theme="dark"] .OwO .OwO-body .OwO-items::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3) !important;
+}
+
+[data-theme="dark"] .OwO .OwO-body .OwO-items::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .OwO .OwO-body {
+    min-width: 20rem !important;
+  }
+  
+  .OwO .OwO-body .OwO-items {
+    grid-template-columns: repeat(auto-fill, minmax(2rem, 1fr)) !important;
+  }
+  
+  .OwO .OwO-body .OwO-items .OwO-item {
+    width: 2rem !important;
+    height: 2rem !important;
+  }
+  
+  .OwO .OwO-body .OwO-items .OwO-item img {
+    width: 1.5rem !important;
+    height: 1.5rem !important;
+  }
+}
+
+/* 确保表情在评论内容中的显示大小 */
+.wl-content img[src*="sticker-heo"],
+.wl-content img[src*="Sticker-100"] {
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  display: inline !important;
+  vertical-align: middle !important;
+  margin: 0 0.2rem !important;
+}
+
+/* 表情加载动画 */
+@keyframes owo-emoji-load {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.OwO .OwO-body .OwO-items .OwO-item img {
+  animation: owo-emoji-load 0.3s ease-out !important;
+}
