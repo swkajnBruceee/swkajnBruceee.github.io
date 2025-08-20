@@ -3012,6 +3012,14 @@ img[data-lazy].loaded {
   color: #a0aec0;
 }
 
+/* 昵称输入框placeholder样式 */
+.waline-container input[name='nick']::placeholder {
+  color: #e2e8f0 !important;
+  font-weight: 300 !important;
+  opacity: 0.4;
+  text-align: center !important;
+}
+
 /* 评论列表 */
 .waline-container .wl-cards {
   margin-top: 2rem;
@@ -3234,6 +3242,14 @@ img[data-lazy].loaded {
 
 [data-theme="dark"] .waline-container .wl-header input::placeholder {
   color: #718096;
+}
+
+/* 夜间模式昵称输入框placeholder样式 */
+[data-theme="dark"] .waline-container input[name='nick']::placeholder {
+  color: #2d3748 !important;
+  font-weight: 300 !important;
+  opacity: 0.3;
+  text-align: center !important;
 }
 
 [data-theme="dark"] .waline-container .wl-card {
