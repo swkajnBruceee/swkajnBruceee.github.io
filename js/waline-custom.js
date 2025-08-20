@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (editor) {
       clearInterval(checkInterval);
       addEditorInfoTip(editor);
-      addNicknamePlaceholder();
       
       // 监听评论区变化，修复评论布局
       setupCommentLayoutObserver();
@@ -81,17 +80,6 @@ function fixCommentLayout() {
       action.style.order = '3';
     }
   });
-}
-
-// 为昵称输入框添加placeholder
-function addNicknamePlaceholder() {
-  var nicknameInput = document.querySelector("input[name='nick']");
-  if (nicknameInput) {
-    nicknameInput.placeholder = '输入QQ号自动获取头像';
-  } else {
-    // 如果还没有找到输入框，继续尝试
-    setTimeout(addNicknamePlaceholder, 200);
-  }
 }
 
 // 添加评论输入提示气泡
