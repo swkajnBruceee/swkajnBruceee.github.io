@@ -1,0 +1,211 @@
+/* 修复分类、标签、关于本人和友人帐页面的视觉效果问题 */
+
+/* 通用页面背景修复 */
+body[data-type="categories"] #page,
+body[data-type="tags"] #page,
+body[data-type="about"] #page,
+body[data-type="link"] #page {
+  background: var(--anzhiyu-card-bg) !important;
+  border: var(--style-border) !important;
+  box-shadow: var(--anzhiyu-shadow-border) !important;
+  border-radius: 12px !important;
+  padding: 2rem !important;
+  margin: 20px auto !important;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+/* 页面标题样式优化 */
+body[data-type="categories"] #page h1.page-title,
+body[data-type="tags"] #page h1.page-title,
+body[data-type="about"] #page h1.page-title,
+body[data-type="link"] #page h1.page-title {
+  color: var(--anzhiyu-fontcolor) !important;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+body[data-type="categories"] #page h1.page-title::after,
+body[data-type="tags"] #page h1.page-title::after,
+body[data-type="about"] #page h1.page-title::after,
+body[data-type="link"] #page h1.page-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--anzhiyu-theme), var(--anzhiyu-main));
+  border-radius: 2px;
+}
+
+/* 分类页面特定样式 */
+body[data-type="categories"] #page {
+  max-width: 1200px;
+}
+
+body[data-type="categories"] .category-lists .category-title {
+  color: var(--anzhiyu-fontcolor);
+}
+
+body[data-type="categories"] .category-list a {
+  color: var(--anzhiyu-fontcolor);
+}
+
+body[data-type="categories"] .category-list a:hover {
+  color: var(--anzhiyu-theme);
+}
+
+/* 标签页面特定样式 */
+body[data-type="tags"] #page {
+  max-width: 1200px;
+}
+
+body[data-type="tags"] .tag-cloud-title {
+  color: var(--anzhiyu-fontcolor);
+}
+
+body[data-type="tags"] .tag-cloud-list a {
+  color: var(--anzhiyu-fontcolor) !important;
+  background: var(--anzhiyu-card-bg);
+  border: var(--style-border);
+  border-radius: 20px;
+  padding: 6px 12px;
+  margin: 8px;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+body[data-type="tags"] .tag-cloud-list a:hover {
+  background: var(--anzhiyu-theme);
+  color: var(--anzhiyu-white) !important;
+  transform: translateY(-2px);
+  box-shadow: var(--anzhiyu-shadow-main);
+}
+
+/* 关于本人页面特定样式 */
+body[data-type="about"] #page {
+  max-width: 1200px;
+}
+
+/* 友人帐页面特定样式 */
+body[data-type="link"] #page {
+  max-width: 1200px;
+}
+
+/* 导航栏在各页面的显示优化 */
+#nav {
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 2px 16px -8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+[data-theme="dark"] #nav {
+  background: rgba(26, 32, 44, 0.9) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 2px 16px -8px rgba(0, 0, 0, 0.3);
+}
+
+/* 导航栏文字颜色优化 */
+#nav #blog_name a,
+#nav .menus_item a,
+#nav #nav-right .nav-button a,
+#nav #toggle-menu {
+  color: var(--anzhiyu-fontcolor) !important;
+  text-shadow: none !important;
+}
+
+#nav #blog_name a:hover,
+#nav .menus_item a:hover,
+#nav #nav-right .nav-button a:hover {
+  color: var(--anzhiyu-theme) !important;
+}
+
+/* 移动端适配 */
+@media screen and (max-width: 768px) {
+  body[data-type="categories"] #page,
+  body[data-type="tags"] #page,
+  body[data-type="about"] #page,
+  body[data-type="link"] #page {
+    padding: 1.5rem 1rem !important;
+    margin: 10px !important;
+    border-radius: 8px !important;
+  }
+  
+  body[data-type="categories"] #page h1.page-title,
+  body[data-type="tags"] #page h1.page-title,
+  body[data-type="about"] #page h1.page-title,
+  body[data-type="link"] #page h1.page-title {
+    font-size: 1.8rem;
+  }
+  
+  #nav {
+    padding: 0 16px !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+  }
+  
+  [data-theme="dark"] #nav {
+    background: rgba(26, 32, 44, 0.95) !important;
+  }
+}
+
+/* 平板适配 */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  body[data-type="categories"] #page,
+  body[data-type="tags"] #page,
+  body[data-type="about"] #page,
+  body[data-type="link"] #page {
+    margin: 15px auto !important;
+  }
+}
+
+/* 博客文章页面目录位置调整，避免与顶部导航栏重叠 */
+.post #aside-content .sticky_layout {
+  top: 80px !important;
+}
+
+/* 修复移动端目录位置 */
+@media screen and (max-width: 768px) {
+  .post #aside-content .sticky_layout {
+    top: 60px !important;
+  }
+}
+
+/* 统一顶部导航栏"中控台"图标的颜色 */
+#center-console + label i {
+  background: var(--anzhiyu-fontcolor) !important;
+}
+
+#center-console:checked + label i {
+  background: var(--anzhiyu-fontcolor) !important;
+}
+
+[data-theme="dark"] #center-console:checked + label:is(.widget, #center-console:checked + label .widget:hover) i {
+  background: var(--anzhiyu-fontcolor) !important;
+}
+
+/* 移动端"中控台"图标颜色修复 */
+@media screen and (max-width: 768px) {
+  #center-console + label i {
+    background: var(--anzhiyu-fontcolor) !important;
+  }
+}
+
+/* 调整目录模块和中控台的层级关系，确保中控台能完整显示 */
+#aside-content #card-toc {
+  z-index: 99 !important;
+}
+
+#console {
+  z-index: 101 !important;
+}
+
+#center-console + label {
+  z-index: 102 !important;
+}
