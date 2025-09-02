@@ -1386,6 +1386,8 @@ window.addHighlightTool = function () {
 
   // 初始化TOC激活功能
   scrollFnToDo();
+  GLOBAL_CONFIG.runtime && addRuntime();
+  addLastPushDate();
 
   // 定义刷新函数，用于pjax导航后重新初始化
   window.refreshFn = function() {
@@ -1394,6 +1396,8 @@ window.addHighlightTool = function () {
     window.addHighlightTool();
     // 重新初始化TOC激活功能
     scrollFnToDo();
+    GLOBAL_CONFIG.runtime && addRuntime();
+    addLastPushDate();
   };
 });
 
