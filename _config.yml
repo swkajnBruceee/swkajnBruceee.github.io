@@ -105,13 +105,6 @@ search:
   content: true
   format: html
 
-# Search Database
-searchdb:
-  path: searchdb.json
-  field: post
-  content: true
-  format: striptags
-
 # RSS 订阅
 feed:
   type: rss2

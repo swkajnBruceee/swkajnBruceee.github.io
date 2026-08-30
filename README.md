@@ -8,7 +8,8 @@
 npm install          # 安装依赖
 npm run server       # 本地预览 http://localhost:4000
 npm run clean        # 清理 public 和 Hexo 缓存
-npm run build        # 生成 public/
+npm run build        # 清理缓存并生成 public/
+npm run check:site   # 检查生成页面的内部链接和关键资源
 ```
 
 ## 项目结构

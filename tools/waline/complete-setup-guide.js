@@ -48,7 +48,7 @@ console.log('cd tools/waline/waline-vercel');
 console.log('vercel --prod');
 
 console.log('\n步骤3：测试和设置');
-console.log('1. 访问：https://waline-delta-red-82.vercel.app/ui');
+console.log('1. 访问：https://myblogwalinecomments.vercel.app/ui');
 console.log('2. 注册管理员账号');
 console.log('3. 测试评论功能');
 

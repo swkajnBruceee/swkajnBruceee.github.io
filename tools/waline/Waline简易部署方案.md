@@ -44,7 +44,7 @@
 
 ### 第三步：配置博客（3分钟）
 
-1. **更新Butterfly配置**
+1. **更新 AnZhiYu 配置**
    在 `_config.anzhiyu.yml` 中添加：
    ```yaml
    # 评论系统切换为Waline
@@ -72,7 +72,7 @@
 
 2. **重新部署博客**
    ```bash
-   hexo clean && hexo g && hexo d
+   npm run build && git push origin main
    ```
 
 ### 第四步：设置管理员（2分钟）

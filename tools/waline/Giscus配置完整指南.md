@@ -125,9 +125,8 @@ getGiscusIds();
 ### 1. 重新生成博客
 
 ```bash
-hexo clean
-hexo generate
-hexo deploy
+npm run build
+git push origin main
 ```
 
 ### 2. 测试评论功能

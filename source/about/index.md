@@ -54,7 +54,7 @@ top_img: https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4
 
 如果你对我的文章有任何疑问，或者想要交流技术话题，欢迎通过以下方式联系我：
 
-- 📧 **邮箱**：your-email@example.com
+- 📧 **邮箱**：暂不公开，欢迎通过 GitHub 联系
 - 🐙 **GitHub**：[swkajnBruceee](https://github.com/swkajnBruceee)
 - 💬 **微信**：请发邮件获取
 

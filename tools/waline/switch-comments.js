@@ -66,7 +66,7 @@ if (regex.test(config)) {
     
     console.log('');
     console.log('🔄 请运行以下命令重新部署：');
-    console.log('hexo clean && hexo g && hexo d');
+    console.log('npm run build && git push origin main');
     
 } else {
     console.error('❌ 未找到评论系统配置，请检查配置文件格式');

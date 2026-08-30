@@ -85,9 +85,8 @@
 
 2. **重新生成并部署博客**
    ```bash
-   hexo clean
-   hexo generate
-   hexo deploy
+   npm run build
+   git push origin main
    ```
 
 ## 🎨 自定义样式

@@ -137,7 +137,7 @@
 
 2. **重新生成博客**
    ```bash
-   hexo clean && hexo g && hexo d
+   npm run build && git push origin main
    ```
 
 ### 设置管理员账号
@@ -337,7 +337,7 @@ Railway 提供了资源使用监控功能：
 
 ### 2. 配置博客
 
-1. **更新 Butterfly 主题配置**
+1. **更新 AnZhiYu 主题配置**
    打开 `_config.anzhiyu.yml` 文件，更新以下内容：
 
    ```yaml
@@ -367,7 +367,7 @@ Railway 提供了资源使用监控功能：
 
 2. **重新生成并部署博客**
    ```bash
-   hexo clean && hexo g && hexo d
+   npm run build && git push origin main
    ```
 
 ### 3. 设置管理员账号

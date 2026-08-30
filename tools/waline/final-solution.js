@@ -14,18 +14,18 @@ console.log('3. ✅ 环境变量已正确设置');
 console.log('4. ✅ 代码已简化并修复');
 
 console.log('\n🔗 你的 Waline 服务地址：');
-console.log('主域名：https://waline-delta-red-82.vercel.app');
-console.log('管理界面：https://waline-delta-red-82.vercel.app/ui');
+console.log('主域名：https://myblogwalinecomments.vercel.app');
+console.log('管理界面：https://myblogwalinecomments.vercel.app/ui');
 
 console.log('\n📋 现在请按以下步骤测试：');
 
 console.log('\n步骤1：浏览器测试');
 console.log('1. 打开浏览器');
-console.log('2. 访问：https://waline-delta-red-82.vercel.app');
+console.log('2. 访问：https://myblogwalinecomments.vercel.app');
 console.log('3. 如果看到页面内容（不是 500 错误），说明服务正常');
 
 console.log('\n步骤2：管理界面测试');
-console.log('1. 访问：https://waline-delta-red-82.vercel.app/ui');
+console.log('1. 访问：https://myblogwalinecomments.vercel.app/ui');
 console.log('2. 如果看到登录界面，说明 Waline 正常工作');
 console.log('3. 注册一个管理员账号');
 

@@ -30,7 +30,7 @@ fs.writeFileSync(configFile, config);
     console.log(`🔗 新的 serverURL: https://${domain}/`);
     console.log('');
     console.log('下一步：');
-    console.log('1. hexo clean && hexo g && hexo d');
+    console.log('1. npm run build && git push origin main');
     console.log(`2. 访问 https://${domain}/ui 设置管理员`);
     
     rl.close();

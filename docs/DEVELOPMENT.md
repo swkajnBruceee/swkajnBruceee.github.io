@@ -20,6 +20,9 @@ npm run build
 # 或者
 hexo generate
 
+# 检查生成页面的内部链接和关键资源
+npm run check:site
+
 # 清理生成的文件和缓存
 npm run clean
 # 或者
