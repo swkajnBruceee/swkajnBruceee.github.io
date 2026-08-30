@@ -29,7 +29,7 @@ nav:
       item:
         - name: 安知鱼图床
           link: https://image.anheyu.com/
-          icon: https://image.anheyu.com/favicon.ico
+          icon: /img/siteicon/32.png
 
 # mourn （哀悼日，指定日期网站简单变灰，不包括滚动条）
 # 注意： 仅网站首页变灰，其他页面正常显示
