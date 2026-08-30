@@ -240,10 +240,10 @@ post_copyright:
 reward:
   enable: true
   QR_code:
-    - img: https://raw.githubusercontent.com/swkajnBruceee/swkajnBruceee.github.io/master/qr_wechatcode.png
+    - img: /img/qr_wechatcode.png
       link:
       text: 微信
-    - img: https://raw.githubusercontent.com/swkajnBruceee/swkajnBruceee.github.io/master/qr_alipaycode.png
+    - img: /img/qr_alipaycode.png
       link:
       text: 支付宝
 
