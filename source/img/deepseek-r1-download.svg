@@ -1,0 +1,107 @@
+<svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="terminalBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d1117;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#161b22;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="progressGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00d4aa;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00b4d8;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="500" fill="#f6f8fa"/>
+  
+  <!-- Terminal Window -->
+  <rect x="50" y="50" width="700" height="400" rx="10" fill="url(#terminalBg)" stroke="#30363d" stroke-width="2"/>
+  
+  <!-- Terminal Header -->
+  <rect x="50" y="50" width="700" height="35" rx="10" fill="#21262d"/>
+  <rect x="50" y="75" width="700" height="10" fill="#21262d"/>
+  
+  <!-- Window Controls -->
+  <circle cx="70" cy="67" r="6" fill="#ff5f56"/>
+  <circle cx="90" cy="67" r="6" fill="#ffbd2e"/>
+  <circle cx="110" cy="67" r="6" fill="#27ca3f"/>
+  
+  <!-- Terminal Title -->
+  <text x="400" y="72" text-anchor="middle" fill="#f0f6fc" font-family="SF Mono, Monaco, monospace" font-size="12" font-weight="500">Terminal - DeepSeek R1 Download</text>
+  
+  <!-- Terminal Content -->
+  <g font-family="SF Mono, Monaco, monospace" font-size="14">
+    <!-- Command -->
+    <text x="70" y="110" fill="#7c3aed" font-weight="bold">(base) root@ubuntu:~#</text>
+    <text x="250" y="110" fill="#f0f6fc">ollama run deepseek-r1:1.5b</text>
+    
+    <!-- Download Status -->
+    <text x="70" y="135" fill="#f0f6fc">pulling manifest</text>
+    <text x="70" y="155" fill="#f0f6fc">pulling manifest</text>
+    
+    <!-- File Downloads with Progress Bars -->
+    <text x="70" y="180" fill="#f0f6fc">pulling aabd4debf0c8...</text>
+    <text x="250" y="180" fill="#22c55e">100%</text>
+    <rect x="300" y="172" width="350" height="12" fill="#21262d" rx="6"/>
+    <rect x="300" y="172" width="350" height="12" fill="url(#progressGradient)" rx="6"/>
+    <text x="670" y="182" fill="#f0f6fc" font-size="12">1.1 GB</text>
+    
+    <text x="70" y="205" fill="#f0f6fc">pulling 369ca498f347...</text>
+    <text x="250" y="205" fill="#22c55e">100%</text>
+    <rect x="300" y="197" width="350" height="12" fill="#21262d" rx="6"/>
+    <rect x="300" y="197" width="280" height="12" fill="url(#progressGradient)" rx="6"/>
+    <text x="670" y="207" fill="#f0f6fc" font-size="12">387 B</text>
+    
+    <text x="70" y="230" fill="#f0f6fc">pulling 6e4c38e1172f...</text>
+    <text x="250" y="230" fill="#22c55e">100%</text>
+    <rect x="300" y="222" width="350" height="12" fill="#21262d" rx="6"/>
+    <rect x="300" y="222" width="350" height="12" fill="url(#progressGradient)" rx="6"/>
+    <text x="670" y="232" fill="#f0f6fc" font-size="12">1.1 KB</text>
+    
+    <text x="70" y="255" fill="#f0f6fc">pulling f4d24e9138dd...</text>
+    <text x="250" y="255" fill="#22c55e">100%</text>
+    <rect x="300" y="247" width="350" height="12" fill="#21262d" rx="6"/>
+    <rect x="300" y="247" width="105" height="12" fill="url(#progressGradient)" rx="6"/>
+    <text x="670" y="257" fill="#f0f6fc" font-size="12">148 B</text>
+    
+    <text x="70" y="280" fill="#f0f6fc">pulling a85fe2a2e58e...</text>
+    <text x="250" y="280" fill="#22c55e">100%</text>
+    <rect x="300" y="272" width="350" height="12" fill="#21262d" rx="6"/>
+    <rect x="300" y="272" width="175" height="12" fill="url(#progressGradient)" rx="6"/>
+    <text x="670" y="282" fill="#f0f6fc" font-size="12">487 B</text>
+    
+    <!-- Verification -->
+    <text x="70" y="305" fill="#22c55e">verifying sha256 digest</text>
+    <text x="70" y="325" fill="#22c55e">writing manifest</text>
+    <text x="70" y="345" fill="#22c55e">success</text>
+    
+    <!-- Chat Interface Start -->
+    <text x="70" y="370" fill="#06d6a0">&gt;&gt;&gt;</text>
+    <text x="100" y="370" fill="#f59e0b">你是谁？</text>
+    
+    <!-- AI Response Indicator -->
+    <rect x="70" y="380" width="600" height="20" fill="#1f2937" rx="10" opacity="0.5"/>
+    <text x="80" y="393" fill="#f0f6fc" font-size="12">&lt;/think&gt;</text>
+    
+    <!-- Cursor Animation -->
+    <rect x="150" y="385" width="2" height="12" fill="#00d4aa">
+      <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+  
+  <!-- Download Complete Indicator -->
+  <g transform="translate(650, 120)">
+    <circle cx="0" cy="0" r="20" fill="#22c55e" opacity="0.9"/>
+    <path d="M -8 -2 L -2 4 L 8 -6" stroke="#ffffff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  
+  <!-- Model Info Box -->
+  <rect x="500" y="150" width="180" height="80" rx="8" fill="#1f2937" stroke="#00d4aa" stroke-width="1" opacity="0.9"/>
+  <text x="510" y="170" fill="#00d4aa" font-family="Arial, sans-serif" font-size="12" font-weight="bold">DeepSeek-R1 1.5B</text>
+  <text x="510" y="185" fill="#f0f6fc" font-family="Arial, sans-serif" font-size="10">参数: 1.5B</text>
+  <text x="510" y="200" fill="#f0f6fc" font-family="Arial, sans-serif" font-size="10">大小: 1.1GB</text>
+  <text x="510" y="215" fill="#22c55e" font-family="Arial, sans-serif" font-size="10">状态: 已就绪</text>
+  
+  <!-- Status Badge -->
+  <rect x="550" y="100" width="100" height="25" rx="12" fill="#22c55e" opacity="0.9"/>
+  <text x="600" y="117" text-anchor="middle" fill="#ffffff" font-family="Arial, sans-serif" font-size="11" font-weight="bold">下载完成</text>
+</svg>

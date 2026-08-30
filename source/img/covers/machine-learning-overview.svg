@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="50%" stop-color="#1e3a8a"/>
+      <stop offset="100%" stop-color="#312e81"/>
+    </linearGradient>
+    <linearGradient id="grid-line" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.35)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg-gradient)"/>
+  <g opacity="0.35">
+    <path d="M150 520 Q300 300 450 360 T750 290 T1050 180" stroke="#38bdf8" stroke-width="4" fill="none"/>
+    <path d="M120 470 Q260 210 410 260 T710 210 T1020 120" stroke="#a855f7" stroke-width="3" fill="none"/>
+    <path d="M100 410 Q260 360 420 180 T780 250 T1080 260" stroke="#f97316" stroke-width="2" fill="none" stroke-dasharray="12 16"/>
+  </g>
+  <g opacity="0.12">
+    <rect x="0" y="0" width="1200" height="630" fill="url(#grid-line)"/>
+    <path d="M120 120 H1080" stroke="white" stroke-width="0.5"/>
+    <path d="M120 210 H1080" stroke="white" stroke-width="0.5"/>
+    <path d="M120 300 H1080" stroke="white" stroke-width="0.5"/>
+    <path d="M120 390 H1080" stroke="white" stroke-width="0.5"/>
+    <path d="M120 480 H1080" stroke="white" stroke-width="0.5"/>
+    <path d="M120 570 H1080" stroke="white" stroke-width="0.5"/>
+  </g>
+  <text x="120" y="220" fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif" font-weight="600" font-size="64">
+    MACHINE LEARNING NOTES
+  </text>
+  <text x="120" y="300" fill="#cbd5f5" font-family="Segoe UI, Arial, sans-serif" font-size="32" letter-spacing="4">
+    LOGISTIC REGRESSION · ACTIVATION · TRANSFER
+  </text>
+  <g font-family="Consolas, 'Courier New', monospace" font-size="24" fill="#e2e8f0">
+    <text x="120" y="380">∂J(θ) / ∂θ = 1/m Σ (hθ(x⁽ⁱ⁾) − y⁽ⁱ⁾) x⁽ⁱ⁾</text>
+    <text x="120" y="420">a = σ(Wx + b)     softmax(zₖ) = e^{zₖ} / Σ e^{zⱼ}</text>
+  </g>
+  <circle cx="1020" cy="180" r="48" fill="rgba(56,189,248,0.35)"/>
+  <circle cx="980" cy="150" r="24" fill="rgba(168,85,247,0.45)"/>
+  <circle cx="1080" cy="130" r="20" fill="rgba(249,115,22,0.45)"/>
+</svg>

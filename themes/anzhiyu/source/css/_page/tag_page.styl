@@ -1,0 +1,277 @@
+/* 标签页面现代化布局 */
+#page
+  background: var(--anzhiyu-bg)
+  min-height: 100vh
+  
+  /* 浅色主题背景 */
+  [data-theme="light"] &
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)
+    
+  /* 深色主题背景 */
+  [data-theme="dark"] &
+    background: linear-gradient(135deg, var(--anzhiyu-bg) 0%, var(--anzhiyu-secondbg) 100%)
+
+/* 页面标题样式 */
+.page-title
+  text-align: center
+  font-size: 2.5rem
+  font-weight: 800
+  background: linear-gradient(135deg, var(--anzhiyu-theme), var(--anzhiyu-main))
+  -webkit-background-clip: text
+  -webkit-text-fill-color: transparent
+  background-clip: text
+  margin-bottom: 2rem
+  position: relative
+  
+  &::after
+    content: ''
+    position: absolute
+    bottom: -10px
+    left: 50%
+    transform: translateX(-50%)
+    width: 60px
+    height: 4px
+    background: linear-gradient(90deg, var(--anzhiyu-theme), var(--anzhiyu-main))
+    border-radius: 2px
+    
+  +maxWidth768()
+    font-size: 2rem
+    margin-bottom: 1.5rem
+
+#tag #tag-page-tags 
+  display: grid
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))
+  gap: 1rem
+  padding: 2rem
+  max-width: 1200px
+  margin: 0 auto
+  background: transparent
+
+#tag #tag-page-tags a 
+  line-height: 1.6
+  display: flex
+  align-items: center
+  justify-content: space-between
+  color: var(--anzhiyu-fontcolor) !important
+  padding: 1rem 1.2rem
+  margin: 0
+  border-radius: 12px
+  border: 1px solid var(--anzhiyu-border-color)
+  background: var(--anzhiyu-card-bg)
+  backdrop-filter: blur(10px)
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1)
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08)
+  position: relative
+  overflow: hidden
+  
+  /* 确保在浅色主题下有足够对比度 */
+  [data-theme="light"] &
+    background: rgba(255, 255, 255, 0.9)
+    border: 1px solid rgba(0, 0, 0, 0.1)
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1)
+    
+  /* 确保在深色主题下有足够对比度 */
+  [data-theme="dark"] &
+    background: rgba(255, 255, 255, 0.05)
+    border: 1px solid rgba(255, 255, 255, 0.1)
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3)
+  
+  &::before
+    content: ''
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    height: 3px
+    background: linear-gradient(90deg, var(--anzhiyu-theme), var(--anzhiyu-main))
+    transform: scaleX(0)
+    transition: transform 0.3s ease
+    
+  &:hover::before
+    transform: scaleX(1)
+
+  &.selected 
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15)
+    color: var(--anzhiyu-white) !important
+    background: linear-gradient(135deg, var(--anzhiyu-theme), var(--anzhiyu-main))
+    border: var(--style-border-none)
+    transform: translateY(-2px)
+
+  &.select .tagsPageCount 
+    background: rgba(255, 255, 255, 0.2)
+    color: var(--anzhiyu-white)
+
+#post .tag_share .post-meta__box__tags span.tagsPageCount,
+#tag-page-tags .tagsPageCount 
+  padding: 6px 10px
+  background: var(--anzhiyu-theme)
+  border: none
+  min-width: 28px
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  border-radius: 20px
+  line-height: 1
+  text-align: center
+  font-size: 0.75rem
+  font-weight: 600
+  color: var(--anzhiyu-white)
+  margin-left: 8px
+  transition: all 0.3s ease
+
+#tag #tag-page-tags a:hover .tagsPageCount,
+#post .tag_share .post-meta__box__tags:hover span.tagsPageCount 
+  background: var(--anzhiyu-main)
+  color: var(--anzhiyu-white)
+  transform: scale(1.1)
+
+#tag #tag-page-tags a 
+  font-family: $font-family
+  font-size: 1rem
+  font-weight: 500
+
+#tag #tag-page-tags a:hover 
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15)
+  color: var(--anzhiyu-white) !important
+  background: linear-gradient(135deg, var(--anzhiyu-theme), var(--anzhiyu-main))
+  border: var(--style-border-none)
+  transform: translateY(-4px)
+
+span.tags-punctuation,
+span.categoryes-punctuation 
+  margin-right: 4px
+
+span.tags-punctuation .icon-biaoqian,
+span.categoryes-punctuation .icon-biaoqian 
+  font-size: 13px
+
+.tagsPageCount 
+  font-family: $font-family
+
+[data-theme="light"] #post .tag_share .post-meta__box__tags span.tagsPageCount 
+  background-color: transparent
+  color: white
+
+[data-theme="light"] #post .tag_share .post-meta__box__categoryes span.categoryesPageCount 
+  background-color: transparent
+  color: white
+
+#post .tag_share .post-meta__box__categoryes span.categoryesPageCount 
+  padding: 4px 6px
+  background: var(--anzhiyu-secondbg)
+  border: var(--style-border-always)
+  min-width: 22.5px
+  display: inline-block
+  border-radius: 4px
+  line-height: 0.6rem
+  text-align: center
+  font-size: 0.7rem
+  color: var(--anzhiyu-fontcolor)
+  margin-left: 4px
+
+.post-meta__box__categories 
+  border-radius: 12px
+
+/* 文章彩色标签 */
+/*文章随机彩色标签*/
+.post-meta__box a 
+  color: var(--anzhiyu-white)
+  border: none
+
+[data-theme="dark"] .post-meta__box a 
+  opacity: 0.5
+
+[data-theme="dark"] .post-reward .reward-button,
+[data-theme="dark"] .reward-link.mode 
+  opacity: 0.5
+
+.post-meta__box__tag-list a:nth-child(5n) 
+  background-color: #4a4a4a
+  color: #fff
+
+.post-meta__box__tag-list a:nth-child(5n + 1) 
+  background-color: #ff5e5c
+  color: #fff
+
+.post-meta__box__tag-list a:nth-child(5n + 2)
+  background-color: #ffbb50
+  color: #fff
+
+.post-meta__box__tag-list a:nth-child(5n + 3)
+  background-color: #1ac756
+  color: #fff
+
+.post-meta__box__tag-list a:nth-child(5n + 4)
+  background-color: #19b5fe
+  color: #fff
+
+.post-meta__box__tag-list a:hover
+  background-color: var(--anzhiyu-main)
+  color: #fff
+[data-theme="dark"] .post-meta__box__tag-list a:hover
+  color: #fff
+/* 文章分类颜色背景 */
+.post-meta__box__category-list a:nth-child(5n)
+  background-color: #4a4a4a
+  color: #fff
+
+.post-meta__box__category-list a:nth-child(5n + 1)
+  background-color: #1ac756
+  color: #fff
+
+.post-meta__box__category-list a:nth-child(5n + 2)
+  background-color: #ffbb50
+  color: #fff
+
+.post-meta__box__category-list a:nth-child(5n + 3)
+  background-color: #19b5fe
+  color: #fff
+
+.post-meta__box__category-list a:nth-child(5n + 4)
+  background-color: #ff5e5c
+  color: #fff
+
+
+
+/* 页面整体布局优化 */
+body[data-type="tags"],body[data-type="categories"]
+  #page
+    border-radius: 16px
+    background: var(--anzhiyu-card-bg)
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08)
+    margin: 2rem auto
+    max-width: 1400px
+    padding: 2rem
+    
+    +maxWidth768()
+      margin: 1rem
+      padding: 1.5rem
+      border-radius: 12px
+      
+      #tag
+        padding: 0
+        
+      .page-title 
+        margin: 0 0 1.5rem
+        font-size: 1.8rem
+        text-align: center
+        
+  +maxWidth768()
+    #body-wrap .layout
+      padding: 0 1rem 1rem
+      
+  /* 移动端标签布局 */
+  #tag #tag-page-tags
+    +maxWidth768()
+      grid-template-columns: 1fr
+      gap: 0.8rem
+      padding: 1rem 0
+      
+      a
+        font-size: 1rem
+        padding: 0.8rem 1rem
+        
+        .tagsPageCount
+          font-size: 0.7rem
+          padding: 4px 8px
+          min-width: 24px

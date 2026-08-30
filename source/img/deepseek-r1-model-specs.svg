@@ -1,0 +1,105 @@
+<svg width="900" height="500" viewBox="0 0 900 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="tableBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8fafc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e2e8f0;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="headerBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e293b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#334155;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="500" fill="#ffffff"/>
+  
+  <!-- Table Container -->
+  <rect x="50" y="50" width="800" height="400" rx="10" fill="url(#tableBg)" stroke="#cbd5e1" stroke-width="1"/>
+  
+  <!-- Header Row -->
+  <rect x="50" y="50" width="800" height="50" rx="10" fill="url(#headerBg)"/>
+  <rect x="50" y="90" width="800" height="10" fill="url(#headerBg)"/>
+  
+  <!-- Header Text -->
+  <text x="100" y="80" fill="#ffffff" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Model</text>
+  <text x="280" y="80" fill="#ffffff" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Parameters (B)</text>
+  <text x="420" y="80" fill="#ffffff" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Disk Space</text>
+  <text x="550" y="80" fill="#ffffff" font-family="Arial, sans-serif" font-size="14" font-weight="bold">RAM</text>
+  <text x="680" y="80" fill="#ffffff" font-family="Arial, sans-serif" font-size="14" font-weight="bold">Recommended GPU</text>
+  
+  <!-- Vertical Lines -->
+  <line x1="260" y1="50" x2="260" y2="450" stroke="#cbd5e1" stroke-width="1"/>
+  <line x1="400" y1="50" x2="400" y2="450" stroke="#cbd5e1" stroke-width="1"/>
+  <line x1="530" y1="50" x2="530" y2="450" stroke="#cbd5e1" stroke-width="1"/>
+  <line x1="660" y1="50" x2="660" y2="450" stroke="#cbd5e1" stroke-width="1"/>
+  
+  <!-- Row 1: DeepSeek-R1-Distill-Qwen-1.5B -->
+  <rect x="50" y="100" width="800" height="40" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="60" y="125" fill="#1e293b" font-family="Arial, sans-serif" font-size="12" font-weight="600">DeepSeek-R1-Distill-Qwen-1.5B</text>
+  <text x="300" y="125" fill="#1e293b" font-family="Arial, sans-serif" font-size="12">1.5B</text>
+  <text x="430" y="125" fill="#1e293b" font-family="Arial, sans-serif" font-size="12">1.1 GB</text>
+  <text x="560" y="125" fill="#1e293b" font-family="Arial, sans-serif" font-size="12">~3.5 GB</text>
+  <text x="670" y="115" fill="#1e293b" font-family="Arial, sans-serif" font-size="11">NVIDIA RTX 3060</text>
+  <text x="670" y="130" fill="#1e293b" font-family="Arial, sans-serif" font-size="11">12GB or higher</text>
+  
+  <!-- Row 2: DeepSeek-R1-Distill-Qwen-7B -->
+  <rect x="50" y="140" width="800" height="40" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="60" y="165" fill="#1e293b" font-family="Arial, sans-serif" font-size="12" font-weight="600">DeepSeek-R1-Distill-Qwen-7B</text>
+  <text x="300" y="165" fill="#1e293b" font-family="Arial, sans-serif" font-size="12">7B</text>
+  <text x="430" y="165" fill="#1e293b" font-family="Arial, sans-serif" font-size="12">4.7GB</text>
+  <text x="560" y="165" fill="#1e293b" font-family="Arial, sans-serif" font-size="12">~16 GB</text>
+  <text x="670" y="155" fill="#1e293b" font-family="Arial, sans-serif" font-size="11">NVIDIA RTX 4080</text>
+  <text x="670" y="170" fill="#1e293b" font-family="Arial, sans-serif" font-size="11">16GB or higher</text>
+  
+  <!-- Row 3: DeepSeek-R1-Distill-Llama-8B -->
+  <rect x="50" y="180" width="800" height="40" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="60" y="205" fill="#1e293b" font-family="Arial, sans-serif" font-size="12" font-weight="600">DeepSeek-R1-Distill-Llama-8B</text>
+  <text x="300" y="205" fill="#1e293b" font-family="Arial, sans-serif" font-size="12">8B</text>
+  <text x="430" y="205" fill="#1e293b" font-family="Arial, sans-serif" font-size="12">4.9GB</text>
+  <text x="560" y="205" fill="#1e293b" font-family="Arial, sans-serif" font-size="12">~18 GB</text>
+  <text x="670" y="195" fill="#1e293b" font-family="Arial, sans-serif" font-size="11">NVIDIA RTX 4080</text>
+  <text x="670" y="210" fill="#1e293b" font-family="Arial, sans-serif" font-size="11">16GB or higher</text>
+  
+  <!-- Row 4: DeepSeek-R1-Distill-Qwen-14B -->
+  <rect x="50" y="220" width="800" height="40" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="60" y="245" fill="#1e293b" font-family="Arial, sans-serif" font-size="12" font-weight="600">DeepSeek-R1-Distill-Qwen-14B</text>
+  <text x="300" y="245" fill="#1e293b" font-family="Arial, sans-serif" font-size="12">14B</text>
+  <text x="430" y="245" fill="#1e293b" font-family="Arial, sans-serif" font-size="12">9GB</text>
+  <text x="560" y="245" fill="#1e293b" font-family="Arial, sans-serif" font-size="12">~32 GB</text>
+  <text x="670" y="235" fill="#1e293b" font-family="Arial, sans-serif" font-size="11">Multi-GPU setup</text>
+  <text x="670" y="250" fill="#1e293b" font-family="Arial, sans-serif" font-size="11">(e.g., NVIDIA RTX 4090 x2)</text>
+  
+  <!-- Row 5: DeepSeek-R1-Distill-Qwen-32B -->
+  <rect x="50" y="260" width="800" height="40" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="60" y="285" fill="#1e293b" font-family="Arial, sans-serif" font-size="12" font-weight="600">DeepSeek-R1-Distill-Qwen-32B</text>
+  <text x="300" y="285" fill="#1e293b" font-family="Arial, sans-serif" font-size="12">32B</text>
+  <text x="430" y="285" fill="#1e293b" font-family="Arial, sans-serif" font-size="12">20GB</text>
+  <text x="560" y="285" fill="#1e293b" font-family="Arial, sans-serif" font-size="12">~74 GB</text>
+  <text x="670" y="275" fill="#1e293b" font-family="Arial, sans-serif" font-size="11">Multi-GPU setup</text>
+  <text x="670" y="290" fill="#1e293b" font-family="Arial, sans-serif" font-size="11">(e.g., NVIDIA RTX 4090 x4)</text>
+  
+  <!-- Row 6: DeepSeek-R1-Distill-Llama-70B -->
+  <rect x="50" y="300" width="800" height="40" fill="#ffffff" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="60" y="325" fill="#1e293b" font-family="Arial, sans-serif" font-size="12" font-weight="600">DeepSeek-R1-Distill-Llama-70B</text>
+  <text x="300" y="325" fill="#1e293b" font-family="Arial, sans-serif" font-size="12">70B</text>
+  <text x="430" y="325" fill="#1e293b" font-family="Arial, sans-serif" font-size="12">43GB</text>
+  <text x="560" y="325" fill="#1e293b" font-family="Arial, sans-serif" font-size="12">~161 GB</text>
+  <text x="670" y="315" fill="#1e293b" font-family="Arial, sans-serif" font-size="11">Multi-GPU setup</text>
+  <text x="670" y="330" fill="#1e293b" font-family="Arial, sans-serif" font-size="11">(e.g., NVIDIA A100 80GB x2)</text>
+  
+  <!-- Row 7: DeepSeek-R1 -->
+  <rect x="50" y="340" width="800" height="40" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="0.5"/>
+  <text x="60" y="365" fill="#1e293b" font-family="Arial, sans-serif" font-size="12" font-weight="600">DeepSeek-R1</text>
+  <text x="300" y="365" fill="#1e293b" font-family="Arial, sans-serif" font-size="12">671B</text>
+  <text x="430" y="365" fill="#1e293b" font-family="Arial, sans-serif" font-size="12">404GB</text>
+  <text x="560" y="365" fill="#1e293b" font-family="Arial, sans-serif" font-size="12">~1,342 GB</text>
+  <text x="670" y="355" fill="#1e293b" font-family="Arial, sans-serif" font-size="11">Multi-GPU setup</text>
+  <text x="670" y="370" fill="#1e293b" font-family="Arial, sans-serif" font-size="11">(e.g., NVIDIA A100 80GB x16)</text>
+  
+  <!-- Highlight RTX 4060 Compatible Row -->
+  <rect x="50" y="100" width="800" height="40" fill="none" stroke="#10b981" stroke-width="3" rx="5"/>
+  <text x="60" y="395" fill="#10b981" font-family="Arial, sans-serif" font-size="12" font-weight="bold">✓ RTX 4060 8GB 兼容模型</text>
+  
+  <!-- Title -->
+  <text x="450" y="30" text-anchor="middle" fill="#1e293b" font-family="Arial, sans-serif" font-size="18" font-weight="bold">DeepSeek R1 模型参数与硬件需求对比表</text>
+</svg>

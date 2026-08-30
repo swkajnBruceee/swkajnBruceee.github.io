@@ -1,0 +1,13 @@
+.DS_Store
+Thumbs.db
+db.json
+*.log
+node_modules/
+public/
+.deploy*/
+.vercel/
+.cache/
+.env
+.env.*
+!.env.example
+_multiconfig.yml

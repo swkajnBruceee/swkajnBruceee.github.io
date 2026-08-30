@@ -1,0 +1,40 @@
+{
+  "name": "Bruce's Blog",
+  "short_name": "Bruce's Blog",
+  "description": "分享计算机科学、算法、Linux、机器学习与编程实践。",
+  "lang": "zh-CN",
+  "start_url": "/",
+  "scope": "/",
+  "id": "/",
+  "display": "standalone",
+  "theme_color": "#f7f9fe",
+  "background_color": "#f7f9fe",
+  "icons": [
+    {
+      "src": "/img/siteicon/manifest-icon-192.maskable.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/img/siteicon/manifest-icon-512.maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "文章归档",
+      "short_name": "归档",
+      "url": "/archives/",
+      "icons": [{ "src": "/img/siteicon/32.png", "sizes": "32x32", "type": "image/png" }]
+    },
+    {
+      "name": "站内搜索",
+      "short_name": "搜索",
+      "url": "/#search",
+      "icons": [{ "src": "/img/siteicon/32.png", "sizes": "32x32", "type": "image/png" }]
+    }
+  ]
+}

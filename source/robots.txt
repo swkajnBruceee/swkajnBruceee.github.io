@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://swkajnbruceee.github.io/sitemap.xml

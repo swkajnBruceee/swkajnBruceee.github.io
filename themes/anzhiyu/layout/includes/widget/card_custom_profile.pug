@@ -1,0 +1,27 @@
+if theme.aside.card_custom_profile && theme.aside.card_custom_profile.enable
+  .card-widget.card-custom-profile
+    .custom-profile-card
+      .profile-badge
+        i.fas.fa-home
+        span= theme.aside.card_custom_profile.badge_text || '开发者小能手'
+      
+      .profile-avatar-container
+        .profile-avatar
+          img(src=url_for(theme.aside.card_custom_profile.avatar || theme.avatar.img) alt="avatar")
+          if theme.aside.card_custom_profile.avatar_badge
+            .avatar-badge= theme.aside.card_custom_profile.avatar_badge
+      
+      .profile-info
+        .profile-name= theme.aside.card_custom_profile.name || config.author
+        .profile-description= theme.aside.card_custom_profile.description || '生活明朗 万物可爱'
+      
+      .profile-hover-content
+        .hover-text= theme.aside.card_custom_profile.hover_text || '这有关于产品、设计、开发相关的问题和看法，还有文章翻译和分享。相信你可以在这里找到对你有用的知识和教程。'
+      
+      .profile-social
+        if theme.aside.card_custom_profile.github
+          a.social-btn(href=theme.aside.card_custom_profile.github target="_blank" rel="noopener")
+            i.fab.fa-github
+        if theme.aside.card_custom_profile.discord
+          a.social-btn(href=theme.aside.card_custom_profile.discord target="_blank" rel="noopener")
+            i.fab.fa-discord
