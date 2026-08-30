@@ -285,7 +285,7 @@ HOPE 目前更像是一条“工程可验证的中间道路”：用模型驱动
 
 这段视频展示了 MuJoCo 中的 A3 模型、球台、球网和控制界面。它的价值在于帮助检查模型、接触场景和运行时状态是否已经准备好，是闭环调试和接口审计的重要中间层。
 
-<video class="hope-project-video" controls preload="metadata" playsinline poster="/img/posts/hope-robot-pingpong/hope-mujoco-poster.jpg" aria-label="HOPE MuJoCo 乒乓球仿真视频">
+<video class="hope-project-video" controls autoplay muted loop preload="metadata" playsinline poster="/img/posts/hope-robot-pingpong/hope-mujoco-poster.jpg" aria-label="HOPE MuJoCo 乒乓球仿真视频">
   <source src="/img/posts/hope-robot-pingpong/hope-mujoco-simulation.mp4" type="video/mp4">
   你的浏览器不支持 HTML5 视频，请直接下载 <a href="/img/posts/hope-robot-pingpong/hope-mujoco-simulation.mp4">MuJoCo 仿真视频</a>。
 </video>
@@ -294,7 +294,7 @@ HOPE 目前更像是一条“工程可验证的中间道路”：用模型驱动
 
 这段视频展示真实机器人、球台、动捕/视觉设备和现场控制环境。现实场景中的光照、遮挡、设备延迟、执行器限制和安全边界，都会让同一套规划与控制接口面对比仿真更复杂的约束。
 
-<video class="hope-project-video" controls preload="metadata" playsinline poster="/img/posts/hope-robot-pingpong/hope-real-poster.jpg" aria-label="HOPE 真实人形机器人乒乓球视频">
+<video class="hope-project-video" controls autoplay muted loop preload="metadata" playsinline poster="/img/posts/hope-robot-pingpong/hope-real-poster.jpg" aria-label="HOPE 真实人形机器人乒乓球视频">
   <source src="/img/posts/hope-robot-pingpong/hope-real-robot-pingpong.mp4" type="video/mp4">
   你的浏览器不支持 HTML5 视频，请直接下载 <a href="/img/posts/hope-robot-pingpong/hope-real-robot-pingpong.mp4">真实机器人视频</a>。
 </video>
