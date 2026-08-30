@@ -33,6 +33,7 @@ copyright: true
 mathjax: true
 katex: false
 ai: false
+hope_lab: true
 ---
 
 # 让人形机器人接住下一颗球：HOPE 乒乓球项目的物理规划与全身控制
@@ -42,6 +43,13 @@ ai: false
 我最近整理的 [HOPE: Hitch Open Ping-Pong Embodied AI Challenge](https://github.com/swkajnBruceee/hope-training) 工程，正好提供了一个很适合拆开的案例。它不是一个已经被包装成“成功率数字”的黑盒模型，而是一套持续演化的研究与工程记录：里面既有 Isaac Lab 中的 A3 球台场景，也有模型驱动的击球规划器、MuJoCo 闭环、ROS 2 接口、训练合同、部署审计和明确写下来的未完成事项。
 
 这篇文章不把“人形机器人打球”当作一个单独的神经网络问题，而是把它看成一个带有离散碰撞事件的闭环系统，沿着一颗球的生命周期，解释这个项目究竟在解决什么、为什么这样拆、目前哪些结论已经被证据支持，以及哪些事情还不能提前宣布完成。
+
+> **先说结论**
+> - HOPE 当前最清晰的成果是把球物理、轨迹规划、全身策略和部署接口接成了可审计的闭环。
+> - 单球 `RACKET CONTACT`、场景 smoke run 和接口合同检查，不能直接等同于稳定回合率，更不能等同于真机部署完成。
+> - 这篇文章重点解释“每一层负责什么、证据在哪里、还缺什么”，而不是给项目包装一个未经验证的成功数字。
+>
+> **状态截点**：以下结论以 2026-08-30 的仓库状态为准；项目持续更新后，应以对应提交中的脚本、日志和配置为准。
 
 <!-- more -->
 
@@ -73,7 +81,7 @@ $$
 
 这个选择看起来只是“把常数集中起来”，实际上决定了整个系统能不能闭环。若仿真里的 $z=0$ 是地面、规划器里的 $z=0$ 是台面，球拍目标就会整体错开 $0.76\,\mathrm{m}$；若某一层把 $Y$ 方向理解成向右，反手和正手区域会发生镜像；若模型的关节顺序与部署散射顺序不一致，即使每个张量的维度都正确，机器人也会执行另一组关节动作。
 
-因此，项目里把球台尺寸、网位置、站位、joint order、ready pose、observation contract 和 action scale 分别固定在文档与配置中，并用测试和审计脚本对齐。对具身系统而言，这些“看起来不像算法”的内容，往往就是 sim-to-real 最昂贵的部分。
+因此，项目里把球台尺寸、网位置、站位、joint order、ready pose、observation contract 和 action scale 分别固定在文档与配置中，并用测试和审计脚本对齐。具体入口可以参看 [运行时配置](https://github.com/swkajnBruceee/hope-training/blob/main/a3_deploy/a3_deploy_example/config/hope_pingpong_runtime.yaml)、[关节映射](https://github.com/swkajnBruceee/hope-training/blob/main/a3_deploy/a3_deploy_example/src/a3/a3_deploy_onnx_ref/include/a3_pingpong/pp_joint_map.hpp) 和 [运行时合同](https://github.com/swkajnBruceee/hope-training/blob/main/a3_deploy/a3_deploy_example/src/a3/a3_deploy_onnx_ref/include/a3_pingpong/pp_runtime_contract.hpp)。对具身系统而言，这些“看起来不像算法”的内容，往往就是 sim-to-real 最昂贵的部分。
 
 ## 三、球的物理：一个小球迫使仿真承认空气的存在
 
@@ -87,7 +95,7 @@ $$
 
 这里的关键不只是公式，而是施加频率：场景物理运行在 $360\,\mathrm{Hz}$，控制 decimation 为 4，对应 $90\,\mathrm{Hz}$ 的环境控制节拍。高速小球如果只在较慢的控制回调里修正轨迹，薄球网和约 $2.9\,\mathrm{mm}$ 的球拍碰撞几何都可能出现穿透或误差放大。
 
-碰撞则由 PhysX 的接触材料负责。项目明确区分了“法向反弹”和“切向速度保持”：球台反弹的法向恢复系数可以通过球与台面的材料组合近似实现，而水平方向的速度损失更多由摩擦决定，不能简单地把一个 (C_h) 当作另一个法向 restitution。球拍接触也有自己的 (C_r)，并不等于球台反弹的 (C_v)。这类区分很重要，因为训练中如果用一个过于理想化的接触模型，策略学到的可能只是模拟器的漏洞。
+碰撞则由 PhysX 的接触材料负责。项目明确区分了“法向反弹”和“切向速度保持”：球台反弹的法向恢复系数可以通过球与台面的材料组合近似实现，而水平方向的速度损失更多由摩擦决定，不能简单地把一个 $C_h$ 当作另一个法向 restitution。球拍接触也有自己的 $C_r$，并不等于球台反弹的 $C_v$。这类区分很重要，因为训练中如果用一个过于理想化的接触模型，策略学到的可能只是模拟器的漏洞。
 
 旋转的 Magnus 项已经作为可选项提供：
 
@@ -97,7 +105,7 @@ $$
 
 但规划器的控制主线目前仍采用 zero-spin 模型，旋转估计和 Magnus 传播只作为 shadow analysis 记录，不直接改变控制击球命令。这个取舍并不意味着旋转不重要，而是先保持因果链可审计：如果同时改变球的角速度估计、未来落点和击球目标，出现误差时很难判断究竟是观测、模型还是策略导致的。
 
-下面这个小实验可以直接在文章里操作。它不是项目的高保真仿真，只用来展示一个直观事实：在相同初始速度下，忽略空气阻力会让轨迹预测逐渐偏离；旋转项则会把偏差从纵向速度传播到横向或竖直方向。
+下面这个小实验可以直接在文章里操作。它不是项目的高保真仿真，只用来展示一个直观事实：在相同初始速度下，忽略空气阻力会让轨迹预测逐渐偏离；旋转项则会把偏差从纵向速度传播到横向或竖直方向。这里的“旋转项”是教学用的近似，不等同于工程模型中的完整 Magnus 力计算。
 
 <div class="hope-trajectory-lab" data-hope-trajectory-lab>
   <div class="hope-lab-heading">
@@ -108,25 +116,27 @@ $$
     <button class="hope-lab-reset" type="button" data-hope-reset>重新发球</button>
   </div>
   <div class="hope-lab-controls" role="group" aria-label="选择球的物理模型">
-    <button type="button" class="is-active" data-hope-mode="gravity">只受重力</button>
-    <button type="button" data-hope-mode="drag">加入空气阻力</button>
-    <button type="button" data-hope-mode="spin">加入旋转项</button>
+    <button type="button" class="is-active" data-hope-mode="gravity" aria-pressed="true">只受重力</button>
+    <button type="button" data-hope-mode="drag" aria-pressed="false">加入空气阻力</button>
+    <button type="button" data-hope-mode="spin" aria-pressed="false">加入旋转近似</button>
+    <button type="button" data-hope-mode="compare" aria-pressed="false">同时对比三种</button>
   </div>
   <div class="hope-lab-canvas-wrap">
-    <canvas data-hope-canvas width="920" height="420" aria-label="球在三种物理假设下的轨迹对比"></canvas>
+    <p class="hope-lab-fallback">当前浏览器未启用 JavaScript。你仍可以阅读上下文中的公式；轨迹图是一个用于解释趋势的定性示意。</p>
+    <canvas id="hope-trajectory-canvas" data-hope-canvas width="920" height="420" aria-label="球在三种物理假设下的轨迹对比"></canvas>
   </div>
-  <div class="hope-lab-readout"><span data-hope-readout>模型：重力 · 轨迹已归一化展示</span><span>拖动不可用，点击按钮切换模型</span></div>
+  <div class="hope-lab-readout" aria-live="polite"><span data-hope-readout>模型：重力 · 轨迹已归一化展示</span><span>点击模型切换轨迹；这是定性示意，不是高保真仿真</span></div>
 </div>
 
 在工程版本中，这个简化实验对应的是更严格的分层：Isaac Lab 负责高频物理接触和阻力注入，规划器使用可校准的飞行模型，MuJoCo 闭环再检查规划器与策略的接口是否在连续时间中仍然成立。仿真不是为了“看起来像真的”，而是为了让每一层的假设可以被单独替换和验证。
 
 ## 四、从观测到击球目标：规划器不直接控制关节
 
-HOPE 的模型驱动规划器将任务分成三个阶段。第一阶段从动捕或仿真球的位置流中估计球状态；第二阶段向前积分球的飞行轨迹；第三阶段把未来的击球事件转成球拍目标。它输出的不是“右肩抬高多少”，而是一个更适合跨机器人复用的任务空间命令：击球位置、击球速度、拍面法向和击球时间。
+HOPE 的模型驱动规划器将任务分成三个阶段。第一阶段从动捕或仿真球的位置流中估计球状态；第二阶段向前积分球的飞行轨迹；第三阶段把未来的击球事件转成球拍目标。它输出的不是“右肩抬高多少”，而是一个更适合跨机器人复用的任务空间命令：击球位置、击球速度、拍面法向和击球时间。规划器的接口和参考设置可以参看 [HOPE 规划器参考文档](https://github.com/swkajnBruceee/hope-training/blob/main/HOPE_7DOF_Racket_Model_based_Planner_Reference_Setup.md)。
 
 ### 1. 状态估计：速度不是传感器直接给你的
 
-动捕系统通常可靠地给出位置，但规划需要速度。工程实现对最近的 (31) 个位置样本做二阶多项式拟合：
+动捕系统通常可靠地给出位置，但规划需要速度。工程实现对最近的 $31$ 个位置样本做二阶多项式拟合：
 
 $$
  p(t) \approx a_2t^2+a_1t+a_0,
@@ -213,7 +223,7 @@ $$
 
 项目因此加入了一个独立的 MuJoCo runtime adapter。它按 31 个 canonical joint name 从 A3 XML 提取 $q,\dot q$，计算训练侧一致的球拍挂点正向运动学，构造 98D/126D/56D 三套观测，加载各自的 normalizer，执行先验与学生策略的 blending，并在输出前施加关节、速度、扭矩和安全停机约束。MuJoCo 使用与 Isaac tracking 对齐的 $0.005\,\mathrm{s}\times4=50\,\mathrm{Hz}$ 策略节拍；它是接线和状态转移的审计平台，不等于真实硬件。
 
-官方闭环脚本把 AimRT MuJoCo、native runner、base-pose relay、HOPE planner、Gate3 物理球和策略连成一条链。启动顺序之所以被固定，是因为它本身就是实验条件：先让机器人完成 `PD_STAND` 与静态稳定，再进入 `MOTION level=0` 准备态，最后才发球。如果球先启动，planner 可能在 robot、frame 或 policy 尚未准备好时消费一段不完整轨迹，之后的“失败”就没有清晰归因。
+官方闭环脚本把 AimRT MuJoCo、native runner、base-pose relay、HOPE planner、Gate3 物理球和策略连成一条链。对应的 [闭环审计脚本](https://github.com/swkajnBruceee/hope-training/blob/main/a3_deploy/a3_deploy_example/scripts/pp_closed_loop_audit.py) 和 [规划包络审计](https://github.com/swkajnBruceee/hope-training/blob/main/a3_deploy/a3_deploy_example/scripts/pp_planner_envelope_audit.py) 可以帮助复核这条链路。启动顺序之所以被固定，是因为它本身就是实验条件：先让机器人完成 `PD_STAND` 与静态稳定，再进入 `MOTION level=0` 准备态，最后才发球。如果球先启动，planner 可能在 robot、frame 或 policy 尚未准备好时消费一段不完整轨迹，之后的“失败”就没有清晰归因。
 
 > **证据说明**：本次提供的资料中没有附带原文提到的 `mujoco-passive-stable.mp4` 视频，因此本文不嵌入不存在的媒体文件。关于闭环状态的判断，以 HOPE 工程中的脚本、日志和部署审计结果为准。
 
@@ -247,7 +257,7 @@ HOPE 目前更像是一条“工程可验证的中间道路”：用模型驱动
 * 31-DOF canonical joint order、动作 scale、previous action、速率限制和 clipping 必须保持一致。
 * `tau_ff`、低层 PD、硬件限位、扭矩/速度约束和急停必须沿真实执行链路审计，不能把 MuJoCo 的 `data.ctrl` 直接当成机器人命令。
 
-这类合同的价值，在于把“模型没学好”和“模型被错误地接上了”区分开。比如官方 A3 部署资产审计已经发现，某些模型虽然同样输出 29 个动作，但输入维度、tensor name 或观测语义不同，不能因为文件名相似就互换；一份模型能被 ONNX Runtime 加载，也不代表它适合当前的 observation contract。
+这类合同的价值，在于把“模型没学好”和“模型被错误地接上了”区分开。比如官方 A3 部署资产审计已经发现，某些模型虽然同样输出 29 个动作，但输入维度、tensor name 或观测语义不同，不能因为文件名相似就互换；一份模型能被 ONNX Runtime 加载，也不代表它适合当前的 observation contract。观测和球拍命令的具体实现可参看 [observation.py](https://github.com/swkajnBruceee/hope-training/blob/main/a3_deploy/a3_deploy_example/reference/a3_deploy_onnx_ref_pingpong/observation.py) 与 [racket_command.py](https://github.com/swkajnBruceee/hope-training/blob/main/a3_deploy/a3_deploy_example/reference/a3_deploy_onnx_ref_pingpong/racket_command.py)。
 
 当前官方 A3 控制链路的审计结论也很克制：AimRT/MOTION 的 SIL、TA protobuf、ROS 2 包装和部分 body-drive waist path 已分别被验证，但本地缺少配置中的官方 policy ONNX，因此不能把训练 checkpoint 描述成 deployment-ready。下一步应当是受控的 TA-to-SIL 命令测试、无负载硬件测试和逐级安全门，而不是跳过资产和通道验证直接开放策略。
 

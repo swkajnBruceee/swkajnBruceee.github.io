@@ -109,6 +109,10 @@ div
 
   != fragment_cache('injectBottom', function(){return injectHtml(theme.inject.bottom)})
 
+  if page.hope_lab
+    link(rel='stylesheet', href=url_for('/css/hope-pingpong.css'))
+    script(data-pjax src=url_for('/js/hope-pingpong.js'))
+
   != partial("includes/third-party/effect", {}, { cache: true })
 
   != partial("includes/third-party/chat/index", {}, { cache: true })

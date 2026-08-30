@@ -4,7 +4,7 @@
   const modes = {
     gravity: { label: '重力', color: '#e8f0eb', detail: '只考虑重力，轨迹保持理想抛物线' },
     drag: { label: '重力 + 空气阻力', color: '#e8a65e', detail: '加入与速度平方相关的阻力项' },
-    spin: { label: '重力 + 空气阻力 + 旋转项', color: '#d56b35', detail: '加入旋转造成的竖直偏移' }
+    spin: { label: '重力 + 空气阻力 + 旋转近似', color: '#d56b35', detail: '用教学近似展示旋转造成的竖直偏移' }
   };
 
   function setupLab(lab) {
@@ -14,7 +14,9 @@
     const readout = lab.querySelector('[data-hope-readout]');
     const buttons = [...lab.querySelectorAll('[data-hope-mode]')];
     const reset = lab.querySelector('[data-hope-reset]');
+    const fallback = lab.querySelector('.hope-lab-fallback');
     if (!context) return;
+    if (fallback) fallback.hidden = true;
 
     let mode = 'gravity';
     let epoch = 0;
@@ -146,20 +148,29 @@
     function draw(progress) {
       const { width, height } = resizeCanvas();
       const plot = drawGrid(width, height);
-      drawTrajectory(lastPoints, mode, progress, width, height, plot);
-      if (readout) readout.textContent = `模型：${modes[mode].label} · ${modes[mode].detail}`;
+      if (mode === 'compare') {
+        Object.keys(modes).forEach(key => drawTrajectory(lastPoints[key], key, progress, width, height, plot));
+        if (readout) readout.textContent = '模型：三种轨迹对比 · 仅用于展示趋势的定性示意';
+      } else {
+        drawTrajectory(lastPoints, mode, progress, width, height, plot);
+        if (readout) readout.textContent = `模型：${modes[mode].label} · ${modes[mode].detail}`;
+      }
     }
 
     function render() {
       epoch += 1;
       const currentEpoch = epoch;
-      lastPoints = simulate(mode);
+      lastPoints = mode === 'compare'
+        ? Object.fromEntries(Object.keys(modes).map(key => [key, simulate(key)]))
+        : simulate(mode);
       cancelAnimationFrame(animationFrame);
       const start = performance.now();
+      const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const duration = reducedMotion ? 0 : 1700;
 
       function frame(now) {
         if (currentEpoch !== epoch) return;
-        const progress = Math.min(1, (now - start) / 1700);
+        const progress = duration === 0 ? 1 : Math.min(1, (now - start) / duration);
         draw(progress);
         if (progress < 1) animationFrame = requestAnimationFrame(frame);
       }
@@ -171,7 +182,7 @@
       button.classList.toggle('is-active', selected);
       button.setAttribute('aria-pressed', String(selected));
       button.addEventListener('click', () => {
-        if (!modes[button.dataset.hopeMode]) return;
+        if (!modes[button.dataset.hopeMode] && button.dataset.hopeMode !== 'compare') return;
         mode = button.dataset.hopeMode;
         buttons.forEach(item => {
           const active = item === button;
