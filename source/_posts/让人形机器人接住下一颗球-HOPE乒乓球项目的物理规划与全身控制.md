@@ -23,8 +23,8 @@ keywords:
   - 击球规划
   - MuJoCo 闭环
   - Isaac Lab
-top_img: /img/covers/hope-robot-pingpong.svg
-cover: /img/covers/hope-robot-pingpong.svg
+top_img: /img/covers/hitch2.png
+cover: /img/covers/hitch2.png
 description: 以 HOPE 开源工程为线索，拆解 Agibot A3 人形机器人打乒乓球时从球物理、轨迹估计、击球目标规划到全身强化学习和部署审计的完整技术链路。
 comments: true
 toc: true
