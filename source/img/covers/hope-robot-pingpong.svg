@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">HOPE humanoid robot table tennis</title>
+  <desc id="desc">A dark technical illustration of a humanoid robot returning a ping-pong ball, with trajectory and control annotations.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#08111f"/><stop offset="0.58" stop-color="#102b3a"/><stop offset="1" stop-color="#d56b35"/>
+    </linearGradient>
+    <linearGradient id="table" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#153e52"/><stop offset="1" stop-color="#0e293a"/>
+    </linearGradient>
+    <filter id="glow"><feGaussianBlur stdDeviation="10" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <pattern id="grid" width="44" height="44" patternUnits="userSpaceOnUse"><path d="M44 0H0V44" fill="none" stroke="#b7d5d4" stroke-opacity=".09"/></pattern>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect width="1600" height="900" fill="url(#grid)"/>
+  <path d="M0 670 L1600 530 L1600 900 L0 900Z" fill="#050b13" fill-opacity=".48"/>
+  <path d="M125 640 L1155 538 L1510 636 L480 758Z" fill="url(#table)" stroke="#96c8c4" stroke-width="3"/>
+  <path d="M637 589 L992 626" stroke="#e9b56c" stroke-width="3" stroke-dasharray="9 10"/>
+  <path d="M985 564 L985 632" stroke="#f3d6a3" stroke-width="7"/>
+  <path d="M985 568 L985 630" stroke="#ffffff" stroke-opacity=".45" stroke-width="1" stroke-dasharray="4 5"/>
+  <g transform="translate(390 200)" stroke="#d9f2ed" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="245" cy="80" r="34" fill="#102a39" stroke-width="6"/>
+    <path d="M222 120 L180 245 L228 404 L280 404 L323 246 L286 122Z" fill="#173b4c" stroke-width="7"/>
+    <path d="M188 246 L90 344 L46 500" fill="none" stroke="#a9d3ce" stroke-width="25"/>
+    <path d="M318 246 L392 340 L462 274" fill="none" stroke="#a9d3ce" stroke-width="25"/>
+    <path d="M228 404 L177 535 L185 680" fill="none" stroke="#b8ddd8" stroke-width="29"/>
+    <path d="M280 404 L340 526 L382 672" fill="none" stroke="#b8ddd8" stroke-width="29"/>
+    <circle cx="46" cy="500" r="13" fill="#e8a65e" stroke-width="4"/>
+    <circle cx="462" cy="274" r="13" fill="#e8a65e" stroke-width="4"/>
+    <path d="M461 274 L510 250" stroke="#e8a65e" stroke-width="8"/>
+    <ellipse cx="548" cy="234" rx="62" ry="45" fill="#d56b35" fill-opacity=".85" stroke="#ffde9d" stroke-width="6" transform="rotate(-25 548 234)"/>
+    <path d="M54 488 Q240 126 548 234" fill="none" stroke="#e8a65e" stroke-width="5" stroke-dasharray="11 14" filter="url(#glow)"/>
+  </g>
+  <g fill="#e5f0eb" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif">
+    <text x="100" y="120" font-size="24" letter-spacing="6" fill="#e8a65e">HOPE / TABLE TENNIS</text>
+    <text x="100" y="190" font-size="67" font-weight="700">让人形机器人</text>
+    <text x="100" y="270" font-size="67" font-weight="700">接住下一颗球</text>
+    <text x="100" y="330" font-size="25" fill="#b9d4d1">从空气动力学、轨迹规划到全身强化学习的工程闭环</text>
+    <text x="1265" y="794" font-size="22" fill="#f3d6a3">01 / ESTIMATE</text>
+    <text x="1265" y="832" font-size="22" fill="#f3d6a3">02 / PLAN</text>
+    <text x="1265" y="870" font-size="22" fill="#f3d6a3">03 / STRIKE</text>
+  </g>
+</svg>

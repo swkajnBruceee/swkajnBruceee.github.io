@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 560" role="img" aria-labelledby="title desc">
+  <title id="title">HOPE table tennis control architecture</title>
+  <desc id="desc">Perception, model-based planning, whole-body reinforcement learning and deployment form a closed loop.</desc>
+  <defs>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#102b3a"/><stop offset="1" stop-color="#0a1928"/></linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#e8a65e"/></marker>
+    <filter id="shadow"><feDropShadow dx="0" dy="12" stdDeviation="12" flood-color="#06101b" flood-opacity=".28"/></filter>
+  </defs>
+  <rect width="1400" height="560" rx="28" fill="#07131f"/>
+  <path d="M52 90H1348M52 470H1348" stroke="#a8c8c3" stroke-opacity=".15"/>
+  <g font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" fill="#e8f0eb">
+    <text x="60" y="58" font-size="18" letter-spacing="4" fill="#e8a65e">THE CONTROL LOOP</text>
+    <text x="60" y="520" font-size="16" fill="#9bb9b8">每一层都有自己的时钟、接口和验收条件；真正的难点在层与层之间不丢语义。</text>
+  </g>
+  <g filter="url(#shadow)">
+    <g transform="translate(70 156)">
+      <rect width="230" height="188" rx="18" fill="url(#panel)" stroke="#5f9494" stroke-width="2"/>
+      <circle cx="34" cy="38" r="15" fill="#e8a65e"/><text x="62" y="45" font-size="20" fill="#e8f0eb" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif">观测</text>
+      <text x="24" y="92" font-size="18" fill="#cbe3dc" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif">球位置 / 机器人状态</text>
+      <text x="24" y="124" font-size="16" fill="#8eadae" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif">mocap · joint encoders</text>
+      <text x="24" y="156" font-size="16" fill="#8eadae" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif">360 Hz evidence stream</text>
+    </g>
+    <g transform="translate(390 156)">
+      <rect width="270" height="188" rx="18" fill="url(#panel)" stroke="#5f9494" stroke-width="2"/>
+      <circle cx="34" cy="38" r="15" fill="#e8a65e"/><text x="62" y="45" font-size="20" fill="#e8f0eb" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif">规划</text>
+      <text x="24" y="92" font-size="18" fill="#cbe3dc" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif">轨迹 → 击球目标</text>
+      <text x="24" y="124" font-size="16" fill="#8eadae" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif">p̂ · v̂ · n̂ · t_hit</text>
+      <text x="24" y="156" font-size="16" fill="#8eadae" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif">bounce-aware / net-aware</text>
+    </g>
+    <g transform="translate(750 156)">
+      <rect width="270" height="188" rx="18" fill="url(#panel)" stroke="#5f9494" stroke-width="2"/>
+      <circle cx="34" cy="38" r="15" fill="#e8a65e"/><text x="62" y="45" font-size="20" fill="#e8f0eb" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif">控制</text>
+      <text x="24" y="92" font-size="18" fill="#cbe3dc" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif">A3 全身策略</text>
+      <text x="24" y="124" font-size="16" fill="#8eadae" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif">priors + student policy</text>
+      <text x="24" y="156" font-size="16" fill="#8eadae" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif">31-DOF command composer</text>
+    </g>
+    <g transform="translate(1110 156)">
+      <rect width="220" height="188" rx="18" fill="url(#panel)" stroke="#d56b35" stroke-width="2"/>
+      <circle cx="34" cy="38" r="15" fill="#d56b35"/><text x="62" y="45" font-size="20" fill="#e8f0eb" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif">执行</text>
+      <text x="24" y="92" font-size="18" fill="#cbe3dc" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif">MuJoCo / A3</text>
+      <text x="24" y="124" font-size="16" fill="#8eadae" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif">contact · balance · safe halt</text>
+      <text x="24" y="156" font-size="16" fill="#8eadae" font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif">evidence, not assumption</text>
+    </g>
+  </g>
+  <g fill="none" stroke="#e8a65e" stroke-width="4" marker-end="url(#arrow)">
+    <path d="M300 250H378"/><path d="M660 250H738"/><path d="M1020 250H1098"/>
+    <path d="M1220 354C1220 430 190 430 190 354" stroke="#7fb2a8" marker-end="url(#arrow)"/>
+  </g>
+  <g font-family="Arial, PingFang SC, Microsoft YaHei, sans-serif" font-size="15" fill="#aac8c1">
+    <text x="313" y="228">state estimate</text><text x="672" y="228">target contract</text><text x="1031" y="228">joint command</text><text x="638" y="425">physical feedback / next observation</text>
+  </g>
+</svg>
