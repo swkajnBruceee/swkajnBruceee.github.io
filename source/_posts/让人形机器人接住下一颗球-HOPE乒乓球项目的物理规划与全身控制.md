@@ -225,7 +225,7 @@ $$
 
 官方闭环脚本把 AimRT MuJoCo、native runner、base-pose relay、HOPE planner、Gate3 物理球和策略连成一条链。对应的 [闭环审计脚本](https://github.com/swkajnBruceee/hope-training/blob/main/a3_deploy/a3_deploy_example/scripts/pp_closed_loop_audit.py) 和 [规划包络审计](https://github.com/swkajnBruceee/hope-training/blob/main/a3_deploy/a3_deploy_example/scripts/pp_planner_envelope_audit.py) 可以帮助复核这条链路。启动顺序之所以被固定，是因为它本身就是实验条件：先让机器人完成 `PD_STAND` 与静态稳定，再进入 `MOTION level=0` 准备态，最后才发球。如果球先启动，planner 可能在 robot、frame 或 policy 尚未准备好时消费一段不完整轨迹，之后的“失败”就没有清晰归因。
 
-> **证据说明**：下文的视频用于直观展示仿真环境与真实机器人现场，不等同于正式成功率或真机部署完成。关于闭环状态的判断，仍应以 HOPE 工程中的脚本、日志和部署审计结果为准。
+> **证据说明**：下文视频用于直观展示 MuJoCo 仿真环境，不等同于正式成功率或真机部署完成。关于闭环状态的判断，仍应以 HOPE 工程中的脚本、日志和部署审计结果为准。
 
 <div class="hope-evidence-grid">
   <div class="hope-evidence-card is-done"><span>STAGE 0</span><strong>场景与球物理</strong><small>Isaac Lab smoke run 已写入验收路径</small></div>
@@ -277,9 +277,9 @@ HOPE 目前更像是一条“工程可验证的中间道路”：用模型驱动
 
 一颗球从对手半台飞来时，机器人并不知道“下一帧该怎么做”。它只能依据当前观测建立状态估计，利用物理模型预测还没有发生的事件，把事件翻译成球拍目标，再让一整个身体在有限的支撑和执行器约束下完成动作。HOPE 项目最值得记录的，正是这条从公式、代码、仿真到证据的完整链路：机器人智能不是某一个网络突然产生的，它是在每一次坐标对齐、每一个接触模型、每一项动作约束和每一道安全门里逐渐变得可信。
 
-## 十一、效果展示：从 MuJoCo 仿真到真实机器人
+## 十一、效果展示：MuJoCo 仿真环境
 
-前面的公式和接口合同描述了系统如何工作，下面两个视频则把它放回实际运行环境中：第一个是 MuJoCo 中的 A3 乒乓球场景，第二个是真实机器人现场。两段视频更适合用来观察系统形态、视角和执行环境的差异，不应被解读为完整的性能评测。
+前面的公式和接口合同描述了系统如何工作，下面的视频把它放回 MuJoCo 中的 A3 乒乓球场景。它更适合用来观察模型、球台和控制界面的运行状态，不应被解读为完整的性能评测。
 
 ### 1. MuJoCo 仿真环境
 
@@ -288,15 +288,6 @@ HOPE 目前更像是一条“工程可验证的中间道路”：用模型驱动
 <video class="hope-project-video" controls autoplay muted loop preload="metadata" playsinline poster="/img/posts/hope-robot-pingpong/hope-mujoco-poster.jpg" aria-label="HOPE MuJoCo 乒乓球仿真视频">
   <source src="/img/posts/hope-robot-pingpong/hope-mujoco-simulation.mp4" type="video/mp4">
   你的浏览器不支持 HTML5 视频，请直接下载 <a href="/img/posts/hope-robot-pingpong/hope-mujoco-simulation.mp4">MuJoCo 仿真视频</a>。
-</video>
-
-### 2. 真实机器人现场
-
-这段视频展示真实机器人、球台、动捕/视觉设备和现场控制环境。现实场景中的光照、遮挡、设备延迟、执行器限制和安全边界，都会让同一套规划与控制接口面对比仿真更复杂的约束。
-
-<video class="hope-project-video" controls autoplay muted loop preload="metadata" playsinline poster="/img/posts/hope-robot-pingpong/hope-real-poster.jpg" aria-label="HOPE 真实人形机器人乒乓球视频">
-  <source src="/img/posts/hope-robot-pingpong/hope-real-robot-pingpong.mp4" type="video/mp4">
-  你的浏览器不支持 HTML5 视频，请直接下载 <a href="/img/posts/hope-robot-pingpong/hope-real-robot-pingpong.mp4">真实机器人视频</a>。
 </video>
 
 ## 参考资料与代码
