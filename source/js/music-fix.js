@@ -1,24 +1,46 @@
-// 等待异步播放器完成初始化，超时或接口失败才隐藏入口；晚到的播放器仍可恢复。
+// 导航与中控台共享真实播放状态；接口故障时保留入口和重试按钮。
 (function () {
   'use strict';
-  let timer;
+  const bound = new WeakSet();
   function update() {
-    const ready = Boolean(document.querySelector('#nav-music meting-js')?.aplayer);
-    const selectors = '#nav-music, #consoleMusic, #menu-music-toggle, #menu-music-back, #menu-music-forward, #menu-music-playlist, #menu-music-copyMusicName';
-    document.querySelectorAll(selectors).forEach(element => { element.hidden = !ready; });
-  }
-  function init() {
-    const player = document.querySelector('#nav-music meting-js');
-    if (player) {
-      const observer = new MutationObserver(() => {
-        if (player.aplayer) { update(); observer.disconnect(); }
-      });
-      observer.observe(player, { childList: true, subtree: true });
+    const nav = document.getElementById('nav-music');
+    const element = nav?.querySelector('meting-js');
+    if (!element) return;
+    const player = element.aplayer;
+    const state = element.dataset.state || 'loading';
+    const playing = Boolean(player && !player.audio.paused && !player.audio.error);
+    const label = state === 'loading' ? '音乐加载中' : state === 'error' ? '重试加载音乐' : playing ? '暂停音乐' : '播放音乐';
+    nav.dataset.state = state;
+    nav.hidden = false;
+    nav.classList.toggle('playing', playing);
+    nav.classList.toggle('stretch', playing);
+    anzhiyu_musicPlaying = playing;
+    const tip = document.getElementById('nav-music-hoverTips');
+    if (tip) {
+      tip.textContent = label;
+      tip.setAttribute('aria-label', label);
     }
-    clearTimeout(timer);
-    timer = setTimeout(update, 12000);
+    const control = document.getElementById('consoleMusic');
+    if (control) {
+      control.hidden = false;
+      control.classList.toggle('on', playing);
+      control.title = label;
+      control.setAttribute('aria-label', label);
+      control.setAttribute('aria-pressed', String(playing));
+    }
+    const menu = document.getElementById('menu-music-toggle');
+    if (menu) {
+      menu.hidden = false;
+      menu.innerHTML = `<i class="anzhiyufont anzhiyu-icon-${playing ? 'pause' : 'play'}"></i><span>${label}</span>`;
+    }
+    if (player && !bound.has(player)) {
+      bound.add(player);
+      ['play', 'pause', 'ended', 'error'].forEach(event => player.on(event, update));
+      anzhiyu.musicBindEvent();
+    }
   }
+  document.addEventListener('meting:statechange', update);
   document.addEventListener('aplayer:ready', update);
-  window.addEventListener('load', init, { once: true });
   document.addEventListener('pjax:complete', update);
+  window.addEventListener('load', update, { once: true });
 })();

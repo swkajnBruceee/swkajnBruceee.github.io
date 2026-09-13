@@ -7,12 +7,6 @@
 }
 
 /* 导航栏音乐 */
-@media screen and (max-width: 1200px) {
-  #nav-music {
-    display: none !important;
-  }
-}
-
 #nav-music {
   display: flex;
   align-items: center;
@@ -320,4 +314,48 @@
 }
 #nav-music .aplayer .aplayer-pic .aplayer-button {
   pointer-events: all;
+}
+
+/* 加载和失败状态也保留模块；提示不遮住重试按钮。 */
+meting-js { display: block; }
+.meting-status {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 41px;
+  padding: 0 16px;
+  color: var(--anzhiyu-fontcolor);
+  background: var(--anzhiyu-card-bg);
+  font-size: 13px;
+}
+.meting-status button {
+  color: var(--anzhiyu-main);
+  background: transparent;
+  border: 0;
+  padding: 8px 0;
+  font: inherit;
+  cursor: pointer;
+}
+#nav-music #nav-music-hoverTips { border: 0; cursor: pointer; }
+#nav-music:not([data-state="ready"]) #nav-music-hoverTips { display: none; }
+#nav-music #nav-music-hoverTips:focus-visible { opacity: 1; width: 100%; }
+#nav-music .aplayer .aplayer-pic .aplayer-button:focus-visible,
+.meting-status button:focus-visible { outline: 2px solid var(--anzhiyu-main); outline-offset: 2px; }
+/* 标签模式下将紧凑播放器放在控制按钮下方，保留独立一行。 */
+#console.show[data-music-panel="false"] { padding-bottom: 82px; }
+body:has(#console.show[data-music-panel="false"]) #nav-music {
+  display: flex;
+  z-index: 10000;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  max-width: calc(100vw - 32px);
+  transition: none;
+}
+@media screen and (max-width: 768px) {
+  #nav-music { left: 12px; bottom: max(12px, env(safe-area-inset-bottom)); max-width: calc(100vw - 80px); }
+  #nav-music.stretch .aplayer.aplayer-withlrc .aplayer-lrc { width: 0; margin-left: 0; opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #nav-music, #nav-music * { animation: none !important; transition: none !important; }
 }

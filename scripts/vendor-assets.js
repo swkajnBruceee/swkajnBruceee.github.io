@@ -18,6 +18,7 @@ const files = {
   waterfall: ['anzhiyu-theme-static', 'waterfall/waterfall.js'],
   accesskey_js: ['anzhiyu-theme-static', 'accesskey/accesskey.js'],
   aplayer_css: ['anzhiyu-theme-static', 'aplayer/APlayer.min.css'],
+  aplayer_js: ['anzhiyu-blog-static', 'js/APlayer.min.js'],
   dark: ['anzhiyu-theme-static', 'dark/dark.js']
 };
 const routeFor = ([name, file]) => `vendor/${name}/${file}`;

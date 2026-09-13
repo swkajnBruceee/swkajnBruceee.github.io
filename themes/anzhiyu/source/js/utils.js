@@ -645,44 +645,18 @@ const anzhiyu = {
     if (!config[configKey]) return defaultValue;
     return config[configKey];
   },
-  //切换音乐播放状态
-  musicToggle: function (changePaly = true) {
-    navMusicEl = navMusicEl || document.getElementById("nav-music");
-    const player = navMusicEl && navMusicEl.querySelector("meting-js")?.aplayer;
-    if (!navMusicEl || !player) {
-      anzhiyu.snackbarShow("音乐服务暂不可用");
-      return;
-    }
-    if (!anzhiyu_musicFirst) {
-      anzhiyu.musicBindEvent();
-      anzhiyu_musicFirst = true;
-    }
-    let msgPlay = '<i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span>';
-    let msgPause = '<i class="anzhiyufont anzhiyu-icon-pause"></i><span>暂停音乐</span>';
-    if (anzhiyu_musicPlaying) {
-      navMusicEl.classList.remove("playing");
-      document.getElementById("menu-music-toggle").innerHTML = msgPlay;
-      document.getElementById("nav-music-hoverTips").innerHTML = "音乐已暂停";
-      document.querySelector("#consoleMusic").classList.remove("on");
-      anzhiyu_musicPlaying = false;
-      navMusicEl.classList.remove("stretch");
-    } else {
-      navMusicEl.classList.add("playing");
-      document.getElementById("menu-music-toggle").innerHTML = msgPause;
-      document.querySelector("#consoleMusic").classList.add("on");
-      anzhiyu_musicPlaying = true;
-      navMusicEl.classList.add("stretch");
-    }
-    if (changePaly) player.toggle();
+  // 切换真实播放器；界面状态由 play / pause 事件同步。
+  musicToggle: function () {
+    navMusicEl = document.getElementById("nav-music");
+    const element = navMusicEl?.querySelector("meting-js");
+    if (!element) return;
+    if (element.aplayer) element.aplayer.toggle();
+    else if (element.dataset.state === "error") element.retry();
     rm && rm.hideRightMenu();
   },
   // 音乐伸缩
   musicTelescopic: function () {
-    if (navMusicEl.classList.contains("stretch")) {
-      navMusicEl.classList.remove("stretch");
-    } else {
-      navMusicEl.classList.add("stretch");
-    }
+    document.getElementById("nav-music")?.classList.toggle("stretch");
   },
 
   //音乐上一曲
@@ -1012,7 +986,7 @@ const anzhiyu = {
       const listBtn = navMusic.querySelector(
         "div.aplayer-info > div.aplayer-controller > div.aplayer-time.aplayer-time-narrow > button.aplayer-icon.aplayer-icon-menu svg"
       );
-      if (e.target != listBtn && aplayerList.classList.contains("aplayer-list-hide")) {
+      if (aplayerList && e.target != listBtn && aplayerList.classList.contains("aplayer-list-hide")) {
         aplayerList.classList.remove("aplayer-list-hide");
       }
     });
@@ -1134,17 +1108,12 @@ const anzhiyu = {
     return e.split(n).join(t);
   },
 
-  // 音乐绑定事件
+  // 音乐标题只负责伸缩，播放状态由播放器事件同步。
   musicBindEvent: function () {
     const musicTitle = document.querySelector("#nav-music .aplayer-music");
-    const musicButton = document.querySelector("#nav-music .aplayer-button");
-    if (!musicTitle || !musicButton) return;
-    musicTitle.addEventListener("click", function () {
-      anzhiyu.musicTelescopic();
-    });
-    musicButton.addEventListener("click", function () {
-      anzhiyu.musicToggle(false);
-    });
+    if (!musicTitle || musicTitle.dataset.bound) return;
+    musicTitle.dataset.bound = "true";
+    musicTitle.addEventListener("click", () => anzhiyu.musicTelescopic());
   },
 
   // 判断是否是移动端

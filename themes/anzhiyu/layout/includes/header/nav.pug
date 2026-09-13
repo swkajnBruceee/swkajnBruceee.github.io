@@ -45,12 +45,10 @@ nav#nav
 
       if theme.centerConsole.enable
         input#center-console(type="checkbox")
-        label.widget(for="center-console" title=_p("中控台") onclick="anzhiyu.switchConsole();")
+        label.widget(for="center-console" title=_p("中控台") role='button' tabindex='0' aria-label='打开中控台' aria-controls='console' onclick="event.preventDefault();anzhiyu.switchConsole();document.getElementById('center-console').checked = document.getElementById('console').classList.contains('show');if(document.getElementById('center-console').checked) document.querySelector('#console .console-close').focus();" onkeydown="if(event.key === 'Enter' || event.key === ' '){event.preventDefault();this.click();}")
           i.left
           i.widget.center
           i.widget.right
-
-      !=partial('includes/anzhiyu/console', {}, {cache:true})
 
       div.nav-button#nav-totop
         a.totopbtn(href='javascript:void(0);')
@@ -61,3 +59,5 @@ nav#nav
         a.site-page(href='javascript:void(0);' title="切换")
           i.anzhiyufont.anzhiyu-icon-bars
 
+//- 中控台独立于导航按钮容器，避免继承按钮的 padding 和移动端 margin。
+!=partial('includes/anzhiyu/console', {}, {cache:true})

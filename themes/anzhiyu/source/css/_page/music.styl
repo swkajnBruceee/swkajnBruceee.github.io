@@ -60,11 +60,6 @@ body[data-type="music"]
   transform rotate(0deg)
   transition .3s
 
-if hexo-config('nav_music.console_widescreen_music') == false
-  body
-    &:has(#console.show)
-      #nav-music
-        display: none !important
 if hexo-config('nav_music.enable') == false
   #nav-music
     display: none !important
@@ -373,5 +368,3 @@ if hexo-config('nav_music.enable') == false
                   position absolute
                   right 25px
                   top -90px
-
-      

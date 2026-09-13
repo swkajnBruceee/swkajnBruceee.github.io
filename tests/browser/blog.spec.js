@@ -66,12 +66,12 @@ test('搜索加载失败后可重试，慢网络和特殊字符查询可正常�
     await route.continue();
   });
   await page.goto('/#search');
-  await expect(page.getByRole('button', { name: '重新加载' })).toBeVisible();
-  await page.getByRole('button', { name: '重新加载' }).click();
+  await expect(page.locator('#blog-search-modal').getByRole('button', { name: '重新加载' })).toBeVisible();
+  await page.locator('#blog-search-modal').getByRole('button', { name: '重新加载' }).click();
   await page.getByRole('searchbox').fill('Linux');
   await expect(page.locator('.blog-search-item').first()).toBeVisible();
   await page.getByRole('searchbox').fill('<img src=x onerror=alert(1)> [.*');
-  await expect(page.getByRole('status')).toContainText('未找到');
+  await expect(page.locator('#blog-search-modal').getByRole('status')).toContainText('未找到');
   expect(await page.locator('#blog-search-modal img').count()).toBe(0);
   expect(requests).toBe(2);
 });

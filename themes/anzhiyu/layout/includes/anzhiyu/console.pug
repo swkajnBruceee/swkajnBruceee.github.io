@@ -1,4 +1,6 @@
-#console
+#console(data-music-panel=theme.nav_music.enable && theme.nav_music.console_widescreen_music ? 'true' : 'false' aria-label='中控台' onkeydown="if(event.key === 'Escape'){anzhiyu.hideConsole();document.querySelector('#center-console + label').focus();}")
+  button.console-close(type='button' title='关闭中控台' aria-label='关闭中控台' onclick="anzhiyu.hideConsole();document.querySelector('#center-console + label').focus();")
+    i.anzhiyufont.anzhiyu-icon-xmark(aria-hidden='true')
   .console-card-group-reward
     ul.reward-all.console-card
       each item in theme.reward.QR_code
@@ -44,4 +46,4 @@
       .console-btn-item#consoleKeyboard(onclick='anzhiyu.keyboardToggle()', title='快捷键开关')
         a.keyboard-switch
           i.anzhiyufont.anzhiyu-icon-keyboard
-  .console-mask(onclick='anzhiyu.hideConsole()', href='javascript:void(0);')
+  .console-mask(onclick='anzhiyu.hideConsole()' aria-hidden='true')

@@ -33,7 +33,7 @@ npm run validate
 BLOG_BROWSER_PATH=/usr/bin/google-chrome npm run validate
 ```
 
-测试覆盖桌面与手机页面、搜索及重试、键盘操作、主题持久化、PJAX、404、数学公式和评论故障提示。浏览器测试会屏蔽外部请求，检查外部服务不可用时的行为，不向真实评论服务提交数据。
+测试覆盖桌面与手机页面、搜索及重试、键盘操作、主题持久化、PJAX、404、数学公式、评论故障提示，以及中控台内容、音乐播放和加载失败重试。音乐测试使用运行时生成的 WAV 音频验证真实播放与切歌。浏览器测试会屏蔽外部请求，检查外部服务不可用时的行为，不向真实评论服务提交数据。
 
 ## 项目结构
 
@@ -66,5 +66,7 @@ npx hexo publish "草稿标题"
 完成写作后运行 `npm run validate`，再提交并推送。推送到 `main` 会自动检查并部署；PR 只执行检查。首次使用请在仓库 Settings → Pages → Build and deployment → Source 中选择 `GitHub Actions`。
 
 搜索、页面导航、字体、图片灯箱和公式组件随站点发布。Waline 评论后端、音乐与外部链接仍依赖对应服务；评论服务失败时显示重试入口，评论计数使用 `—` 表示暂不可用。
+
+音乐播放器脚本也随站点发布，歌单来源在 `_config.anzhiyu.yml` 的 `nav_music.api` 中配置，保留 `:server`、`:type`、`:id` 占位符。接口失败或超过 12 秒时保留播放器并显示重试按钮。主题版 APlayer 使用与歌词 CSS 匹配的 40px 滚动行距，更新依赖时需一并验证歌词位置；其上游许可证位于 `source/vendor/anzhiyu-blog-static/LICENSE-APlayer.txt`。
 
 请勿提交 `.env`、数据库密钥、JWT_TOKEN 或其他服务凭据。
