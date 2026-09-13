@@ -1,0 +1,400 @@
+{
+  "version": 1,
+  "humanCommit": "a8bc2d54ff0ac92e78ff71431b1023eda42bf482",
+  "urdf": "agibot/URDF/a3_t2d5/urdf/model.urdf",
+  "urdfSha256": "0cd38753f54d91c959191125ed67783f190ddbff62c15367b84f600d96843820",
+  "meshSha256": {
+    "pelvis_link.STL": "162899b2ba775cbdff24a7ded7908b057aae559326715eae7d6aee220578907f",
+    "waist_yaw_Link.STL": "b302eca1d9426b8de8ce2e9404389b846183a8c8197da717a6922cb5d86dda94",
+    "waist_roll_Link.STL": "447bc2d680ce58b7d5f8ac4cfedaf22538217ffaed3ce28a1a56eb5667225e0e",
+    "torso_Link.STL": "aac4aec2ae0db71731d8570c4a62ef1beb3217096533fc5d4caa976617266290",
+    "torso_shell_Link.STL": "71088af2d9f92a02165512d7949652c7fc35155d2625ac2fa82d0d5b389535e1",
+    "head_yaw_Link.STL": "f0a3259568522b89f7e7145a9d8a566c958c69a07023e0d10845a0118c450385",
+    "head_pitch_Link.STL": "5f23bb1a26e7436753dd5cf8b410efb67443d9e68998b6f124d06404eb20d0f8",
+    "left_shoulder_pitch_Link.STL": "cfbd0aff0a2a2606ff5d76f295d21deb4c59ed2bb7773c2a20c73cd50382e7a5",
+    "left_shoulder_roll_Link.STL": "8f4d5afb87e7e99bf514e2f29e9b5505361d2d1796eccad85fd4b03f642c18d4",
+    "left_shoulder_yaw_Link.STL": "d3747ec7eb12b516cc32253e1a464546eabf6907aefa701375c86ad1e3baedb8",
+    "left_elbow_Link.STL": "61b9ca8581fbbc97d4f654c4d09548be92c46022d72fdfb2075b83619845a012",
+    "left_wrist_roll_Link.STL": "408a268c8db30154f4ccbe739cc8e1baba1cf1f2d1cfae2d22d4a9e25e193ecb",
+    "left_wrist_pitch_Link.STL": "eb0ecf59d6636f29245df24c561c16c4226712b05538adbab7b247186a07c594",
+    "left_wrist_yaw_Link.STL": "e6b69e3eb9bb7f14c55568cabf6be8d4ca883afed143774aed626089b8e6919d",
+    "left_hand_Link.STL": "3e2d7b0d1b08d47fd27b5fa7949967b62420b7dd4820f94d9e5b4685adf6aad2",
+    "right_shoulder_pitch_Link.STL": "00d0d7e5875f4bb95a4f8898aa7bbbd9fa5efe72f3024bf1ccf363363486937b",
+    "right_shoulder_roll_Link.STL": "e6942f99c627322b791f5f718c9be90e28d1f7892585cab69f71e856fa1cbec2",
+    "right_shoulder_yaw_Link.STL": "f3d0de35358f1d12220e34796688a4b3298b78100214036928f04aa0ccfa3d34",
+    "right_elbow_Link.STL": "9f93d63f2e52338a130394d10a4283eaf05b9ba887a7e016499432fff05e1b51",
+    "right_wrist_roll_Link.STL": "5a510f657a264c7f3a876ba84a9f4e3b65e7fc4a1feec2bee5fab299232e1ed3",
+    "right_wrist_pitch_Link.STL": "fef914302ca535f9ec32e45089111b55b8cacdc50ffd3d12cbd54d501c234037",
+    "right_wrist_yaw_Link.STL": "1b96ef7f1618fd7565c7e0f9beeef2e56efe30d078837f89aae68dbb94c24bf6",
+    "right_hand_Link.STL": "908671221234d62b04c884218b9c88503572b6a0342fd5fba594bd9a990b81b0",
+    "left_hip_pitch_Link.STL": "fd4118aadb5349e673158bb567411623594a4a0aad5e45f6fe7a282ad84657f3",
+    "left_hip_roll_Link.STL": "a1fb76dae3648f88f9faccc481ca9fafbee92fef68ca1afae0863c93fdad5711",
+    "left_hip_yaw_Link.STL": "614fce16f3b1b4cb6937d0dc3370cbe08aa9427b1fef81fcca3a0305236b3e79",
+    "left_knee_Link.STL": "5a44c5cff46a8eee52b67eccbe50fdfdb153d5fdcb753b20f29ec80b70f52702",
+    "left_knee_shell_Link.STL": "63f10d761fa8752bcf4054afd7f250b05b6345d4d2030570fcb8cff6750566a3",
+    "left_ankle_pitch_Link.STL": "c9050125b942b942448e085126bae2c55ff0ae7bf45b40a9b5156c6f876f4c67",
+    "left_ankle_roll_Link.STL": "80e37cb823d703e36b584325e842e501110aa2c6b2d83eaad865d6a0b6a95770",
+    "right_hip_pitch_Link.STL": "47dfd37c80c8a898989f3ed699198518c9969b898d6344b59e34909e40676b78",
+    "right_hip_roll_Link.STL": "5b97fae6df26f0312cf004693447ec59e3a2adbd64729dc5d776fd11b28d8d9b",
+    "right_hip_yaw_Link.STL": "95c79979b7a59ae28c202595e78c54fd2dddf4ae4bd4e2b1a4698edeb31505ae",
+    "right_knee_Link.STL": "a38730630346bd7824f601eebb786040662d4d7e56dbb2276c97b3c8a12ee8d3",
+    "right_knee_shell_Link.STL": "6e50c44846fa9a5d3f4a5ca97d7f209e2fea3e852fcc33685ff4653d3d865444",
+    "right_ankle_pitch_Link.STL": "52b5a191e5d753687dc1b4f455d5b8ab89d10a36a4d03a5dfc14f17af5060421",
+    "right_ankle_roll_Link.STL": "e89922f499d521eb761437c794f69fbe288b7cdc81bbad25456b26d178f23138"
+  },
+  "poseRadians": {
+    "left_shoulder_roll_joint": 1.5707963267948966,
+    "right_shoulder_roll_joint": -1.5707963267948966,
+    "left_elbow_joint": 1.5707963267948966,
+    "right_elbow_joint": 1.5707963267948966
+  },
+  "normalization": "Each body independently normalized to unit height; no scale in metres in the loss.",
+  "originalHeightMetres": {
+    "human": 1.6658899999999999,
+    "robot": 1.7225523202507254
+  },
+  "meshes": [
+    {
+      "name": "MakeHuman hm08",
+      "material": "human",
+      "vertices": 13380,
+      "triangles": 26756,
+      "position": 0,
+      "normal": 160560,
+      "index": 321120
+    },
+    {
+      "name": "pelvis_link",
+      "material": "joint",
+      "vertices": 513,
+      "triangles": 1022,
+      "position": 642192,
+      "normal": 648348,
+      "index": 654504
+    },
+    {
+      "name": "waist_yaw_Link",
+      "material": "joint",
+      "vertices": 6677,
+      "triangles": 13353,
+      "position": 666768,
+      "normal": 746892,
+      "index": 827016
+    },
+    {
+      "name": "waist_roll_Link",
+      "material": "joint",
+      "vertices": 4355,
+      "triangles": 8710,
+      "position": 987252,
+      "normal": 1039512,
+      "index": 1091772
+    },
+    {
+      "name": "torso_Link",
+      "material": "joint",
+      "vertices": 2074,
+      "triangles": 4132,
+      "position": 1196292,
+      "normal": 1221180,
+      "index": 1246068
+    },
+    {
+      "name": "torso_shell_Link",
+      "material": "shell",
+      "vertices": 930,
+      "triangles": 1852,
+      "position": 1295652,
+      "normal": 1306812,
+      "index": 1317972
+    },
+    {
+      "name": "head_yaw_Link",
+      "material": "joint",
+      "vertices": 286,
+      "triangles": 568,
+      "position": 1340196,
+      "normal": 1343628,
+      "index": 1347060
+    },
+    {
+      "name": "head_pitch_Link",
+      "material": "joint",
+      "vertices": 1388,
+      "triangles": 2776,
+      "position": 1353876,
+      "normal": 1370532,
+      "index": 1387188
+    },
+    {
+      "name": "left_shoulder_pitch_Link",
+      "material": "joint",
+      "vertices": 304,
+      "triangles": 604,
+      "position": 1420500,
+      "normal": 1424148,
+      "index": 1427796
+    },
+    {
+      "name": "left_shoulder_roll_Link",
+      "material": "shell",
+      "vertices": 499,
+      "triangles": 994,
+      "position": 1435044,
+      "normal": 1441032,
+      "index": 1447020
+    },
+    {
+      "name": "left_shoulder_yaw_Link",
+      "material": "shell",
+      "vertices": 345,
+      "triangles": 686,
+      "position": 1458948,
+      "normal": 1463088,
+      "index": 1467228
+    },
+    {
+      "name": "left_elbow_Link",
+      "material": "shell",
+      "vertices": 507,
+      "triangles": 1010,
+      "position": 1475460,
+      "normal": 1481544,
+      "index": 1487628
+    },
+    {
+      "name": "left_wrist_roll_Link",
+      "material": "shell",
+      "vertices": 303,
+      "triangles": 602,
+      "position": 1499748,
+      "normal": 1503384,
+      "index": 1507020
+    },
+    {
+      "name": "left_wrist_pitch_Link",
+      "material": "joint",
+      "vertices": 264,
+      "triangles": 524,
+      "position": 1514244,
+      "normal": 1517412,
+      "index": 1520580
+    },
+    {
+      "name": "left_wrist_yaw_Link",
+      "material": "shell",
+      "vertices": 324,
+      "triangles": 644,
+      "position": 1526868,
+      "normal": 1530756,
+      "index": 1534644
+    },
+    {
+      "name": "left_hand_Link",
+      "material": "shell",
+      "vertices": 347,
+      "triangles": 690,
+      "position": 1542372,
+      "normal": 1546536,
+      "index": 1550700
+    },
+    {
+      "name": "right_shoulder_pitch_Link",
+      "material": "joint",
+      "vertices": 305,
+      "triangles": 606,
+      "position": 1558980,
+      "normal": 1562640,
+      "index": 1566300
+    },
+    {
+      "name": "right_shoulder_roll_Link",
+      "material": "shell",
+      "vertices": 499,
+      "triangles": 994,
+      "position": 1573572,
+      "normal": 1579560,
+      "index": 1585548
+    },
+    {
+      "name": "right_shoulder_yaw_Link",
+      "material": "shell",
+      "vertices": 344,
+      "triangles": 684,
+      "position": 1597476,
+      "normal": 1601604,
+      "index": 1605732
+    },
+    {
+      "name": "right_elbow_Link",
+      "material": "shell",
+      "vertices": 506,
+      "triangles": 1008,
+      "position": 1613940,
+      "normal": 1620012,
+      "index": 1626084
+    },
+    {
+      "name": "right_wrist_roll_Link",
+      "material": "shell",
+      "vertices": 306,
+      "triangles": 608,
+      "position": 1638180,
+      "normal": 1641852,
+      "index": 1645524
+    },
+    {
+      "name": "right_wrist_pitch_Link",
+      "material": "joint",
+      "vertices": 238,
+      "triangles": 472,
+      "position": 1652820,
+      "normal": 1655676,
+      "index": 1658532
+    },
+    {
+      "name": "right_wrist_yaw_Link",
+      "material": "shell",
+      "vertices": 324,
+      "triangles": 644,
+      "position": 1664196,
+      "normal": 1668084,
+      "index": 1671972
+    },
+    {
+      "name": "right_hand_Link",
+      "material": "shell",
+      "vertices": 347,
+      "triangles": 690,
+      "position": 1679700,
+      "normal": 1683864,
+      "index": 1688028
+    },
+    {
+      "name": "left_hip_pitch_Link",
+      "material": "joint",
+      "vertices": 414,
+      "triangles": 828,
+      "position": 1696308,
+      "normal": 1701276,
+      "index": 1706244
+    },
+    {
+      "name": "left_hip_roll_Link",
+      "material": "shell",
+      "vertices": 300,
+      "triangles": 596,
+      "position": 1716180,
+      "normal": 1719780,
+      "index": 1723380
+    },
+    {
+      "name": "left_hip_yaw_Link",
+      "material": "shell",
+      "vertices": 649,
+      "triangles": 1294,
+      "position": 1730532,
+      "normal": 1738320,
+      "index": 1746108
+    },
+    {
+      "name": "left_knee_Link",
+      "material": "shell",
+      "vertices": 383,
+      "triangles": 766,
+      "position": 1761636,
+      "normal": 1766232,
+      "index": 1770828
+    },
+    {
+      "name": "left_knee_shell_Link",
+      "material": "joint",
+      "vertices": 177,
+      "triangles": 350,
+      "position": 1780020,
+      "normal": 1782144,
+      "index": 1784268
+    },
+    {
+      "name": "left_ankle_pitch_Link",
+      "material": "shell",
+      "vertices": 504,
+      "triangles": 1008,
+      "position": 1788468,
+      "normal": 1794516,
+      "index": 1800564
+    },
+    {
+      "name": "left_ankle_roll_Link",
+      "material": "shell",
+      "vertices": 781,
+      "triangles": 1586,
+      "position": 1812660,
+      "normal": 1822032,
+      "index": 1831404
+    },
+    {
+      "name": "right_hip_pitch_Link",
+      "material": "joint",
+      "vertices": 414,
+      "triangles": 828,
+      "position": 1850436,
+      "normal": 1855404,
+      "index": 1860372
+    },
+    {
+      "name": "right_hip_roll_Link",
+      "material": "shell",
+      "vertices": 302,
+      "triangles": 600,
+      "position": 1870308,
+      "normal": 1873932,
+      "index": 1877556
+    },
+    {
+      "name": "right_hip_yaw_Link",
+      "material": "shell",
+      "vertices": 643,
+      "triangles": 1282,
+      "position": 1884756,
+      "normal": 1892472,
+      "index": 1900188
+    },
+    {
+      "name": "right_knee_Link",
+      "material": "shell",
+      "vertices": 384,
+      "triangles": 764,
+      "position": 1915572,
+      "normal": 1920180,
+      "index": 1924788
+    },
+    {
+      "name": "right_knee_shell_Link",
+      "material": "joint",
+      "vertices": 177,
+      "triangles": 350,
+      "position": 1933956,
+      "normal": 1936080,
+      "index": 1938204
+    },
+    {
+      "name": "right_ankle_pitch_Link",
+      "material": "shell",
+      "vertices": 504,
+      "triangles": 1008,
+      "position": 1942404,
+      "normal": 1948452,
+      "index": 1954500
+    },
+    {
+      "name": "right_ankle_roll_Link",
+      "material": "shell",
+      "vertices": 781,
+      "triangles": 1586,
+      "position": 1966596,
+      "normal": 1975968,
+      "index": 1985340
+    }
+  ]
+}

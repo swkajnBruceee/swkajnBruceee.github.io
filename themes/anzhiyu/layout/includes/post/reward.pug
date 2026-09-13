@@ -12,7 +12,8 @@
             a(href=url_for(clickTo) target='_blank')
               img.post-qr-code-img(src=url_for(item.img) alt=item.text)
             .post-qr-code-desc=item.text
-      a.reward-main-btn(href='/about/#about-reward' target='_blank')
-        .reward-text 赞赏者名单
-        .reward-dec 因为你们的支持让我意识到写文章的价值🙏
+      if theme.reward.supporters_url
+        a.reward-main-btn(href=url_for(theme.reward.supporters_url) target='_blank' rel='noopener')
+          .reward-text 赞赏者名单
+          .reward-dec 感谢你的支持
 #quit-box(onclick="anzhiyu.removeRewardMask()" style="display: none")

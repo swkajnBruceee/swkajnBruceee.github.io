@@ -165,15 +165,11 @@ body[data-type="link"] #page {
   }
 }
 
-/* 博客文章页面目录位置调整，避免与顶部导航栏重叠 */
-.post #aside-content .sticky_layout {
-  top: 80px !important;
-}
-
-/* 修复移动端目录位置 */
-@media screen and (max-width: 768px) {
+/* 目录随父栏结束；浏览器自动处理窗口尺寸、图片加载和页面切换。 */
+@media screen and (min-width: 992px) {
   .post #aside-content .sticky_layout {
-    top: 60px !important;
+    position: sticky;
+    top: 80px;
   }
 }
 

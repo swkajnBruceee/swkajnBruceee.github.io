@@ -786,17 +786,16 @@ window.addHighlightTool = function () {
         if (currentId === "") {
           return;
         }
-        const currentActive = $tocLink[currentIndex];
+        const currentActive = Array.from($tocLink).find(link => decodeURIComponent(link.getAttribute("href")) === decodeURIComponent(currentId));
+        if (!currentActive) return;
         currentActive.classList.add("active");
 
         setTimeout(() => {
-          autoScrollToc(currentActive);
+          if (currentActive.isConnected) autoScrollToc(currentActive);
         }, 0);
 
         if (isExpand) return;
-        let parent = currentActive.parentNode;
-
-        for (; !parent.matches(".toc"); parent = parent.parentNode) {
+        for (let parent = currentActive.parentElement; parent && parent !== $cardToc; parent = parent.parentElement) {
           if (parent.matches("li")) parent.classList.add("active");
         }
       }
@@ -810,34 +809,6 @@ window.addHighlightTool = function () {
 
     anzhiyu.addEventListenerPjax(window, "scroll", tocScrollFn, { passive: true });
   };
-
-  const autoChangeMode = () => {
-    const now = new Date();
-    const hour = now.getHours();
-    const isNight = hour >= 19 || hour < 7;
-    let userTheme;
-    try {
-      userTheme = window.saveToLocal?.get("theme");
-    } catch (error) {
-      userTheme = localStorage.getItem("theme");
-    }
-    if (userTheme !== "dark" && userTheme !== "light") {
-      const legacyTheme = localStorage.getItem("theme");
-      userTheme = legacyTheme === "dark" || legacyTheme === "light" ? legacyTheme : null;
-    }
-
-    if (userTheme) {
-      document.documentElement.setAttribute("data-theme", userTheme);
-      return;
-    }
-
-    if (isNight) {
-      document.documentElement.setAttribute("data-theme", "dark");
-    } else {
-      document.documentElement.setAttribute("data-theme", "light");
-    }
-  };
-  autoChangeMode();
 
   const handleThemeChange = mode => {
     const globalFn = window.globalFn || {};
@@ -853,10 +824,10 @@ window.addHighlightTool = function () {
 
     rm && rm.hideRightMenu();
 
-    const menuDarkmodeText = $rightMenu.querySelector(".menu-darkmode-text");
-    if (mode === "light") {
+    const menuDarkmodeText = $rightMenu?.querySelector(".menu-darkmode-text");
+    if (menuDarkmodeText && mode === "light") {
       menuDarkmodeText.textContent = "深色模式";
-    } else {
+    } else if (menuDarkmodeText) {
       menuDarkmodeText.textContent = "浅色模式";
     }
 

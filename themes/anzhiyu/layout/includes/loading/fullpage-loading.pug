@@ -21,58 +21,25 @@
           .wizard-four-point-star.--first
           .wizard-four-point-star.--second
           .wizard-four-point-star.--third
-script(async).
+script.
   (()=>{
     const $loadingBox = document.getElementById('loading-box')
-    const $body = document.body
-    let loadingStartTime = Date.now()
-    let isLoaded = false
-    
-    const preloader = {
-      endLoading: () => {
-        const loadingTime = Date.now() - loadingStartTime
-        const minLoadingTime = 1500 // 最少显示1.5秒
-        
-        if (loadingTime < minLoadingTime) {
-          // 如果加载时间不足2秒，延迟关闭动画
-          setTimeout(() => {
-            $body.style.overflow = 'auto'
-            $loadingBox.classList.add('loaded')
-          }, minLoadingTime - loadingTime)
-        } else {
-          $body.style.overflow = 'auto'
-          $loadingBox.classList.add('loaded')
-        }
-      },
-      initLoading: () => {
-        $body.style.overflow = 'hidden'
-        $loadingBox.classList.remove('loaded')
-        loadingStartTime = Date.now()
-        isLoaded = false
-      }
+    let timeout
+    const endLoading = () => {
+      clearTimeout(timeout)
+      $loadingBox.classList.add('loaded')
     }
-
-    preloader.initLoading()
-    
-    // 页面加载完成后关闭动画
-    window.addEventListener('load', () => {
-      if (!isLoaded) {
-        isLoaded = true
-        preloader.endLoading()
-      }
-    })
-    
-    // 超时保护，最多显示8秒
-    setTimeout(function(){
-      if (!isLoaded) {
-        isLoaded = true
-        preloader.endLoading()
-      }
-    }, 8000);
-
-    // PJAX支持
+    const initLoading = () => {
+      clearTimeout(timeout)
+      $loadingBox.classList.remove('loaded')
+      timeout = setTimeout(endLoading, 3000)
+    }
+    initLoading()
+    document.addEventListener('DOMContentLoaded', endLoading, { once: true })
+    window.addEventListener('pageshow', endLoading)
     if (!{theme.pjax && theme.pjax.enable}) {
-      document.addEventListener('pjax:send', () => { preloader.initLoading() })
-      document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+      document.addEventListener('pjax:send', initLoading)
+      document.addEventListener('pjax:complete', endLoading)
+      document.addEventListener('pjax:error', endLoading)
     }
   })()

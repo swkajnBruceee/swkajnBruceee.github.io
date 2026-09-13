@@ -1,0 +1,13 @@
+UMR figures
+
+`overview.png` reproduces Figure 2 and `hoi-comparison.png` reproduces Figure 8 from Hanyang Cao, Yuetong Fang, Taesoo Kwon et al., *Unified Motion Retargeting for Humanoids with Learned Point Cloud Correspondence*, arXiv:2609.02134v2, 7 September 2026.
+
+Paper: <https://arxiv.org/abs/2609.02134v2>
+
+License: [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). The license is stated in the [arXiv HTML version](https://arxiv.org/html/2609.02134v2). Original authors retain copyright. Images are reproduced without substantive modification; the blog's build may generate lossless WebP copies.
+
+Figure 2 source: <https://arxiv.org/html/2609.02134v2/overview_2_2.png>
+
+Figure 8 source: <https://arxiv.org/html/2609.02134v2/HOI_comparison.png>
+
+Accessed 11 September 2026. Captions in the blog are independently written descriptions.

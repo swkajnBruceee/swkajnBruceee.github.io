@@ -1,84 +1,29 @@
-# CLAUDE.md
+# 开发说明
 
-此文件为在该代码库中工作的 Claude Code (claude.ai/code) 提供指导。
+环境、命令和写作流程见 [README](../README.md)。
 
-## 项目概述
+## 修改位置
 
-这是一个基于 Hexo 的静态博客项目，名为 "Bruce's Blog"，使用 AnZhiYu 主题。该博客部署在 GitHub Pages 上，专注于技术内容，包括 Web 开发、AI/ML 部署、Linux 系统管理和算法问题。
+一般站点设置修改 `_config.yml`，主题覆盖修改 `_config.anzhiyu.yml`。本项目直接维护 `themes/anzhiyu/` 内的 Pug 模板与脚本，升级上游主题时需要保留这里的本地修改。
 
-## 常用开发命令
+自定义交互放在 `source/js/`，通过主题配置的 `inject.bottom` 加载。PJAX 会替换页面主体，常驻脚本应使用事件代理，或在 `pjax:complete` 初始化当前页面，并在 `pjax:send` 释放观察器和动画。搜索弹窗放在被替换区域之外，其状态在切页时保留。
 
-### 开发工作流程
-```bash
-# 启动本地开发服务器
-npm run server
-# 或者
-hexo server
+页面 SEO 数据由 `head.pug`、`Open_Graph.pug` 和 `config_site.pug` 生成。JavaScript 配置通过 JSON 序列化写入；JSON-LD 在 PJAX 完成后同步，不能作为 pjax 0.2 的直接 script 选择器，否则会被当成 JavaScript 执行。
 
-# 生成静态文件
-npm run build
-# 或者
-hexo generate
+## 资源与构建
 
-# 检查生成页面的内部链接和关键资源
-npm run check:site
+关键前端依赖由 `scripts/vendor-assets.js` 从 `node_modules` 生成到 `public/vendor/`，同时附带包内许可证和版本说明。升级依赖必须同时检查路径映射和 `package-lock.json`，不要直接修改生成目录。
 
-# 清理生成的文件和缓存
-npm run clean
-# 或者
-hexo clean
+`optimized-images.js` 保留原图，生成更小的无损 WebP，并设置原始尺寸以减少图片加载时的布局跳动。带旋转信息或多帧的图片不转换；转换缓存按文件内容和 Sharp 版本索引。
 
-# 提交后由 GitHub Actions 自动部署
-git push origin main
-```
+404 页面在 `source/404.md` 定义，使用 `layout: page` 和字符串 `type: '404'`；主题生成器只在没有自定义 404 时提供后备页面。不要设为不存在的 `layout: 404`。
 
-### 创建新内容
-```bash
-# 创建新文章
-hexo new "文章标题"
+## 验证与发布
 
-# 创建新草稿
-hexo new draft "草稿标题"
+运行 `npm run validate`：自检工具测试 → 完整构建 → 全站静态检查 → 浏览器测试。浏览器测试需要 Chromium，安装方式见 README。
 
-# 发布草稿
-hexo publish "草稿标题"
-```
+静态检查会验证页面确实是 HTML、标题和描述、canonical、内部链接及锚点、CSS 中的字体/图片、srcset、视频封面、RSS、站点地图、搜索索引和 manifest。它不会探测外部服务的实时可用性。
 
-## 代码架构和结构
+浏览器测试使用本地构建页面并阻止外部请求。修改评论服务配置后，还需要在可访问该后端的环境手动检查读取、登录和发评流程；自动测试不提交真实评论。
 
-### 目录结构
-- `source/` - 主内容目录
-  - `_posts/` - 博客文章 Markdown 文件
-  - `about/` - 关于页面
-  - `categories/` - 分类页面
-  - `tags/` - 标签页面
-  - `css/` - 自定义 CSS 文件
-  - `js/` - 自定义 JavaScript 文件
-  - `img/` - 图片资源
-- `themes/anzhiyu/` - 当前使用的 AnZhiYu 主题源码
-- `source_dir`（在 _config.yml 中配置为 `source`）- 网站的源文件
-- `public_dir`（在 _config.yml 中配置为 `public`）- 生成的静态文件
-
-### 配置文件
-1. `_config.yml` - 主 Hexo 配置
-2. `_config.anzhiyu.yml` - AnZhiYu 主题特定配置
-3. `themes/anzhiyu/_config.yml` - 主题默认配置
-4. `package.json` - 项目依赖和脚本
-
-### 内容组织
-- 博客文章以 Markdown 格式写在 `source/_posts/` 中
-- 文章使用 front-matter 作为元数据（标题、日期、标签、分类等）
-- 自定义 CSS 和 JavaScript 文件分别在 `source/css/` 和 `source/js/` 中
-- 图片按不同类型组织在 `source/img/` 的子目录中
-
-### 主题结构
-博客使用基于 Butterfly 主题的 AnZhiYu 主题：
-- 布局模板在 `themes/anzhiyu/layout/` 中，使用 Pug 模板
-- 样式在 `themes/anzhiyu/source/css/` 中，使用 Stylus
-- JavaScript 文件在 `themes/anzhiyu/source/js/` 中
-- 自定义标签和助手在 `themes/anzhiyu/scripts/` 中
-
-### 部署
-- 推送到 `main` 后由 `.github/workflows/pages.yml` 自动构建并部署到 GitHub Pages
-- 仓库地址：https://github.com/swkajnBruceee/swkajnBruceee.github.io.git
-- 分支：main
+`.github/workflows/pages.yml` 在 PR 和 main 分支推送时执行检查，仅 main 分支推送或手动运行会部署到 GitHub Pages。

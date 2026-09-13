@@ -3,7 +3,7 @@
 
 #body-wrap.error
   include ./header/index.pug
-  .error-box
+  main#blog-container.error-box(tabindex="-1")
     #error-wrap
       .error-content
         .error-img(style=error_404_bg_img)
@@ -11,8 +11,12 @@
           h1.error_title= '404'
           .error_subtitle= theme.error_404.subtitle
           a.button--animated(href=config.root)
-            i.anzhiyufont.anzhiyu-icon-rocket
+            i.anzhiyufont.anzhiyu-icon-rocket(aria-hidden='true')
             = _p('回到主页')
+          a.button--animated.blog-search-trigger(href='#search' aria-label='搜索文章')
+            i.anzhiyufont.anzhiyu-icon-magnifying-glass(aria-hidden='true')
+            | 搜索文章
+          a.button--animated(href=url_for('/archives/')) 文章归档
 
     .aside-list
       .aside-list-group

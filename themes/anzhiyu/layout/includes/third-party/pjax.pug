@@ -3,12 +3,9 @@ if theme.pjax.exclude
   each val in theme.pjax.exclude
     - pjaxExclude = pjaxExclude + `:not([href="${val}"])`
 
-- let pjaxSelectors = ['head > title','#config-diff', '#body-wrap','#rightside-config-hide','#rightside-config-show','.js-pjax']
-
-- let choose = theme.comments.use
-if choose
-  if theme.Open_Graph_meta && (choose.includes('Twikoo'))
-    - pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]', 'meta[property="og:type"]', 'meta[property="og:site_name"]', 'meta[property="og:description"]')
+- let pjaxSelectors = ['head > title', 'meta[name="description"]', 'meta[name="keywords"]', 'meta[name="robots"]', 'link[rel="canonical"]', '#config-diff', '#body-wrap', '#rightside-config-hide', '#rightside-config-show', '.js-pjax']
+if theme.Open_Graph_meta
+  - pjaxSelectors.unshift('meta[property="og:image"]', 'meta[property="og:title"]', 'meta[property="og:url"]', 'meta[property="og:type"]', 'meta[property="og:site_name"]', 'meta[property="og:description"]', 'meta[name="twitter:image"]')
 
 script(src=url_for(theme.asset.pjax))
 script.
@@ -44,6 +41,8 @@ script.
   })
 
   document.addEventListener('pjax:complete', function () {
+    // pjax 0.2 会把直接选中的 script 当作 JavaScript 执行，JSON-LD 单独更新。
+    document.querySelector('script[type="application/ld+json"]').textContent = JSON.stringify(GLOBAL_CONFIG_SITE.structuredData)
     window.refreshFn()
 
     document.querySelectorAll('script[data-pjax]').forEach(item => {
@@ -71,7 +70,7 @@ script.
   })
 
   document.addEventListener('pjax:error', e => {
-    if (e.request.status === 404) {
+    if (e.request && e.request.status === 404 && location.pathname !== '/404.html') {
       pjax.loadUrl('!{url_for("/404.html")}')
     }
   })

@@ -1,0 +1,40 @@
+UMR 表面对应动画：模型来源与转换记录
+更新：2026-09-13
+
+人体：MakeHuman hm08 base mesh，CC0。
+版权所有者（资产原始声明）：Data Collection AB、Joel Palmius、Jonas Hauquier。
+固定版本：a8bc2d54ff0ac92e78ff71431b1023eda42bf482
+https://github.com/makehumancommunity/makehuman/blob/a8bc2d54ff0ac92e78ff71431b1023eda42bf482/makehuman/data/3dobjs/base.obj
+https://static.makehumancommunity.org/about/license.html
+同时使用同版本 default.mhskel、default_weights.mhw（CC0）。
+仅导出 body 组，不导出关节辅助体或衣物辅助笼。
+使用原始蒙皮权重和分段刚体变换，将手臂与手调整为展开姿态。
+人体为通用数字基础网格，不是真人扫描，不是 SMPL。
+
+机器人：智元 / Agibot 远征 A3，a3_t2d5。
+用户提供的 HOPETableTennis 工作区：
+agibot/URDF/a3_t2d5/urdf/model.urdf
+agibot/URDF/a3_t2d5/meshes/*.STL
+模型及品牌权利归各自权利人。源工作区根目录含 Apache-2.0 LICENSE；
+模型目录未附单独资产许可证，不将人体资源的 CC0 声明套用于机器人资产。
+本地输入与所有 STL 的 SHA-256、使用的关节角记录在 models.json。
+每个链接均按 URDF parent/child、origin、axis、visual origin 及 mesh scale
+组装。左肩 roll = +π/2，右肩 roll = −π/2，双肘 = +π/2；其余关节为零。
+该姿态用于静态表面对比，不是可执行动作命令。未导出两个内置 IMU 体积。
+保留 37 个链接的外壳与关节配色；网格经过二次误差减面。
+
+处理：tools/umr/build-models.py。人体与机器人分别归一化至单位高度。
+实体几何：人体 26,756 个三角形；A3 56,719 个三角形。
+优化数据：768 个人体点，1,152 个机器人目标点；从面积加权三角面候选中
+最远点选样。人体样本保留三角形编号与重心坐标。目标样本是无序点集。
+固定源邻接：每个样本在源三角网格边图上取 6 个最短路近邻并对称去重，
+路径经过样本所在三角形的顶点。这是离散的测地近似。
+接触色块为示意标签，不输入损失，也不证明表面接触成立。
+
+surfaces.bin 格式：小端序，各链接 position float32[N,3]、normal float32[N,3]、
+index uint32[F,3] 顺序连接；字节偏移与顶点/三角形数量见 models.json。
+samples.json 保存实际用于三个损失的点与邻接，不包含预计算动画轨迹。
+
+渲染：Three.js 0.180.0，MIT；许可证由站点构建输出至 /vendor/three/LICENSE。
+优化：逐点解析梯度演示，不是 UMR 网络训练或 A3 实验复现。
+UMR 论文：https://arxiv.org/abs/2609.02134

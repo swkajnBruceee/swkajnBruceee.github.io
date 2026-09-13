@@ -1,6 +1,8 @@
 (function () {
   'use strict';
 
+  const cleanups = new Set();
+
   const modes = {
     gravity: { label: '重力', color: '#e8f0eb', detail: '只考虑重力，轨迹保持理想抛物线' },
     drag: { label: '重力 + 空气阻力', color: '#e8a65e', detail: '加入与速度平方相关的阻力项' },
@@ -194,8 +196,15 @@
     });
 
     if (reset) reset.addEventListener('click', render);
-    if (typeof ResizeObserver === 'function') new ResizeObserver(render).observe(canvas);
-    window.addEventListener('resize', render, { passive: true });
+    const observer = typeof ResizeObserver === 'function' ? new ResizeObserver(render) : null;
+    if (observer) observer.observe(canvas);
+    else window.addEventListener('resize', render, { passive: true });
+    cleanups.add(() => {
+      epoch += 1;
+      cancelAnimationFrame(animationFrame);
+      observer?.disconnect();
+      window.removeEventListener('resize', render);
+    });
     lab.dataset.hopeReady = 'true';
     render();
   }
@@ -206,5 +215,6 @@
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
+  document.addEventListener('pjax:send', () => { cleanups.forEach(cleanup => cleanup()); cleanups.clear(); });
   document.addEventListener('pjax:complete', init);
 })();

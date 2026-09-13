@@ -79,15 +79,14 @@
             block
 
       - const commentUse = comments.use
-      if page.comments !== false && commentUse && !comments.lazyload
+      if page.comments !== false && commentUse && (!comments.lazyload || commentUse[0] === 'Waline')
         if commentUse[0] === 'Valine' && theme.valine.visitor
           +pvBlock(url_for(page.path),'leancloud_visitors',page.title)
             span.leancloud-visitors-count(title="访问量")
               i.anzhiyufont.anzhiyu-icon-spinner.anzhiyu-spin
         else if commentUse[0] === 'Waline' && theme.waline.pageview
           +pvBlock('','','')
-            span.waline-pageview-count(data-path=url_for(page.path) title="访问量")
-              i.anzhiyufont.anzhiyu-icon-spinner.anzhiyu-spin
+            span.waline-pageview-count(data-path=url_for(page.path) title="评论区加载后显示访问量") —
         else if commentUse[0] === 'Twikoo' && theme.twikoo.visitor
           +pvBlock('','','')
             span#twikoo_visitors(title="访问量")
@@ -111,7 +110,7 @@
           i.anzhiyufont.anzhiyu-icon-location-dot
           =location
 
-      if comments.count && !comments.lazyload && page.comments !== false && comments.use
+      if comments.count && page.comments !== false && comments.use && (!comments.lazyload || comments.use[0] === 'Waline')
         - var whichCount = comments.use[0]
 
         mixin countBlock
@@ -131,8 +130,7 @@
           when 'Waline'
             +countBlock
               a(href=url_for(page.path) + '#post-comment')
-                span.waline-comment-count(data-path=url_for(page.path))
-                  i.anzhiyufont.anzhiyu-icon-spinner.anzhiyu-spin
+                span.waline-comment-count(data-path=url_for(page.path) title='评论区加载后显示评论数') —
           when 'Twikoo'
             +countBlock
               a(href=url_for(page.path) + '#post-comment' tabindex="-1")

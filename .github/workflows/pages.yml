@@ -3,13 +3,15 @@ name: Deploy Hexo site
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: pages
+  group: pages-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -31,15 +33,26 @@ jobs:
       - name: Build Hexo site
         run: npm run build
 
+      - name: Test site checker
+        run: npm test
+
       - name: Verify generated site
         run: npm run check:site
 
+      - name: Install browser
+        run: npx playwright install --with-deps chromium
+
+      - name: Test browser interactions
+        run: npm run test:browser
+
       - name: Upload Pages artifact
+        if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v5
         with:
           path: ./public
 
   deploy:
+    if: github.event_name != 'pull_request'
     needs: build
     permissions:
       pages: write

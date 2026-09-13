@@ -1,7 +1,16 @@
 //- Mathjax 3
 script.
-  if (!window.MathJax) {
+  (() => {
+  const article = document.getElementById('article-container')
+  if (!article) return
+  let active = true
+  anzhiyu.addGlobalFn('pjax', () => {
+    active = false
+    if (window.MathJax?.typesetClear) MathJax.typesetClear([article])
+  }, 'mathjax')
+  if (!window.blogMathJaxReady) {
     window.MathJax = {
+      startup: { typeset: false },
       tex: {
         inlineMath: [['$', '$'], ['\\(', '\\)']],
         tags: 'ams'
@@ -26,13 +35,19 @@ script.
       }
     }
     
-    const script = document.createElement('script')
-    script.src = '!{url_for(theme.asset.mathjax)}'
-    script.id = 'MathJax-script'
-    script.async = true
-    document.head.appendChild(script)
-  } else {
-    MathJax.startup.document.state(0)
-    MathJax.texReset()
-    MathJax.typesetPromise()
+    window.blogMathJaxReady = getScript('!{url_for(theme.asset.mathjax)}')
+      .then(() => MathJax.startup.promise)
+      .catch(error => { window.blogMathJaxReady = null; throw error })
   }
+  window.blogMathJaxReady.then(() => {
+    if (!active || !article.isConnected) return
+    MathJax.texReset()
+    return MathJax.typesetPromise([article])
+  }).catch(() => {
+    if (!active || !article.isConnected) return
+    const hint = document.createElement('p')
+    hint.setAttribute('role', 'status')
+    hint.textContent = '公式组件加载失败，请刷新页面重试。'
+    article.prepend(hint)
+  })
+  })()

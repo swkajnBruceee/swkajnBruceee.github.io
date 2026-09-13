@@ -27,6 +27,9 @@ nav#nav
     #menus
       !=partial('includes/header/menu_item', {}, {cache: true})
     #nav-right
+      .nav-button
+        a.site-page.blog-search-trigger(href='#search' aria-label='站内搜索（Ctrl 或 Command + K）' title='站内搜索' accesskey='s')
+          i.anzhiyufont.anzhiyu-icon-magnifying-glass(aria-hidden='true')
       if theme.nav.travelling
         .nav-button.only-home#travellings_button(title='随机前往一个开往项目网站')
           a.site-page(onclick='anzhiyu.totraveling()', title='随机前往一个开往项目网站', href='javascript:void(0);', rel='external nofollow', data-pjax-state='external')
@@ -57,5 +60,4 @@ nav#nav
       #toggle-menu
         a.site-page(href='javascript:void(0);' title="切换")
           i.anzhiyufont.anzhiyu-icon-bars
-
 

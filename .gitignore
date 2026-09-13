@@ -11,3 +11,5 @@ public/
 .env.*
 !.env.example
 _multiconfig.yml
+playwright-report/
+test-results/

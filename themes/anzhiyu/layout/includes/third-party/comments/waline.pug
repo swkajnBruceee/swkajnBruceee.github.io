@@ -1,48 +1,71 @@
 - const { serverURL, option, pageview, meta_css, imageUploader } = theme.waline
 - const { lazyload, count, use } = theme.comments
-
 script.
   (() => {
-    let initFn = window.walineFn || null
-
-    const initWaline = (Fn) => {
-      const waline = Fn(Object.assign({
-        el: '#waline-wrap',
-        serverURL: '!{serverURL}',
-        pageview: !{lazyload ? false : pageview},
-        dark: 'html[data-theme="dark"]',
-        path: window.location.pathname,
-        comment: !{lazyload ? false : count},
-        imageUploader: !{imageUploader},
-      }, !{JSON.stringify(option)}))
-
-      const destroyWaline = () => {
-        waline.destroy()
-      }
-
-      anzhiyu.addGlobalFn('pjax', destroyWaline, 'destroyWaline')
+    const container = document.getElementById('waline-wrap')
+    if (!container) return
+    let instance
+    let observer
+    let active = true
+    let controller
+    const dispose = () => {
+      active = false
+      observer?.disconnect()
+      instance?.destroy()
+      controller?.abort()
     }
+    anzhiyu.addGlobalFn('pjax', dispose, 'destroyWaline')
 
     const loadWaline = async () => {
-      if (initFn) initWaline(initFn)
-      else {
-        await getCSS('!{url_for(theme.asset.waline_css)}')
-        if (!{meta_css}) await getCSS('!{url_for(theme.asset.waline_meta_css)}')
-        try {
-          const { init } = await import('!{url_for(theme.asset.waline_js)}')
-          initFn = init || (typeof Waline !== 'undefined' && Waline.init)
-          initWaline(initFn)
-          window.walineFn = initFn
-        } catch (error) {
-          console.error('Failed to load Waline:', error)
+      if (!active || !container.isConnected) return
+      container.textContent = '正在加载评论…'
+      controller = new AbortController()
+      const timeout = setTimeout(() => controller.abort(), 10000)
+      try {
+        const params = new URLSearchParams({ path: location.pathname, pageSize: '1', page: '1' })
+        const response = await fetch('!{serverURL}'.replace(/\/$/, '') + '/api/comment?' + params, { signal: controller.signal })
+        if (!response.ok) throw new Error('评论服务不可用')
+        const status = await response.json()
+        if (status.errno !== 0) throw new Error('评论服务配置异常')
+        if (!window.blogWalineAssets) {
+          window.blogWalineAssets = Promise.all([
+            getCSS('!{url_for(theme.asset.waline_css)}'),
+            !{meta_css} ? Promise.resolve() : getCSS('!{url_for(theme.asset.waline_meta_css)}'),
+            import('!{url_for(theme.asset.waline_js)}')
+          ]).catch(error => { window.blogWalineAssets = null; throw error })
         }
+        const [, , client] = await window.blogWalineAssets
+        if (!active || !container.isConnected) return
+        container.replaceChildren()
+        instance = client.init(Object.assign({}, !{JSON.stringify(option)}, {
+          el: container,
+          serverURL: '!{serverURL}',
+          pageview: !{pageview},
+          comment: !{count},
+          dark: 'html[data-theme="dark"]',
+          path: window.location.pathname,
+          imageUploader: !{imageUploader}
+        }))
+        window.walineFn = client.init
+      } catch {
+        if (!active || !container.isConnected) return
+        container.textContent = '评论暂时无法加载。'
+        const retry = document.createElement('button')
+        retry.type = 'button'
+        retry.textContent = '点击重试'
+        retry.addEventListener('click', loadWaline)
+        container.appendChild(retry)
+      } finally {
+        clearTimeout(timeout)
       }
     }
-
-    if ('!{use[0]}' === 'Waline' || !!{lazyload}) {
-      if (!{lazyload}) anzhiyu.loadComment(document.getElementById('waline-wrap'),loadWaline)
-      else setTimeout(loadWaline, 0)
-    } else {
-      window.loadOtherComment = loadWaline
-    }
+    if ('!{use[0]}' !== 'Waline') window.loadOtherComment = loadWaline
+    else if (!{lazyload} && 'IntersectionObserver' in window) {
+      observer = new IntersectionObserver(entries => {
+        if (!entries.some(entry => entry.isIntersecting)) return
+        observer.disconnect()
+        loadWaline()
+      }, { rootMargin: '200px' })
+      observer.observe(container)
+    } else loadWaline()
   })()

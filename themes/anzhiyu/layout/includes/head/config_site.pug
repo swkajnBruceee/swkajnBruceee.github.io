@@ -20,16 +20,18 @@
   }
 -
 
-script#config-diff.
-  var GLOBAL_CONFIG_SITE = {
-    configTitle: '!{configTitleVal}',
-    title: '!{titleVal}',
-    postAI: '!{page.ai}',
-    pageFillDescription: '!{get_page_fill_description()}',
-    isPost: !{is_post()},
-    isHome: !{is_home()},
-    isHighlightShrink: !{isHighlightShrink},
-    isToc: !{showToc},
-    postUpdate: '!{full_date(page.updated)}',
-    postMainColor: '!{page.main_color}',
+-
+  const pageConfig = {
+    configTitle: config.title,
+    title: pageTitle,
+    postAI: page.ai || '',
+    pageFillDescription: theme.post_head_ai_description.enable ? get_page_fill_description() || '' : '',
+    isPost: is_post(),
+    isHome: is_home(),
+    isHighlightShrink: isHighlightShrink === 'undefined' ? null : isHighlightShrink,
+    isToc: showToc,
+    postUpdate: full_date(page.updated),
+    postMainColor: page.main_color || ''
   }
+  pageConfig.structuredData = structuredData
+script#config-diff!= 'var GLOBAL_CONFIG_SITE = ' + JSON.stringify(pageConfig).replace(/</g, '\\u003c')

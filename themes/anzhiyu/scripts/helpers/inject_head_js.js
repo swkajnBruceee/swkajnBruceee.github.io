@@ -24,23 +24,21 @@ hexo.extend.helper.register("inject_head_js", function () {
             value,
             expiry
           }
-          localStorage.setItem(key, JSON.stringify(item))
+          try { localStorage.setItem(key, JSON.stringify(item)) } catch {}
         },
       
         get: key => {
-          const itemStr = localStorage.getItem(key)
-      
-          if (!itemStr) {
-            return undefined
-          }
-          const item = JSON.parse(itemStr)
-          const now = Date.now()
-      
-          if (now > item.expiry) {
-            localStorage.removeItem(key)
-            return undefined
-          }
-          return item.value
+          try {
+            const itemStr = localStorage.getItem(key)
+            if (!itemStr) return undefined
+            if (key === 'theme' && (itemStr === 'light' || itemStr === 'dark')) return itemStr
+            const item = JSON.parse(itemStr)
+            if (!item || !Number.isFinite(item.expiry) || Date.now() > item.expiry) {
+              localStorage.removeItem(key)
+              return undefined
+            }
+            return item.value
+          } catch { return undefined }
         }
       }
     `;

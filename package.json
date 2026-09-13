@@ -6,12 +6,20 @@
     "build": "hexo clean && hexo generate",
     "check:site": "node tools/site-check.js",
     "clean": "hexo clean",
-    "server": "hexo server"
+    "server": "hexo server",
+    "preview": "hexo server --static",
+    "test": "node --test tools/*.test.js",
+    "test:browser": "playwright test",
+    "validate": "npm test && npm run build && npm run check:site && npm run test:browser"
   },
   "hexo": {
     "version": "7.3.0"
   },
   "dependencies": {
+    "@fancyapps/ui": "5.0.28",
+    "@fortawesome/fontawesome-free": "6.4.0",
+    "@waline/client": "3.1.3",
+    "anzhiyu-theme-static": "1.1.10",
     "hexo": "^7.0.0",
     "hexo-cli": "^4.3.0",
     "hexo-generator-archive": "^2.0.0",
@@ -27,6 +35,19 @@
     "hexo-renderer-stylus": "^3.0.0",
     "hexo-server": "^3.0.0",
     "hexo-wordcount": "^6.0.1",
-    "js-yaml": "4.3.2"
+    "js-yaml": "4.3.2",
+    "mathjax": "3.2.2",
+    "node-snackbar": "0.1.16",
+    "pjax": "0.2.8",
+    "qrcodejs": "1.0.0",
+    "three": "0.180.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.63.0",
+    "htmlparser2": "10.0.0",
+    "sharp": "0.35.4"
+  },
+  "engines": {
+    "node": ">=22"
   }
 }

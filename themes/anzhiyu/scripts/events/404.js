@@ -6,7 +6,7 @@
 'use strict'
 
 hexo.extend.generator.register('404', function (locals) {
-  if (!hexo.theme.config.error_404.enable) return
+  if (!hexo.theme.config.error_404.enable || locals.pages.data.some(page => page.path === '404.html')) return
   return {
     path: '404.html',
     layout: ['page'],

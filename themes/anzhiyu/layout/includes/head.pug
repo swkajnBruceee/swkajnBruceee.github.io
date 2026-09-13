@@ -20,7 +20,7 @@
 
 meta(charset='UTF-8')
 meta(http-equiv="X-UA-Compatible" content="IE=edge")
-meta(name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no")
+meta(name="viewport" content="width=device-width, initial-scale=1.0")
 title= tabTitle
 if pageKeywords
   meta(name="keywords" content=pageKeywords)
@@ -41,6 +41,7 @@ include ./head/Open_Graph.pug
 
 !=favicon_tag(theme.favicon || config.favicon)
 link(rel="canonical" href=urlNoIndex())
+meta(name="robots" content=page.type === '404' ? 'noindex, follow' : 'index, follow')
 
 - let structuredData = {}
 - structuredData['@context'] = 'https://schema.org'
@@ -53,7 +54,7 @@ link(rel="canonical" href=urlNoIndex())
 - if (is_post()) structuredData.author = { '@type': 'Person', name: page.copyright_author || config.author, url: full_url_for('/about/') }
 - if (is_post()) structuredData.datePublished = date_xml(page.date)
 - if (is_post()) structuredData.dateModified = date_xml(page.updated || page.date)
-script(type="application/ld+json")!= JSON.stringify(structuredData)
+script(type="application/ld+json")!= JSON.stringify(structuredData).replace(/</g, '\\u003c')
 
 //- 預解析
 !=partial('includes/head/preconnect', {}, {cache: true})

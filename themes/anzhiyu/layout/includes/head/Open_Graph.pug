@@ -4,7 +4,7 @@ if theme.Open_Graph_meta
 
   meta(property="og:type", content=contentType)
   meta(property="og:title", content=pageTitle)
-  meta(property="og:url", content=theme.post_copyright.decode ? decodeURI(url) : url)
+  meta(property="og:url", content=urlNoIndex())
   meta(property="og:site_name", content=config.title)
   meta(property="og:description", content=page_description())
   meta(property="og:locale", content=config.language)
@@ -15,4 +15,3 @@ if theme.Open_Graph_meta
   meta(name="twitter:image", content=metaImage)
 
 meta(name="description" content=page_description())
-

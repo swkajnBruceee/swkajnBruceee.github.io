@@ -1,0 +1,97 @@
+---
+layout: false
+title: UMR 表面对应交互演示
+sitemap: false
+---
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="以 MakeHuman 人体网格与远征 A3 的真实 URDF 表面展示 UMR 中 Chamfer、Repulsion 与模板边平滑如何共同影响表面对应，支持单项开关和排斥尺度调节。">
+  <link rel="canonical" href="https://swkajnbruceee.github.io/labs/umr/">
+  <title>UMR · 表面对应交互演示</title>
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="./losses.js"></script>
+  <script type="module" src="./demo.js"></script>
+</head>
+<body>
+<main class="lab">
+  <header class="intro">
+    <p class="eyebrow">UMR · 规范姿态中的表面对应</p>
+    <h1>让同一批点，找到另一副身体</h1>
+    <p>从有面部、手掌和脚部细节的人体网格，到按 URDF 装配的远征 A3。左侧保留人体表面的点索引，右侧的同一批点在三项损失共同作用下寻找机器人表面。</p>
+  </header>
+  <p id="fallback">模型正在加载；动画需要 JavaScript。Chamfer 贴合并覆盖目标，Repulsion 缓解点聚集，模板边平滑让邻近点的位移保持连贯。</p>
+  <fieldset id="controls" disabled>
+    <legend class="sr-only">动画与损失设置</legend>
+    <div class="toolbar">
+      <div class="actions">
+        <button type="button" id="play" class="primary">播放</button>
+        <button type="button" id="reset">重新开始</button>
+        <button type="button" id="step">单步</button>
+        <button type="button" id="perturb">扰动对应点</button>
+      </div>
+      <output id="iteration" aria-label="优化迭代次数">等待开始</output>
+    </div>
+    <div class="scene-wrap">
+      <canvas id="scene" width="1000" height="490" role="img" aria-label="MakeHuman 人体网格与远征 A3 机器人实体网格及表面点的三维投影，可点击一个点查看同一索引。运动结果另有文字状态说明。"></canvas>
+      <p class="scene-key"><span class="key source">人体模板 / 对应点</span><span class="key target">固定机器人表面</span><span class="key contact">示意接触区域</span></p>
+    </div>
+    <p id="render-note" class="render-note"></p>
+    <div class="view-controls">
+      <label>观察区域 <select id="region"><option value="body">全身</option><option value="upper">上身</option><option value="hand">手部特写</option></select></label>
+      <label><input id="surface" type="checkbox" checked> 显示实体表面</label>
+      <label>视角 <input id="yaw" type="range" min="-55" max="55" value="18" step="1"><output id="yaw-value">18°</output></label>
+      <label><input id="contact" type="checkbox" checked> 标出同一片接触区域</label>
+      <label><input id="graph" type="checkbox"> 显示模板邻接</label>
+    </div>
+    <p id="status" class="status" role="status">准备将人体表面上的点复制到机器人一侧。</p>
+    <div class="terms" aria-label="三项损失的独立开关">
+      <label class="term chamfer">
+        <span class="term-title"><input type="checkbox" id="chamfer" checked> Chamfer <span>λ = 1</span></span>
+        <span class="formula">L<sub>c</sub> = mean<sub>i</sub> min<sub>j</sub> ‖p<sub>i</sub> − x<sub>j</sub><sup>r</sup>‖²<br>+ mean<sub>j</sub> min<sub>i</sub> ‖x<sub>j</sub><sup>r</sup> − p<sub>i</sub>‖²</span>
+        <span class="term-detail">靠近表面，同时鼓励覆盖目标。</span>
+        <output id="loss-chamfer">L<sub>c</sub> = —</output>
+      </label>
+      <label class="term repulsion">
+        <span class="term-title"><input type="checkbox" id="repulsion" checked> Repulsion <span>λ = 0.002</span></span>
+        <span class="formula">L<sub>r</sub> = mean exp(−‖p<sub>i</sub> − p<sub>j</sub>‖² / r²)</span>
+        <span class="term-detail">对重建点的 K 近邻施加排斥惩罚。</span>
+        <output id="loss-repulsion">L<sub>r</sub> = —</output>
+      </label>
+      <label class="term smooth">
+        <span class="term-title"><input type="checkbox" id="smooth" checked> 模板边平滑 <span>λ = 0.4</span></span>
+        <span class="formula">L<sub>e</sub> = mean ‖d<sub>i</sub> − d<sub>j</sub>‖²</span>
+        <span class="term-detail">d<sub>i</sub> = p<sub>i</sub> − x<sub>i</sub><sup>h</sup>；源邻居保持相近位移。</span>
+        <output id="loss-smooth">L<sub>e</sub> = —</output>
+      </label>
+    </div>
+    <div class="detail-grid">
+      <section class="patch-panel" aria-labelledby="patch-title">
+        <h2 id="patch-title">前臂局部：三项负梯度的方向</h2>
+        <canvas id="patch" width="620" height="250" role="img" aria-label="前臂点云放大图，绿色箭头表示 Chamfer，橙色表示 Repulsion，紫色表示边平滑。半透明圆表示 r 的尺度。"></canvas>
+        <p>箭头按各项分别缩放，只比较方向；浅橙圆示意 r，并非硬截断边界。灰线显示固定的源表面邻接。</p>
+      </section>
+      <section class="radius-panel" aria-labelledby="radius-title">
+        <h2 id="radius-title">改变排斥的作用尺度</h2>
+        <label class="radius-label" for="radius">r <output id="radius-value">0.060</output></label>
+        <input id="radius" type="range" min="0.01" max="0.12" step="0.005" value="0.06">
+        <p>单位为归一化长度。r 增大时，惩罚随距离衰减得更慢；这里只计算每个点的 6 个近邻。</p>
+        <p class="kernel">d = r 时，exp(−d²/r²) = <strong>0.368</strong>。</p>
+        <p>完全重合处的成对梯度为零。大惩罚不等于大移动，是否分散还取决于其他损失与初始化。</p>
+        <button type="button" id="defaults">恢复三项与默认尺度</button>
+      </section>
+    </div>
+  </fieldset>
+  <p class="contact-note">橙色小片展示接触标签如何随同一索引转移。关节位置相近时，掌心与手背的接触仍可能不同；表面对应让优化器能区分这些区域。这里未求解后续的接触或机器人运动。</p>
+  <details class="method">
+    <summary>这个动画计算了什么？</summary>
+    <p>人体使用 MakeHuman hm08 网格，经原始骨骼权重调整为展开姿态；机器人使用 HOPETableTennis 中 a3_t2d5 的 URDF，按关节轴、关节原点与 visual 变换装配 37 个可视链接。模型分别归一化到单位高度，A3 网格经过减面，未加入内置 IMU 的封闭体积。两者均为真实模型资产；人体并非论文使用的 SMPL 模板，A3 也不是此处复现的论文实验。</p>
+    <p>人体网格有 26,756 个三角形，A3 有 56,719 个三角形。优化使用从三角面上采样的 768 个人体点与 1,152 个无序机器人目标点。人体点记录三角形与重心坐标；局部邻接沿源网格边的最短路径近似测地距离。连线表示这个固定的源邻接图，目标点没有预先指定的一一配对。小点以穿透实体的叠加方式显示，背面点会变淡，便于观察全体点的迁移。</p>
+    <p>演示直接更新点坐标，未训练论文的 PointNet / MLP，也未求解后续关节运动或接触。λ 的示例值为 1、0.002、0.4；点数、K、r 与步长为浏览器演示选择。每次更新限制最大点位移，最多运行 300 次；结束代表演示完成，不代表全局收敛。读数显示未加权损失，关闭某项后该项不参与更新。三个损失共同鼓励贴合、分散和连贯，不保证均匀覆盖、双射或接触可执行。</p>
+    <p>模型出处与转换记录见 <a href="./assets/ATTRIBUTION.txt" target="_blank" rel="noopener">资产说明</a>；人体来自 <a href="https://github.com/makehumancommunity/makehuman/blob/a8bc2d54ff0ac92e78ff71431b1023eda42bf482/makehuman/data/3dobjs/base.obj" target="_blank" rel="noopener">MakeHuman（CC0）</a>。公式参考 Cao 等人的 <a href="https://arxiv.org/pdf/2609.02134v2#page=4" target="_blank" rel="noopener">UMR v2 式（3）—（5）</a>。可暂停后切换损失并单步查看，也可对同一初始模板重新运行作比较。</p>
+  </details>
+</main>
+</body>
+</html>

@@ -1,26 +1,30 @@
 - const serverURL = theme.waline.serverURL.replace(/\/$/, '')
 script.
   (() => {
-    async function loadWaline () {
-      try {
-        const eleGroup = document.querySelectorAll('#recent-posts .waline-comment-count')
-        const keyArray = Array.from(eleGroup).map(i => i.getAttribute('data-path'))
-
-        const res = await fetch(`!{serverURL}/api/comment?type=count&url=${keyArray}`, { method: 'GET' })
-        const result = await res.json()
-        
-        result.data.forEach((count, index) => {
-          eleGroup[index].textContent = count
+    const elements = [...document.querySelectorAll('#recent-posts .waline-comment-count')]
+    if (!elements.length) return
+    const controller = new AbortController()
+    const cancel = () => controller.abort()
+    document.addEventListener('pjax:send', cancel, { once: true })
+    const timeout = setTimeout(cancel, 10000)
+    const params = new URLSearchParams({ type: 'count', url: elements.map(item => item.dataset.path).join(',') })
+    fetch('!{serverURL}/api/comment?' + params, { signal: controller.signal })
+      .then(response => {
+        if (!response.ok) throw new Error('评论计数加载失败')
+        return response.json()
+      })
+      .then(result => {
+        if (!Array.isArray(result.data) || result.data.length !== elements.length) throw new Error('评论计数格式无效')
+        elements.forEach((element, index) => { element.textContent = result.data[index] })
+      })
+      .catch(() => {
+        elements.forEach(element => {
+          element.textContent = '—'
+          element.title = '评论数暂不可用'
         })
-      } catch (err) {
-        // 错误处理：当API请求失败时，显示0条评论而不是省略号
-        const eleGroup = document.querySelectorAll('#recent-posts .waline-comment-count')
-        eleGroup.forEach(ele => {
-          ele.textContent = '0'
-        })
-        console.error('Waline comment count load error:', err)
-      }
-    }
-
-    window.pjax ? loadWaline() : window.addEventListener('load', loadWaline)
+      })
+      .finally(() => {
+        clearTimeout(timeout)
+        document.removeEventListener('pjax:send', cancel)
+      })
   })()
