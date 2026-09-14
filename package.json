@@ -41,7 +41,7 @@
     "node-snackbar": "0.1.16",
     "pjax": "0.2.8",
     "qrcodejs": "1.0.0",
-    "three": "0.180.0"
+    "three": "0.186.0"
   },
   "devDependencies": {
     "@playwright/test": "1.63.0",
